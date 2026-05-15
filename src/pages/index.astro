@@ -1,5 +1,5 @@
 ---
-import cities from '../data/cities.yaml';
+import cities from '../data/cities.json';
 
 const tier1 = cities.cities.filter(c => c.tier === 1);
 const states = [...new Set(cities.cities.map(c => c.state))].sort();
