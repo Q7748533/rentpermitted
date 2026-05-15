@@ -173,6 +173,33 @@ nav a:hover {
   user-select: none;
 }
 
+/* ═══════════════════════════ TABLE OF CONTENTS ═══════════════════════════ */
+.toc {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-sm);
+}
+.toc strong {
+  color: var(--slate-700);
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+.toc a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.15rem 0;
+}
+.toc a:hover { text-decoration: underline; }
+
 /* ═══════════════════════════ LAYOUT ═══════════════════════════ */
 .city-page, .home {
   max-width: 840px;

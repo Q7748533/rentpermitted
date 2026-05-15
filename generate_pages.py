@@ -85,7 +85,7 @@ def gen_license_table(d):
     rows = ""
     for lt in d["license_types"]:
         rows += f'''      <tr><td><strong>{html.escape(lt["type"])}</strong></td><td>{html.escape(lt["fee"])}</td><td>{html.escape(lt["notes"])}</td></tr>\n'''
-    return f'''<h2>License Types</h2>
+    return f'''<h2 id="license-types">License Types</h2>
     <div class="table-responsive"><table>
       <thead><tr><th>License Type</th><th>Fee</th><th>Notes</th></tr></thead>
       <tbody>
@@ -94,19 +94,19 @@ def gen_license_table(d):
 
 def gen_steps(d):
     items = "".join(f'        <li>{html.escape(s)}</li>\n' for s in d["application_steps"])
-    return f'''<h2>License Application — Step by Step</h2>
+    return f'''<h2 id="license-application">License Application — Step by Step</h2>
     <ol>
 {items}    </ol>'''
 
 def gen_rules(d):
     items = "".join(f'        <li>{html.escape(r)}</li>\n' for r in d["operating_rules"])
-    return f'''<h2>Key Operating Rules</h2>
+    return f'''<h2 id="operating-rules">Key Operating Rules</h2>
     <ul>
 {items}    </ul>'''
 
 def gen_penalties(d):
     items = "".join(f'        <li>{html.escape(p)}</li>\n' for p in d["penalties"])
-    return f'''<h2>Penalties for Non-Compliance</h2>
+    return f'''<h2 id="penalties">Penalties for Non-Compliance</h2>
     <ul>
 {items}    </ul>'''
 
@@ -114,7 +114,7 @@ def gen_changes(d):
     rows = ""
     for rc in d["recent_changes"]:
         rows += f'      <tr><td>{html.escape(rc["date"])}</td><td>{html.escape(rc["change"])}</td></tr>\n'
-    return f'''<h2>Recent Changes</h2>
+    return f'''<h2 id="recent-changes">Recent Changes</h2>
     <div class="table-responsive"><table>
       <thead><tr><th>Date</th><th>Change</th></tr></thead>
       <tbody>
@@ -123,7 +123,7 @@ def gen_changes(d):
 
 def gen_numbers(d):
     items = "".join(f'        <li>{html.escape(n)}</li>\n' for n in d["by_the_numbers"])
-    return f'''<h2>📊 By the Numbers</h2>
+    return f'''<h2 id="by-the-numbers">📊 By the Numbers</h2>
     <p>Data compiled from government reports, AirDNA, AirROI, and StaySTRA market data.</p>
     <ul>
 {items}    </ul>
@@ -133,7 +133,7 @@ def gen_scorecard(d):
     rows = ""
     for sc in d["investor_scorecard"]:
         rows += f'      <tr><td><strong>{html.escape(sc["dimension"])}</strong></td><td>{html.escape(sc["score"])}</td><td>{html.escape(sc["notes"])}</td></tr>\n'
-    return f'''<h2>📈 {d["city"]} STR Investor Scorecard</h2>
+    return f'''<h2 id="investor-scorecard">📈 {d["city"]} STR Investor Scorecard</h2>
     <p>Independent assessment — not government data. Scored on five dimensions that matter to hosts and investors.</p>
     <div class="table-responsive"><table>
       <thead><tr><th>Dimension</th><th>Score (1–10)</th><th>Notes</th></tr></thead>
@@ -145,7 +145,7 @@ def gen_y1_costs(d):
     rows = ""
     for yc in d["y1_costs"]:
         rows += f'      <tr><td>{html.escape(yc["item"])}</td><td>{html.escape(yc["cost"])}</td></tr>\n'
-    return f'''<h3>Year 1 Real Cost Estimate</h3>
+    return f'''<h3 id="year-1-costs">Year 1 Real Cost Estimate</h3>
     <div class="table-responsive"><table>
       <thead><tr><th>Item</th><th>Estimated Cost</th></tr></thead>
       <tbody>
@@ -156,7 +156,7 @@ def gen_profiles(d):
     rows = ""
     for ip in d["investor_profiles"]:
         rows += f'      <tr><td>{html.escape(ip["profile"])}</td><td>{html.escape(ip["verdict"])}</td></tr>\n'
-    return f'''<h2>Who Should (and Shouldn't) Invest</h2>
+    return f'''<h2 id="who-should-invest">Who Should (and Shouldn't) Invest</h2>
     <div class="table-responsive"><table>
       <thead><tr><th>Profile</th><th>Verdict</th></tr></thead>
       <tbody>
@@ -167,14 +167,14 @@ def gen_similar(d):
     cards = ""
     for sc in d["similar_cities"]:
         cards += f'      <a href="/{sc["city"].lower().replace(" ","-")}/" class="city-card"><strong>{html.escape(sc["city"])}</strong><span>{html.escape(sc["state"])} — {html.escape(sc["reason"])}</span></a>\n'
-    return f'''<h2>Similar cities</h2>
+    return f'''<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
 {cards}    </div>'''
 
 def gen_sources(d):
     items = "".join(f'        <li><a href="{html.escape(s["url"])}" rel="nofollow noopener" target="_blank">{html.escape(s["name"])}</a></li>\n' for s in d["official_sources"])
-    return f'''<h2>Official Resources</h2>
+    return f'''<h2 id="official-resources">Official Resources</h2>
     <ul>
 {items}    </ul>'''
 
@@ -242,15 +242,26 @@ def gen_page(d, slug):
     </div>
   </section>
 
+  <nav class="toc" aria-label="Table of Contents">
+    <strong>On this page:</strong>
+    <a href="#overview">Overview</a>
+    <a href="#license-types">Licenses</a>
+    <a href="#taxes">Taxes</a>
+    <a href="#operating-rules">Rules</a>
+    <a href="#penalties">Penalties</a>
+    <a href="#investor-scorecard">Scorecard</a>
+    <a href="#verdict">Verdict</a>
+  </nav>
+
   <article>
-    <h2>Overview</h2>
+    <h2 id="overview">Overview</h2>
     <p>{html.escape(d["overview"])}</p>
 
 {gen_license_table(d)}
 
 {gen_steps(d)}
 
-    <h2>Taxes</h2>
+    <h2 id="taxes">Taxes</h2>
     <p>{html.escape(d["tax_rates_breakdown"])}</p>
 
 {gen_rules(d)}
@@ -267,7 +278,7 @@ def gen_page(d, slug):
 
 {gen_profiles(d)}
 
-    <h2>Is {c} STR-Friendly?</h2>
+    <h2 id="verdict">Is {c} STR-Friendly?</h2>
     <p>{html.escape(d["verdict"])}</p>
 
 {gen_similar(d)}
