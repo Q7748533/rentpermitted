@@ -394,9 +394,41 @@ footer a:hover { color: var(--accent); text-decoration: none; }
   margin-bottom: 1rem;
 }
 .hero-search {
-  max-width: 520px;
-  margin: 1.5rem auto 1.25rem;
+  max-width: 600px;
+  margin: 2rem auto 1.75rem;
+  position: relative;
 }
+.hero-search #city-search {
+  width: 100%;
+  padding: 1.05rem 5.5rem 1.05rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 99px;
+  border: 2px solid var(--slate-200);
+  background: white;
+  color: var(--slate-900);
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+.hero-search #city-search::placeholder { color: var(--slate-400); font-weight: 400; }
+.hero-search #city-search:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px var(--green-light), var(--shadow-md);
+}
+.hero-search .search-count {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.82rem;
+  color: var(--slate-400);
+  pointer-events: none;
+  min-width: auto;
+  white-space: nowrap;
+}
+
+/* Default search input (used outside hero) */
 #city-search {
   flex: 1;
   padding: 0.65rem 1rem;
@@ -408,12 +440,6 @@ footer a:hover { color: var(--accent); text-decoration: none; }
   background: white;
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
-}
-.hero-search #city-search {
-  padding: 0.85rem 1.2rem;
-  font-size: 1.05rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
 }
 #city-search::placeholder { color: var(--slate-400); }
 #city-search:focus {
@@ -427,7 +453,6 @@ footer a:hover { color: var(--accent); text-decoration: none; }
   min-width: 0;
   text-align: right;
 }
-.hero-search .search-count { min-width: 5rem; }
 
 /* ═══════════════════════════ CITY GRID ═══════════════════════════ */
 .city-grid {
@@ -590,12 +615,14 @@ article h2:has(+ p + table) {
   .hero h1 { font-size: 1.7rem; }
   .hero p { font-size: 0.95rem; }
   .hero-search {
-    margin: 1rem auto 1rem;
-    flex-direction: column;
-    gap: 0.5rem;
+    margin: 1.25rem auto 1rem;
+    max-width: 100%;
   }
-  .hero-search #city-search { font-size: 0.95rem; padding: 0.7rem 1rem; }
-  .hero-search .search-count { text-align: center; min-width: auto; }
+  .hero-search #city-search {
+    padding: 0.85rem 4.5rem 0.85rem 1.2rem;
+    font-size: 1rem;
+  }
+  .hero-search .search-count { right: 1.2rem; font-size: 0.78rem; }
 
   h1 { font-size: 1.7rem; }
   .subtitle { font-size: 1rem; }
