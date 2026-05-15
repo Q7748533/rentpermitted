@@ -235,21 +235,17 @@ def gen_state_page(state_name, info):
   <link rel="stylesheet" href="/styles/global.css">
 </head>
 <body>
-<header>
-  <div class="header-inner">
-    <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-    <nav id="main-nav">
-      <a href="/">Home</a>
-      <a href="/#cities">Browse Cities</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-  </div>
+
+<header class="site-header">
+  <a href="/" class="logo">RentPermitted</a>
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="main-nav">
+    <a href="/#cities">Browse Cities</a>
+    <a href="/#states">By State</a>
+    <a href="/about/">About</a>
+  </nav>
 </header>
 
 <main class="state-page">
