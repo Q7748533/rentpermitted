@@ -17,52 +17,140 @@ def state_slug(state_name):
     return state_name.lower().replace(" ", "-")
 
 def state_overview(state_name, cities):
-    """Generate a state-level regulatory overview from city data."""
+    """Return a hand-researched state-level regulatory overview."""
     n = len(cities)
-    archetypes = set(c.get("archetype", "guide") for c in cities)
-    statuses = [c.get("status_label", "Licensed") for c in cities]
-    fees = [c["fee_amount"] for c in cities]
 
-    # Determine state-level tone
-    if all(a == "warning" for a in archetypes):
-        tone = "restrictive"
-        overview = (
-            f"{state_name} has some of the most restrictive short-term rental regulations in the country. "
-            f"Across all {n} cities we track, investors face significant barriers including primary residence requirements, "
-            f"night caps, and active enforcement. STR operators must research city-level rules carefully before investing."
-        )
-    elif all(a == "opportunity" for a in archetypes):
-        tone = "favorable"
-        overview = (
-            f"{state_name} stands out as an STR-friendly state with regulatory clarity and investor protections. "
-            f"Across all {n} cities we track, reasonable fees, clear rules, and state-level preemption laws "
-            f"make this one of the most predictable markets for short-term rental investment."
-        )
-    elif any(a == "opportunity" for a in archetypes) and any(a == "warning" for a in archetypes):
-        tone = "mixed"
-        overview = (
-            f"{state_name} presents a mixed regulatory landscape — some cities welcome STR investment while others impose strict limits. "
-            f"Investors must choose cities carefully. Across {n} cities we cover, the rules range from "
-            f"light-touch registration to primary residence mandates and night caps."
-        )
-    else:
-        tone = "moderate"
-        overview = (
-            f"{state_name} maintains a moderate approach to short-term rental regulation. "
-            f"Across {n} cities we track, most require registration and compliance with local rules, "
-            f"but outright bans are rare. Investors should verify city-specific requirements before purchasing."
-        )
+    OVERVIEWS = {
+        "Texas": (
+            f"Texas has no state-level short-term rental preemption law, leaving regulation entirely to cities. "
+            f"The result is a patchwork: Austin operates a density-capped Type 2/3 licensing system with a 3% per-tract limit and waitlist, "
+            f"while Dallas and Houston have chosen light-touch registration with no primary residence requirement, "
+            f"no night caps, and no zoning restrictions. For investors, Texas is a tale of two markets — "
+            f"choose your city carefully. Austin favors owner-occupants and existing permit holders; "
+            f"Dallas and Houston are among the most accessible STR markets in the country."
+        ),
+        "California": (
+            f"California is the most restrictive state in our coverage for short-term rental investors. "
+            f"All three cities we track — San Diego, Los Angeles, and San Francisco — impose primary residence requirements and hard day caps. "
+            f"San Diego's 20-day annual cap (Tier 3-4) is the strictest in the country, effectively limiting STRs to a side-income activity. "
+            f"Los Angeles layers a 120-day cap with the nation's highest platform fee ($850). "
+            f"San Francisco maintains a 90-day cap with one listing per host. "
+            f"There is no state-level STR preemption in California — cities regulate independently and enforcement is active across all three markets."
+        ),
+        "Florida": (
+            f"Florida occupies a unique middle ground. FL Stat. 509.032 preempts cities from banning vacation rentals entirely, "
+            f"providing a baseline of state-level protection. But cities retain broad authority over registration, fees, zoning, and enforcement. "
+            f"In practice, Miami Beach is heavily zoning-restricted with high fines and active code enforcement, "
+            f"while Orlando bans whole-home STRs in most residential zones — only owner-occupied home shares are permitted. "
+            f"Florida's statutory framework means the door is never fully closed, but local rules determine whether a specific property is viable."
+        ),
+        "Arizona": (
+            f"Arizona is the strongest investor market in our coverage, anchored by SB1350 — a 2016 law that prohibits "
+            f"cities from banning short-term rentals outright. Cities may require licenses, collect taxes, and enforce nuisance "
+            f"ordinances, but cannot use zoning to restrict STRs. Both Scottsdale and Phoenix operate under this framework with "
+            f"straightforward annual registration ($250/year) and no primary residence requirements. "
+            f"Arizona's state-level preemption provides regulatory certainty that few other states offer, "
+            f"making it one of the most predictable markets for STR investment."
+        ),
+        "Georgia": (
+            f"Georgia has no state-level STR preemption law, placing full regulatory authority with individual cities. "
+            f"Atlanta requires primary residence for STR operators — the property must be the host's primary home — "
+            f"with a $150/year registration fee. Savannah operates a certification system with higher upfront costs "
+            f"($400 initial / $250 renewal) and zoning-based eligibility. "
+            f"Both cities are viable for owner-occupants, but Georgia offers limited opportunity for pure investment properties."
+        ),
+        "Tennessee": (
+            f"Tennessee has no state-level STR preemption law. Nashville requires a Short-Term Rental Property (STRP) permit "
+            f"at $313/year plus a business license (~$15-22), with platform-collected 7% Metro occupancy tax (increased from 6% in FY2024). "
+            f"Nashville is legal but constrained — permits are available across all zones for owner-occupants, "
+            f"but non-owner-occupied permits face moratorium risk. Strong tourism demand makes it viable for those who qualify."
+        ),
+        "Colorado": (
+            f"Colorado has no state-level STR preemption. Denver requires primary residence — the property must be the host's "
+            f"primary home — with a $100 biennial license fee. At 14.75% combined lodging tax, Denver is expensive for guests "
+            f"but cheap for operators. Denver is not an investment market; it is a homeowner income-supplement program. "
+            f"If you live in Denver and want to STR your primary residence while traveling, it's accessible. For non-resident investors, it's closed."
+        ),
+        "Illinois": (
+            f"Illinois has no state-level STR preemption. Chicago requires primary residence for STR operators in most zones, "
+            f"with a $250/year registration fee. The tax burden is notable — 4.5% Chicago Hotel Accommodations Tax plus a 6% "
+            f"Shared Housing Surcharge plus 1% Cook County tax. Chicago is workable for owner-occupants who want to STR "
+            f"their primary residence part-time, but the primary residence requirement excludes pure investors."
+        ),
+        "Washington": (
+            f"Washington has no state-level STR preemption, but Seattle stands out as a rare West Coast bright spot. "
+            f"Seattle requires a $75/year license with no primary residence requirement, no night caps, and no density limits. "
+            f"The combined lodging tax is 15.6% (state + King County + City), but platforms collect and remit. "
+            f"For small STR investors, Seattle offers one of the most accessible regulatory environments on the West Coast."
+        ),
+        "Oregon": (
+            f"Oregon has no state-level STR preemption. Portland operates a two-tier system: Type A permits ($360/2 years) "
+            f"for owner-occupied rentals of 1-2 bedrooms, and Type B permits ($9,005+) for non-owner-occupied or larger units. "
+            f"The Type B fee structure makes Portland effectively closed to non-resident investors. "
+            f"Portland is an owner-occupant market — accessible for homeowners renting spare rooms, prohibitive for investment properties."
+        ),
+        "Louisiana": (
+            f"Louisiana has no state-level STR preemption. New Orleans operates a permit lottery system with caps, "
+            f"plus platform enforcement scheduled for Q3 2026. Non-owner-occupied STR permits (CSTR) cost $1,000/year "
+            f"with a $50 application fee. Owner-occupied permits (NSTR) are $500. "
+            f"Event-driven tourism (Mardi Gras, Jazz Fest) creates strong demand, but the regulatory environment is hostile "
+            f"to new entrants. New Orleans is a demand-rich, regulation-hostile market."
+        ),
+        "North Carolina": (
+            f"North Carolina has no state-level STR preemption. Asheville permits homestays only — "
+            f"the owner must reside on the property during the rental period. The permit fee is $200. "
+            f"Asheville has strong tourism demand from the Blue Ridge Mountains and Biltmore Estate, "
+            f"but the homestay-only restriction limits STR activity to owner-occupied rooms and ADUs. "
+            f"Not an investment market — a homeowner side-income opportunity."
+        ),
+        "South Carolina": (
+            f"South Carolina has no state-level STR preemption. Charleston is a premium STR market with premium compliance costs. "
+            f"Class 1 permits (owner-occupied) cost $595 total ($250 + $345). Class 2 permits (non-owner-occupied) cost $1,845 "
+            f"($1,500 + $345). Zoning restrictions apply, and self-reported tax remittance is required. "
+            f"Charleston's historic district tourism commands high ADRs, but the cost of entry and zoning barriers "
+            f"make it a market for experienced operators with properties in the right zones."
+        ),
+        "Nevada": (
+            f"Nevada has no state-level STR preemption. Las Vegas requires owner-occupancy and daily on-site presence "
+            f"for STR operators. First-year costs are $945-1,695 with annual renewals at $750-1,500. "
+            f"Las Vegas is not an STR investment market — the daily on-site requirement and owner-occupancy mandate "
+            f"make it a room-share opportunity for homeowners only. Clark County's transient lodging tax adds to the guest cost."
+        ),
+        "Hawaii": (
+            f"Hawaii has no state-level STR preemption. Honolulu restricts STRs to resort-zoned areas only, "
+            f"with a $1,000 initial registration fee and $500 annual renewal. Hawaii's Transient Accommodations Tax (TAT) "
+            f"is 11% (increased from 10.25% January 2026, per Act 96) plus 3% Oahu surcharge. "
+            f"Honolulu is the most expensive market in our coverage — highest taxes, highest fines, and strictest zoning. "
+            f"Only properties in designated resort zones are eligible."
+        ),
+        "Massachusetts": (
+            f"Massachusetts has no state-level STR preemption statewide, though a bill is under watch. "
+            f"Boston requires registration at $25-200/year depending on unit type, with no primary residence requirement. "
+            f"Taxes include 6.5% state room occupancy excise plus 6% Boston Convention Center financing surcharge. "
+            f"Year-round demand from 50+ colleges and strong business/medical tourism makes Boston a low-barrier, "
+            f"high-demand STR market. One of the more accessible Northeast markets."
+        ),
+        "District of Columbia": (
+            f"The District of Columbia regulates STRs at the city level — there is no state intermediary. "
+            f"Washington DC requires primary residence and imposes a 90-day annual cap on non-owner-occupied stays. "
+            f"The biennial license fee is $99. Combined taxes reach 14.5%. "
+            f"DC is a solid market for homeowners who want part-time STR income — accessible fees, strong year-round tourism demand, "
+            f"but the 90-day cap limits revenue upside for pure investors."
+        ),
+        "New York": (
+            f"New York has no state-level STR preemption. New York City's Local Law 18 effectively killed the STR investment market. "
+            f"The law requires hosts to be present during the stay (hosted-only), limits guests to 2, and mandates registration "
+            f"with the Mayor's Office of Special Enforcement. The $145/2-year fee is affordable, but the hosted-only + 2-guest restriction "
+            f"makes investment-scale STR operation impossible in NYC. This is a room-share market for homeowners only."
+        ),
+    }
 
-    # State preemption notes
-    preemption = ""
-    if state_name == "Arizona":
-        preemption = "\n\nArizona's SB1350 prohibits cities from banning short-term rentals outright, providing strong state-level protection for investors. Cities can require licenses and enforce nuisance rules, but cannot restrict STRs by zoning alone."
-    elif state_name == "Texas":
-        preemption = "\n\nTexas has no state-level STR preemption law, but most major cities (Austin, Dallas, Houston) have adopted straightforward registration systems rather than restrictive caps."
-    elif state_name == "Florida":
-        preemption = "\n\nFlorida preempts local governments from banning vacation rentals entirely (FL Stat. 509.032), but cities retain authority over registration, fees, and enforcement."
+    overview = OVERVIEWS.get(state_name, "")
+    if not overview:
+        # Fallback for any state not explicitly written (shouldn't happen with our 18)
+        overview = f"{state_name} regulates short-term rentals primarily at the city level. Check each city page for specific requirements."
 
-    return overview + preemption
+    return overview
 
 def city_comparison_table(cities):
     """Generate a comparison table of all cities in a state."""
@@ -118,10 +206,13 @@ def risk_ranking(cities):
     <ol class="risk-list">
 {items}    </ol>'''
 
-def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc):
+def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc, faq_q2, faq_q3):
     """Generate JSON-LD schema for state hub page."""
     n = len(cities)
     city_names = ", ".join(c["city"] for c in sorted(cities, key=lambda x: x["city"]))
+    # Escape double quotes in FAQ answers for JSON
+    q2_safe = faq_q2.replace('"', '\\"')
+    q3_safe = faq_q3.replace('"', '\\"')
     return f'''<script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -152,8 +243,8 @@ def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc):
       "@id": "https://www.rentpermitted.com/{state_slug}/#faq",
       "mainEntity": [
         {{"@type": "Question", "name": "How many cities in {state_name} are covered?", "acceptedAnswer": {{"@type": "Answer", "text": "RentPermitted covers {n} cities in {state_name}: {city_names}."}}}},
-        {{"@type": "Question", "name": "Does {state_name} have state-wide STR laws?", "acceptedAnswer": {{"@type": "Answer", "text": "{state_name} regulates short-term rentals primarily at the city level. Some states have preemption laws, others leave regulation entirely to municipalities. Check each city's page for specific requirements."}}}},
-        {{"@type": "Question", "name": "Which {state_name} city is most STR-friendly?", "acceptedAnswer": {{"@type": "Answer", "text": "This varies. Our risk ranking on this page orders {state_name} cities from most restrictive to most investment-friendly based on fees, caps, and primary residence requirements."}}}}
+        {{"@type": "Question", "name": "Does {state_name} have state-wide STR laws?", "acceptedAnswer": {{"@type": "Answer", "text": "{q2_safe}"}}}},
+        {{"@type": "Question", "name": "Which {state_name} city is most STR-friendly?", "acceptedAnswer": {{"@type": "Answer", "text": "{q3_safe}"}}}}
       ]
     }}
   ]
@@ -175,7 +266,36 @@ def gen_state_page(state_name, info):
     overview = state_overview(state_name, cities)
     table = city_comparison_table(cities)
     ranking = risk_ranking(cities) if n > 1 else ""
-    schema = gen_state_schema(state_name, abbr, slug, cities, title, desc)
+
+    # FAQ Q2: state-wide laws — per-state answers
+    faq_q2 = {
+        "Arizona": "Yes — Arizona's SB1350 (2016) prohibits cities from banning short-term rentals outright. Cities may require licenses, collect taxes, and enforce nuisance rules, but cannot use zoning to restrict STRs. This is one of the strongest state-level STR protections in the country.",
+        "Florida": "Partially — FL Stat. 509.032 preempts cities from banning vacation rentals entirely, but cities retain broad authority over registration, fees, zoning, and enforcement. The state sets a floor, not a ceiling — local rules ultimately determine viability.",
+    }.get(state_name, f"{state_name} regulates short-term rentals primarily at the city level. There is no comprehensive state-wide STR law. Check each individual city page for specific license requirements, fees, and operating rules.")
+
+    # FAQ Q3: best city for investment — derived from risk ranking for multi-city states
+    if n > 1:
+        scored = [(c.get("archetype","guide")=="opportunity", c.get("archetype","guide")!="warning", c) for c in cities]
+        scored.sort(key=lambda x: (-x[0], -x[1]))
+        best = scored[0][2]
+        worst = scored[-1][2]
+        if best["city"] == worst["city"]:
+            faq_q3 = f"With only one city covered, {best['city']} is the reference point. Check its city page for a detailed verdict on investment viability."
+        else:
+            faq_q3 = f"{best['city']} is generally the most accessible — {best.get('verdict','')[:120]}. {worst['city']} is the most restrictive — {worst.get('verdict','')[:120]}. See the risk ranking above for the full breakdown."
+    else:
+        c = cities[0]
+        faq_q3 = f"{c['city']} is the only city we currently cover in {state_name}. {c.get('verdict','')[:200]}"
+
+    # TOC — skip risk-ranking for single-city states
+    if n > 1:
+        toc_sections = [("overview", "Overview"), ("risk-ranking", "Risk Ranking"), ("city-comparison", "City Comparison"), ("faq", "FAQ")]
+    else:
+        toc_sections = [("overview", "Overview"), ("city-comparison", "City Comparison"), ("faq", "FAQ")]
+
+    toc = '\n  <nav class="toc" aria-label="Table of Contents">\n    <strong>On this page:</strong>\n    ' + '\n    '.join(f'<a href="#{s[0]}">{s[1]}</a>' for s in toc_sections) + '\n  </nav>'
+
+    schema = gen_state_schema(state_name, abbr, slug, cities, title, desc, faq_q2, faq_q3)
 
     # Quick facts
     fee_amounts = []
@@ -209,10 +329,6 @@ def gen_state_page(state_name, info):
       <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">May 2026</time></span></div>
     </div>
   </section>'''
-
-    # TOC
-    toc_sections = [("overview", "Overview"), ("risk-ranking", "Risk Ranking"), ("city-comparison", "City Comparison"), ("faq", "FAQ")]
-    toc = '\n  <nav class="toc" aria-label="Table of Contents">\n    <strong>On this page:</strong>\n    ' + '\n    '.join(f'<a href="#{s[0]}">{s[1]}</a>' for s in toc_sections) + '\n  </nav>'
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -273,8 +389,8 @@ def gen_state_page(state_name, info):
 
   <h2 id="faq">Frequently Asked Questions</h2>
   <details><summary>How many cities in {state_name} does RentPermitted cover?</summary><p>We cover {n} {'city' if n==1 else 'cities'} in {state_name}: {', '.join(c['city'] for c in sorted(cities, key=lambda x: x['city']))}.</p></details>
-  <details><summary>Does {state_name} have state-wide STR laws?</summary><p>{state_name} regulates short-term rentals primarily at the city level. Check each individual city page for specific license requirements, fees, and operating rules.</p></details>
-  <details><summary>Which {state_name} city is best for STR investment?</summary><p>This depends on your strategy — owner-occupant vs. pure investor. See our risk ranking above for a city-by-city comparison within {state_name}.</p></details>
+  <details><summary>Does {state_name} have state-wide STR laws?</summary><p>{faq_q2}</p></details>
+  <details><summary>Which {state_name} city is best for STR investment?</summary><p>{faq_q3}</p></details>
 
   <div class="disclaimer">
     <p><strong>Disclaimer:</strong> Data sourced from official {state_name} city websites and state statutes. Regulations change — verify with local authorities before making investment decisions. Last comprehensive review: May 2026.</p>
