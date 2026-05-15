@@ -85,31 +85,31 @@
     <span id="search-count" class="search-count"></span>
   </div>
   <div class="city-grid" id="city-grid">
-    <a href="/austin/" class="city-card"><strong>Austin</strong><span>TX</span></a>
-    <a href="/new-york-city/" class="city-card"><strong>New York City</strong><span>NY</span></a>
-    <a href="/los-angeles/" class="city-card"><strong>Los Angeles</strong><span>CA</span></a>
-    <a href="/san-francisco/" class="city-card"><strong>San Francisco</strong><span>CA</span></a>
-    <a href="/nashville/" class="city-card"><strong>Nashville</strong><span>TN</span></a>
-    <a href="/miami-beach/" class="city-card"><strong>Miami Beach</strong><span>FL</span></a>
-    <a href="/orlando/" class="city-card"><strong>Orlando</strong><span>FL</span></a>
-    <a href="/denver/" class="city-card"><strong>Denver</strong><span>CO</span></a>
-    <a href="/atlanta/" class="city-card"><strong>Atlanta</strong><span>GA</span></a>
-    <a href="/chicago/" class="city-card"><strong>Chicago</strong><span>IL</span></a>
-    <a href="/seattle/" class="city-card"><strong>Seattle</strong><span>WA</span></a>
-    <a href="/portland/" class="city-card"><strong>Portland</strong><span>OR</span></a>
-    <a href="/new-orleans/" class="city-card"><strong>New Orleans</strong><span>LA</span></a>
-    <a href="/san-diego/" class="city-card"><strong>San Diego</strong><span>CA</span></a>
-    <a href="/phoenix/" class="city-card"><strong>Phoenix</strong><span>AZ</span></a>
-    <a href="/dallas/" class="city-card"><strong>Dallas</strong><span>TX</span></a>
-    <a href="/houston/" class="city-card"><strong>Houston</strong><span>TX</span></a>
-    <a href="/asheville/" class="city-card"><strong>Asheville</strong><span>NC</span></a>
-    <a href="/savannah/" class="city-card"><strong>Savannah</strong><span>GA</span></a>
-    <a href="/charleston/" class="city-card"><strong>Charleston</strong><span>SC</span></a>
-    <a href="/scottsdale/" class="city-card"><strong>Scottsdale</strong><span>AZ</span></a>
-    <a href="/las-vegas/" class="city-card"><strong>Las Vegas</strong><span>NV</span></a>
-    <a href="/honolulu/" class="city-card"><strong>Honolulu</strong><span>HI</span></a>
-    <a href="/boston/" class="city-card"><strong>Boston</strong><span>MA</span></a>
-    <a href="/washington-dc/" class="city-card"><strong>Washington DC</strong><span>DC</span></a>
+    <a href="/austin/" class="city-card" data-state="Texas"><strong>Austin</strong><span>TX</span></a>
+    <a href="/new-york-city/" class="city-card" data-state="New York"><strong>New York City</strong><span>NY</span></a>
+    <a href="/los-angeles/" class="city-card" data-state="California"><strong>Los Angeles</strong><span>CA</span></a>
+    <a href="/san-francisco/" class="city-card" data-state="California"><strong>San Francisco</strong><span>CA</span></a>
+    <a href="/nashville/" class="city-card" data-state="Tennessee"><strong>Nashville</strong><span>TN</span></a>
+    <a href="/miami-beach/" class="city-card" data-state="Florida"><strong>Miami Beach</strong><span>FL</span></a>
+    <a href="/orlando/" class="city-card" data-state="Florida"><strong>Orlando</strong><span>FL</span></a>
+    <a href="/denver/" class="city-card" data-state="Colorado"><strong>Denver</strong><span>CO</span></a>
+    <a href="/atlanta/" class="city-card" data-state="Georgia"><strong>Atlanta</strong><span>GA</span></a>
+    <a href="/chicago/" class="city-card" data-state="Illinois"><strong>Chicago</strong><span>IL</span></a>
+    <a href="/seattle/" class="city-card" data-state="Washington"><strong>Seattle</strong><span>WA</span></a>
+    <a href="/portland/" class="city-card" data-state="Oregon"><strong>Portland</strong><span>OR</span></a>
+    <a href="/new-orleans/" class="city-card" data-state="Louisiana"><strong>New Orleans</strong><span>LA</span></a>
+    <a href="/san-diego/" class="city-card" data-state="California"><strong>San Diego</strong><span>CA</span></a>
+    <a href="/phoenix/" class="city-card" data-state="Arizona"><strong>Phoenix</strong><span>AZ</span></a>
+    <a href="/dallas/" class="city-card" data-state="Texas"><strong>Dallas</strong><span>TX</span></a>
+    <a href="/houston/" class="city-card" data-state="Texas"><strong>Houston</strong><span>TX</span></a>
+    <a href="/asheville/" class="city-card" data-state="North Carolina"><strong>Asheville</strong><span>NC</span></a>
+    <a href="/savannah/" class="city-card" data-state="Georgia"><strong>Savannah</strong><span>GA</span></a>
+    <a href="/charleston/" class="city-card" data-state="South Carolina"><strong>Charleston</strong><span>SC</span></a>
+    <a href="/scottsdale/" class="city-card" data-state="Arizona"><strong>Scottsdale</strong><span>AZ</span></a>
+    <a href="/las-vegas/" class="city-card" data-state="Nevada"><strong>Las Vegas</strong><span>NV</span></a>
+    <a href="/honolulu/" class="city-card" data-state="Hawaii"><strong>Honolulu</strong><span>HI</span></a>
+    <a href="/boston/" class="city-card" data-state="Massachusetts"><strong>Boston</strong><span>MA</span></a>
+    <a href="/washington-dc/" class="city-card" data-state="District of Columbia"><strong>Washington DC</strong><span>DC</span></a>
   </div>
 
   <h2 id="states">Browse by State</h2>
@@ -154,7 +154,7 @@
     var q = this.value.toLowerCase().trim();
     var n = 0;
     cards.forEach(function(c){
-      var match = !q || c.textContent.toLowerCase().indexOf(q) !== -1;
+      var match = !q || c.textContent.toLowerCase().indexOf(q) !== -1 || (c.getAttribute('data-state') || '').toLowerCase().indexOf(q) !== -1;
       c.style.display = match ? '' : 'none';
       if (match) n++;
     });
