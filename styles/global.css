@@ -60,6 +60,25 @@
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; }
 
+/* ═══════════════════════════ ACCESSIBILITY ═══════════════════════════ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--slate-900);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  z-index: 200;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0.5rem;
+  text-decoration: none;
+}
+
 /* ═══════════════════════════ HEADER ═══════════════════════════ */
 .site-header {
   display: flex;
@@ -447,7 +466,15 @@ footer a:hover { color: var(--accent); text-decoration: none; }
   font-size: 0.9rem;
   color: var(--slate-600);
   font-weight: 500;
-  cursor: default;
+  text-decoration: none;
+  display: block;
+  transition: all 0.15s;
+}
+.state-item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
 }
 
 /* ═══════════════════════════ INVESTOR SCORECARD (Original content block) ═══════════════════════════ */
