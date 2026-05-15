@@ -61,10 +61,10 @@
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-  <nav id="main-nav">
+<nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
     <a href="/about/">About</a>
@@ -207,6 +207,10 @@
   <p>RentPermitted — Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
   <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
+</script>
 
 </body>
 </html>
