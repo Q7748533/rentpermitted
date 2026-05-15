@@ -74,7 +74,11 @@
   </section>
 
   <h2 id="cities">Browse by City</h2>
-  <div class="city-grid">
+  <div class="search-wrap">
+    <input type="search" id="city-search" placeholder="Filter by city or state..." autocomplete="off">
+    <span id="search-count" class="search-count"></span>
+  </div>
+  <div class="city-grid" id="city-grid">
     <a href="/austin/" class="city-card"><strong>Austin</strong><span>TX</span></a>
     <a href="/new-york-city/" class="city-card"><strong>New York City</strong><span>NY</span></a>
     <a href="/los-angeles/" class="city-card"><strong>Los Angeles</strong><span>CA</span></a>
@@ -133,5 +137,24 @@
   <p>RentPermitted — Short-term rental regulations, made clear. Not affiliated with any government agency.</p>
   <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
+<script>
+(function(){
+  var input = document.getElementById('city-search');
+  var grid = document.getElementById('city-grid');
+  var count = document.getElementById('search-count');
+  var cards = grid.querySelectorAll('.city-card');
+  var total = cards.length;
+  input.addEventListener('input', function(){
+    var q = this.value.toLowerCase().trim();
+    var n = 0;
+    cards.forEach(function(c){
+      var match = !q || c.textContent.toLowerCase().indexOf(q) !== -1;
+      c.style.display = match ? '' : 'none';
+      if (match) n++;
+    });
+    count.textContent = q ? n + ' of ' + total + ' cities' : '';
+  });
+})();
+</script>
 </body>
 </html>

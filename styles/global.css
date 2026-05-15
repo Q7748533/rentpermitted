@@ -367,6 +367,38 @@ footer a:hover { color: var(--accent); text-decoration: none; }
   font-weight: 500;
 }
 
+/* ═══════════════════════════ SEARCH ═══════════════════════════ */
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+#city-search {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--slate-800);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+#city-search::placeholder { color: var(--slate-400); }
+#city-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--green-light);
+}
+.search-count {
+  font-size: 0.85rem;
+  color: var(--slate-400);
+  white-space: nowrap;
+  min-width: 100px;
+  text-align: right;
+}
+
 /* ═══════════════════════════ CITY GRID ═══════════════════════════ */
 .city-grid {
   display: grid;
