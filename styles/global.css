@@ -245,7 +245,7 @@ details p {
 }
 
 /* ═══════════════════════════ LAYOUT ═══════════════════════════ */
-.city-page, .home {
+.city-page, .state-page, .home {
   max-width: 840px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4rem;
