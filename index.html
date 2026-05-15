@@ -126,7 +126,7 @@
     </div>
   </div>
 
-  <h2>📰 Latest Regulation Updates</h2>
+  <h2 id="updates-heading">📰 Latest Regulation Updates</h2>
   <div class="updates-list">
     <div class="update-item"><time datetime="2026-05-15" class="update-date">May 15, 2026</time> <strong>Austin, TX</strong> — STR enforcement details added. Platform data-sharing agreement now in effect. License required for all STRs.</div>
     <div class="update-item"><time datetime="2026-05-15" class="update-date">May 15, 2026</time> <strong>Los Angeles, CA</strong> — Home-sharing registration fee confirmed at $183. Platform fee collection verified via planning.lacity.gov.</div>
@@ -207,6 +207,7 @@
   var featuredH2 = document.getElementById('featured');
   var featuredGrid = document.querySelector('.featured-grid');
   var updatesList = document.querySelector('.updates-list');
+  var updatesHeading = document.getElementById('updates-heading');
   input.addEventListener('input', function(){
     var q = this.value.toLowerCase().trim();
     var n = 0;
@@ -221,6 +222,7 @@
       if (featuredH2) featuredH2.style.display = 'none';
       if (featuredGrid) featuredGrid.style.display = 'none';
       if (updatesList) updatesList.style.display = 'none';
+      if (updatesHeading) updatesHeading.style.display = 'none';
       var dir = document.getElementById('cities');
       if (dir) dir.scrollIntoView({behavior: 'smooth', block: 'start'});
     } else {
@@ -228,6 +230,7 @@
       if (featuredH2) featuredH2.style.display = '';
       if (featuredGrid) featuredGrid.style.display = '';
       if (updatesList) updatesList.style.display = '';
+      if (updatesHeading) updatesHeading.style.display = '';
     }
   });
 })();
