@@ -803,3 +803,44 @@ input[type="search"]::-webkit-search-results-decoration {
   .state-table .fee-cell { font-size: 0.78rem; max-width: 180px; }
   .state-table th, .state-table td { padding: 0.5rem 0.5rem; font-size: 0.82rem; }
 }
+
+/* By the Numbers — quantitative data block */
+.by-numbers {
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+.by-numbers h2 { margin-top: 0; }
+.by-numbers ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.6rem;
+}
+.by-numbers li {
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  color: var(--slate-700);
+}
+.by-numbers li strong { color: var(--slate-900); }
+
+/* Similar States — cross-linking module */
+.similar-states {
+  margin: 2.5rem 0 0 0;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--slate-200);
+}
+.similar-states h2 { margin-top: 0; }
+.similar-states .city-grid { margin-top: 1rem; }
+
+/* Source note — verification attribution */
+.source-note {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
