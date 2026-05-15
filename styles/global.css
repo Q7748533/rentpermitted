@@ -152,6 +152,27 @@ nav a:hover {
   transform: translateY(-7.5px) rotate(-45deg);
 }
 
+/* ═══════════════════════════ BREADCRUMB ═══════════════════════════ */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--slate-400);
+  margin-bottom: 0.75rem;
+}
+.breadcrumb a {
+  color: var(--slate-500);
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumb a:hover { color: var(--accent); text-decoration: none; }
+.breadcrumb-sep {
+  color: var(--slate-300);
+  font-size: 0.9rem;
+  user-select: none;
+}
+
 /* ═══════════════════════════ LAYOUT ═══════════════════════════ */
 .city-page, .home {
   max-width: 840px;

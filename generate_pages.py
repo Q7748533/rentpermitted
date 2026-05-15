@@ -221,6 +221,11 @@ def gen_page(d, slug):
 </header>
 
 <main class="city-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{c}, {s}</span>
+  </nav>
   <div class="status-badge" style="background:{sc};color:white">{html.escape(d["status_label"])}</div>
   <h1>{h1}</h1>
   <p class="subtitle">Everything you need to operate an Airbnb, Vrbo, or vacation rental in {c}. Permit requirements, tax obligations, and zoning rules — updated {sv}.</p>
