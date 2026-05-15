@@ -1,0 +1,44 @@
+:root {
+  --green: #16a34a;
+  --yellow: #ca8a04;
+  --red: #dc2626;
+  --bg: #fafafa;
+  --text: #1a1a1a;
+  --border: #e5e5e5;
+  --accent: #2563eb;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+body { margin: 0; line-height: 1.7; }
+.site-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; border-bottom:1px solid var(--border); background:white; }
+.logo { font-weight:700; font-size:1.25rem; text-decoration:none; color:var(--text); }
+nav a { margin-left:1.5rem; text-decoration:none; color:var(--text); font-size:0.9rem; }
+nav a:hover { color:var(--accent); }
+
+.city-page { max-width:800px; margin:2rem auto; padding:0 1rem; }
+.status-badge { display:inline-block; padding:0.25rem 0.75rem; border-radius:4px; font-size:0.85rem; font-weight:600; margin-bottom:1rem; }
+h1 { font-size:2rem; margin-bottom:0.5rem; }
+.subtitle { color:#666; font-size:1.05rem; margin-bottom:2rem; }
+
+.quick-facts { background:white; border:1px solid var(--border); border-radius:8px; padding:1.5rem; margin-bottom:2rem; }
+.quick-facts h2 { margin-top:0; font-size:1.2rem; }
+.facts-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; }
+.fact-label { display:block; font-size:0.8rem; color:#666; text-transform:uppercase; }
+.fact-value { display:block; font-weight:600; font-size:1.1rem; margin-top:0.25rem; }
+
+article h2 { font-size:1.4rem; margin-top:2.5rem; border-bottom:1px solid var(--border); padding-bottom:0.25rem; }
+article h3 { font-size:1.15rem; margin-top:1.5rem; }
+article ul, article ol { padding-left:1.5rem; }
+article li { margin-bottom:0.5rem; }
+
+.disclaimer { background:#fff3cd; border:1px solid #ffc107; border-radius:8px; padding:1rem; margin:3rem 0 1rem; font-size:0.9rem; }
+
+footer { text-align:center; padding:2rem; border-top:1px solid var(--border); font-size:0.85rem; color:#666; margin-top:3rem; }
+footer a { color:var(--accent); text-decoration:none; margin:0 0.5rem; }
+
+@media (max-width:600px) {
+  .facts-grid { grid-template-columns:repeat(2, 1fr); }
+  .site-header { flex-direction:column; gap:0.5rem; text-align:center; }
+  nav a { margin:0 0.5rem; }
+}
