@@ -177,6 +177,43 @@ def gen_state_page(state_name, info):
     ranking = risk_ranking(cities) if n > 1 else ""
     schema = gen_state_schema(state_name, abbr, slug, cities, title, desc)
 
+    # Quick facts
+    fee_amounts = []
+    for c in cities:
+        fa = c.get("fee_amount", "")
+        # Extract dollar amount
+        import re
+        m = re.search(r'\$[\d,]+', fa)
+        if m:
+            fee_amounts.append(int(m.group().replace('$','').replace(',','')))
+    fee_range = f"${min(fee_amounts)}–${max(fee_amounts)}" if len(fee_amounts) >= 2 else (f"${fee_amounts[0]}" if fee_amounts else "Varies")
+
+    archetypes = set(c.get("archetype", "guide") for c in cities)
+    if all(a == "warning" for a in archetypes):
+        climate = "Restrictive"
+    elif all(a == "opportunity" for a in archetypes):
+        climate = "Investor-Friendly"
+    else:
+        climate = "Mixed"
+
+    preemption = "Yes — SB1350" if state_name == "Arizona" else ("Partial — vacation rental preemption" if state_name == "Florida" else "None — city-level regulation")
+
+    quick_facts = f'''<section class="quick-facts">
+    <h2>At a Glance</h2>
+    <div class="facts-grid">
+      <div><span class="fact-label">Cities Covered</span><span class="fact-value">{n} {'city' if n==1 else 'cities'} — {', '.join(c['city'] for c in sorted(cities, key=lambda x: x['city']))}</span></div>
+      <div><span class="fact-label">Regulatory Climate</span><span class="fact-value">{climate}</span></div>
+      <div><span class="fact-label">License Fee Range</span><span class="fact-value">{fee_range}</span></div>
+      <div><span class="fact-label">State Preemption</span><span class="fact-value">{preemption}</span></div>
+      <div><span class="fact-label">Primary Residence</span><span class="fact-value">{'Required in some cities' if any('primary residence' in c.get('verdict','').lower() or 'owner-occup' in c.get('verdict','').lower() for c in cities) else 'Not universally required'}</span></div>
+      <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">May 2026</time></span></div>
+    </div>
+  </section>'''
+
+    # TOC
+    toc_sections = [("overview", "Overview"), ("risk-ranking", "Risk Ranking"), ("city-comparison", "City Comparison"), ("faq", "FAQ")]
+    toc = '\n  <nav class="toc" aria-label="Table of Contents">\n    <strong>On this page:</strong>\n    ' + '\n    '.join(f'<a href="#{s[0]}">{s[1]}</a>' for s in toc_sections) + '\n  </nav>'
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +231,7 @@ def gen_state_page(state_name, info):
   <meta name="twitter:description" content="{desc}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/global.css">
 </head>
 <body>
@@ -225,28 +262,28 @@ def gen_state_page(state_name, info):
   <h1>{h1}</h1>
   <p class="subtitle">{desc}</p>
 
-  <section>
-    <h2 id="overview">Regulatory Overview</h2>
-    <p>{overview}</p>
-  </section>
+  {quick_facts}
 
-  <section>
+  {toc}
+
+  <h2 id="overview">Regulatory Overview</h2>
+  <p>{overview}</p>
+
   {ranking}
-  </section>
 
-  <section>
-    <h2 id="city-comparison">City Comparison — {n} {'City' if n==1 else 'Cities'}</h2>
-    <p>All {state_name} cities covered by RentPermitted, ranked and compared:</p>
-    {table}
-  </section>
+  <h2 id="city-comparison">City Comparison — {n} {'City' if n==1 else 'Cities'}</h2>
+  <p>All {state_name} cities covered by RentPermitted, ranked and compared:</p>
+  {table}
 
-  <section>
-    <h2 id="faq">Frequently Asked Questions</h2>
-    <details><summary>How many cities in {state_name} does RentPermitted cover?</summary><p>We cover {n} {'city' if n==1 else 'cities'} in {state_name}: {', '.join(c['city'] for c in sorted(cities, key=lambda x: x['city']))}.</p></details>
-    <details><summary>Does {state_name} have state-wide STR laws?</summary><p>{state_name} regulates short-term rentals primarily at the city level. Check each individual city page for specific license requirements, fees, and operating rules.</p></details>
-    <details><summary>Which {state_name} city is best for STR investment?</summary><p>This depends on your strategy — owner-occupant vs. pure investor. See our risk ranking above for a city-by-city comparison within {state_name}.</p></details>
-  </section>
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <details><summary>How many cities in {state_name} does RentPermitted cover?</summary><p>We cover {n} {'city' if n==1 else 'cities'} in {state_name}: {', '.join(c['city'] for c in sorted(cities, key=lambda x: x['city']))}.</p></details>
+  <details><summary>Does {state_name} have state-wide STR laws?</summary><p>{state_name} regulates short-term rentals primarily at the city level. Check each individual city page for specific license requirements, fees, and operating rules.</p></details>
+  <details><summary>Which {state_name} city is best for STR investment?</summary><p>This depends on your strategy — owner-occupant vs. pure investor. See our risk ranking above for a city-by-city comparison within {state_name}.</p></details>
 
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> Data sourced from official {state_name} city websites and state statutes. Regulations change — verify with local authorities before making investment decisions. Last comprehensive review: May 2026.</p>
+    <p>RentPermitted is not a government agency. We compile public information for educational purposes.</p>
+  </div>
 </main>
 
 <footer>
