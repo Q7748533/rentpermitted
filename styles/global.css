@@ -1,9 +1,8 @@
 /* ═══════════════════════════════════════════════
    RentPermitted Design System v2.0
    American modern professional — clean, confident, data-first
+   Font: Inter loaded via <link> in HTML for performance
    ═══════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* Primary */
