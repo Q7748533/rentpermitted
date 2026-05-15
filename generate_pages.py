@@ -64,7 +64,8 @@ def gen_schema(d, slug, title):
       "@id": "https://www.rentpermitted.com/{slug}/#breadcrumb",
       "itemListElement": [
         {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"}},
-        {{"@type": "ListItem", "position": 2, "name": "{c}, {s}", "item": "https://www.rentpermitted.com/{slug}/"}}
+        {{"@type": "ListItem", "position": 2, "name": "{d['state']}", "item": "https://www.rentpermitted.com/{d['state'].lower().replace(' ', '-')}/"}},
+        {{"@type": "ListItem", "position": 3, "name": "{c}", "item": "https://www.rentpermitted.com/{slug}/"}}
       ]
     }},
     {{
@@ -241,7 +242,9 @@ def gen_page(d, slug):
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <span>{c}, {s}</span>
+    <a href="/{d['state'].lower().replace(' ', '-')}/">{d['state']}</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{c}</span>
   </nav>
   <div class="status-badge" style="background:{sc};color:white">{html.escape(d["status_label"])}</div>
   <h1>{h1}</h1>

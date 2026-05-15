@@ -782,3 +782,22 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
   display: none;
 }
+
+/* ===== State Hub Pages ===== */
+.state-page h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+.state-page .subtitle { color: var(--slate-500); font-size: 1.05rem; margin-bottom: 2rem; }
+
+.state-table { width: 100%; border-collapse: collapse; }
+.state-table th { text-align: left; padding: 0.7rem 0.8rem; background: var(--slate-100); font-weight: 600; font-size: 0.9rem; }
+.state-table td { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--slate-200); vertical-align: middle; }
+.state-table a { color: var(--emerald-700); text-decoration: none; font-weight: 600; }
+.state-table a:hover { text-decoration: underline; }
+.state-table .fee-cell { font-size: 0.85rem; color: var(--slate-600); max-width: 280px; }
+
+.risk-list { padding-left: 1.2rem; }
+.risk-list li { margin-bottom: 0.6rem; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .state-table .fee-cell { font-size: 0.78rem; max-width: 180px; }
+  .state-table th, .state-table td { padding: 0.5rem 0.5rem; font-size: 0.82rem; }
+}
