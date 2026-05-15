@@ -200,6 +200,50 @@ nav a:hover {
 }
 .toc a:hover { text-decoration: underline; }
 
+/* ═══════════════════════════ FAQ (visible, matches Schema) ═══════════════════════════ */
+#faq + details, #faq ~ details {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  padding: 0;
+  overflow: hidden;
+}
+details {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+details summary {
+  padding: 0.9rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-heading);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after {
+  content: "+";
+  font-size: 1.2rem;
+  color: var(--slate-400);
+  font-weight: 400;
+  margin-left: 1rem;
+}
+details[open] summary::after { content: "−"; }
+details summary:hover { background: var(--slate-50); }
+details p {
+  padding: 0 1.25rem 1rem;
+  margin: 0;
+  color: var(--slate-600);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
 /* ═══════════════════════════ LAYOUT ═══════════════════════════ */
 .city-page, .home {
   max-width: 840px;

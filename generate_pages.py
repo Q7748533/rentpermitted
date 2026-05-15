@@ -163,6 +163,23 @@ def gen_profiles(d):
 {rows}      </tbody>
     </table></div>'''
 
+def gen_visible_faq(d):
+    c = d["city"]
+    lt = " / ".join(t["type"].split("(")[0].strip() for t in d["license_types"][:2])
+    q1 = f"What license types are available for {c} short-term rentals?"
+    a1 = f"{c} offers {lt}. {d['license_types'][0]['fee']}. {d['license_types'][0]['notes']}"
+    q2 = f"How much does a {c} STR license cost?"
+    a2 = d["fee_amount"]
+    q3 = f"What taxes apply to short-term rentals in {c}?"
+    a3 = d["tax_rates_breakdown"]
+    q4 = f"Is {c} STR-friendly for investors?"
+    a4 = d["verdict"][:200]
+    return f'''<h2 id="faq">Frequently Asked Questions</h2>
+    <details><summary>{q1}</summary><p>{a1}</p></details>
+    <details><summary>{q2}</summary><p>{a2}</p></details>
+    <details><summary>{q3}</summary><p>{a3}</p></details>
+    <details><summary>{q4}</summary><p>{a4}</p></details>'''
+
 def gen_similar(d):
     cards = ""
     for sc in d["similar_cities"]:
@@ -238,7 +255,7 @@ def gen_page(d, slug):
       <div><span class="fact-label">License Fee</span><span class="fact-value">{html.escape(d["fee_amount"])}</span></div>
       <div><span class="fact-label">Tax Rate</span><span class="fact-value">{html.escape(d["tax_rate"])}</span></div>
       <div><span class="fact-label">Nights Cap / Spacing</span><span class="fact-value">{html.escape(d["cap_rule"])}</span></div>
-      <div><span class="fact-label">Last Verified</span><span class="fact-value">{html.escape(d["last_verified"])}</span></div>
+      <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">{html.escape(d["last_verified"])}</time></span></div>
     </div>
   </section>
 
@@ -280,6 +297,8 @@ def gen_page(d, slug):
 
     <h2 id="verdict">Is {c} STR-Friendly?</h2>
     <p>{html.escape(d["verdict"])}</p>
+
+{gen_visible_faq(d)}
 
 {gen_similar(d)}
 
