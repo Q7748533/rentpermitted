@@ -208,7 +208,12 @@
       c.style.display = match ? '' : 'none';
       if (match) n++;
     });
-    count.textContent = q ? n + ' of ' + total + ' cities' : '';
+    if (q) {
+      count.textContent = n + ' of ' + total + ' cities';
+      count.style.visibility = 'visible';
+    } else {
+      count.style.visibility = 'hidden';
+    }
     // Scroll to directory if searching
     if (q) {
       var dir = document.getElementById('cities');
