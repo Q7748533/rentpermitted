@@ -242,7 +242,7 @@ def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc, fa
       "@type": "FAQPage",
       "@id": "https://www.rentpermitted.com/{state_slug}/#faq",
       "mainEntity": [
-        {{"@type": "Question", "name": "How many cities in {state_name} are covered?", "acceptedAnswer": {{"@type": "Answer", "text": "RentPermitted covers {n} cities in {state_name}: {city_names}."}}}},
+        {{"@type": "Question", "name": "How many cities in {state_name} are covered?", "acceptedAnswer": {{"@type": "Answer", "text": "We cover {n} cities in {state_name}: {city_names}."}}}},
         {{"@type": "Question", "name": "Does {state_name} have state-wide STR laws?", "acceptedAnswer": {{"@type": "Answer", "text": "{q2_safe}"}}}},
         {{"@type": "Question", "name": "Which {state_name} city is most STR-friendly?", "acceptedAnswer": {{"@type": "Answer", "text": "{q3_safe}"}}}}
       ]
