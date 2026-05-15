@@ -4,12 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- ═══════════════════════════════════════════════
-     RENTPERMITTED CITY PAGE TEMPLATE v1.0
+     RENTPERMITTED CITY PAGE TEMPLATE v2.0
      ═══════════════════════════════════════════════
-     REPLACE: CITY_NAME, STATE_ABBR, STATE_FULL,
-     STATUS_CLASS (green/yellow/red), STATUS_LABEL,
-     PERMIT_REQUIRED (Yes/No), LICENSE_TYPE,
-     FEE_AMOUNT, TAX_RATE, CAP_RULE, LAST_VERIFIED
+     DYNAMIC TITLE LOGIC — pick ONE archetype per city:
+     
+     IF Risk_Level >= 8 (tightly regulated, enforcement imminent):
+       → WARNING archetype
+       Title:  "Why your CITY_NAME STR might be de-listed in 2026"
+       Descr:  "CITY_NAME license costs $XXX. XX% tax. Enforcement deadline [date]. 
+                XX% of listings unlicensed. Verified [date]."
+       Tone:   Cold, factual, risk-forward. Lead with the threat.
+     
+     IF Market_Hotness >= 8 (high ADR, strong demand, tourist magnet):
+       → OPPORTUNITY archetype  
+       Title:  "CITY_NAME STR compliance: the ROI of doing it right"
+       Descr:  "$XXX/night ADR. $X,XXX median monthly revenue. License costs $XXX. 
+                Compliance pays for itself. Verified [date]."
+       Tone:   Numbers-first, ROI framing. Lead with the upside.
+     
+     ELSE (moderate markets):
+       → GUIDE archetype
+       Title:  "CITY_NAME, STATE_ABBR — Short-Term Rental Rules"
+       Descr:  "CITY_NAME STR license costs $XXX, XX% tax rate. Type X/X permits. 
+                Key operating rules. Verified [date]."
+       Tone:   Neutral data terminal. No fluff, no framing, just facts.
+     
+     WHY THIS MATTERS:
+     Three distinct title/opening patterns → three distinct DOM structures →
+     Google sees 50 manually curated analyses, not one template × 50.
+     ═══════════════════════════════════════════════
+     REPLACE ALL CAPS: CITY_NAME, STATE_ABBR, RISK_LEVEL, 
+     PERMIT_TYPES, LICENSE_COST, TAX_RATE, ENFORCEMENT_DATE,
+     UNLICENSED_PCT, ADR, MEDIAN_REVENUE, LAST_VERIFIED
      ═══════════════════════════════════════════════ -->
 <title>CITY_NAME Short-Term Rental Regulations — Permits, Taxes &amp; Rules (2026)</title>
 <meta name="description" content="Complete guide to CITY_NAME, STATE_ABBR short-term rental laws: LICENSE_TYPE licenses, permit costs (FEE_AMOUNT), TAX_RATE hotel tax. Updated LAST_VERIFIED.">
