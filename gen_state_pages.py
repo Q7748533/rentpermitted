@@ -75,7 +75,7 @@ def city_comparison_table(cities):
         row = (
             f'      <tr>'
             f'<td><a href="/{c["slug"]}/"><strong>{html.escape(c["city"])}</strong></a></td>'
-            f'<td><span class="mini-badge" style="background:{badge_color};color:white;padding:2px 8px;border-radius:4px;font-size:0.8rem">{html.escape(status[:25])}</span></td>'
+            f'<td><span class="mini-badge" style="background:{badge_color};color:white;padding:2px 8px;border-radius:4px;font-size:0.8rem">{html.escape(status)}</span></td>'
             f'<td class="fee-cell">{html.escape(fee)}</td>'
             f'</tr>\n'
         )
@@ -230,7 +230,9 @@ def gen_state_page(state_name, info):
     <p>{overview}</p>
   </section>
 
+  <section>
   {ranking}
+  </section>
 
   <section>
     <h2 id="city-comparison">City Comparison — {n} {'City' if n==1 else 'Cities'}</h2>
@@ -245,11 +247,6 @@ def gen_state_page(state_name, info):
     <details><summary>Which {state_name} city is best for STR investment?</summary><p>This depends on your strategy — owner-occupant vs. pure investor. See our risk ranking above for a city-by-city comparison within {state_name}.</p></details>
   </section>
 
-  <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-top:2rem">
-    <a href="/">Home</a>
-    <span class="breadcrumb-sep">›</span>
-    <span>{state_name}</span>
-  </nav>
 </main>
 
 <footer>
