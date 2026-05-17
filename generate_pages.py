@@ -215,6 +215,8 @@ def gen_page(d, slug):
 <meta property="og:url" content="https://www.rentpermitted.com/{slug}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{html.escape(title)}">
 <meta name="twitter:description" content="{html.escape(desc)}">

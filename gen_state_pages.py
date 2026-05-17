@@ -508,6 +508,8 @@ def gen_state_page(state_name, info, all_states):
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.rentpermitted.com/{slug}">
+  <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+  <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
