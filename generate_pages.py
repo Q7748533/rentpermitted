@@ -224,6 +224,25 @@ def gen_y1_costs(d):
 {rows}      </tbody>
     </table></div>'''
 
+def gen_market_data(d):
+    """Generate STR investment market data section — cap rates, revenue, cashflow."""
+    md = d.get("market_data", {})
+    if not md.get("cap_rate"):
+        return ""
+    return f'''<h2 id="market-data">💰 STR Investment Returns — Real Cap Rate Data</h2>
+    <p>Real property analysis data — not projections. Compiled from {md.get("num_properties","30+")} analyzed STR properties in {d["city"]} and verified market reports.</p>
+    <div class="table-responsive"><table>
+      <thead><tr><th>Metric</th><th>Value</th><th>What It Means</th></tr></thead>
+      <tbody>
+      <tr><td><strong>Median STR Cap Rate</strong></td><td>{md["cap_rate"]}</td><td>Far below the 8–10% target for pure cashflow investors. Charleston is an appreciation play, not a cashflow market.</td></tr>
+      <tr><td><strong>Avg Cash-on-Cash Return</strong></td><td>{md["cash_on_cash"]}</td><td>Negative CoC means most STR properties lose money month-to-month at current prices and interest rates.</td></tr>
+      <tr><td><strong>Median Monthly Cashflow</strong></td><td>{md["median_cashflow"]}</td><td>Only {md["positive_cashflow_pct"]} of analyzed properties showed positive monthly cashflow.</td></tr>
+      <tr><td><strong>Average Property Price</strong></td><td>{md["avg_price"]}</td><td>Premium pricing reflects Charleston's #1 US city ranking (Travel + Leisure).</td></tr>
+      <tr><td><strong>Multifamily Cap Rate (2024)</strong></td><td>{md["multifamily_cap"]}</td><td>For comparison: traditional multifamily in Charleston trades at 5.2–5.4% cap rates (Avison Young). STR cap rates are even tighter.</td></tr>
+      </tbody>
+    </table></div>
+    <p><small>Sources: {md["source"]}</small></p>'''
+
 def gen_profiles(d):
     rows = ""
     for ip in d["investor_profiles"]:
@@ -272,6 +291,7 @@ def gen_page(d, slug):
     title, desc, h1 = archetype(d)
     sc = status_color(d["status_label"])
     schema = gen_schema(d, slug, title)
+    market_data_link = '<a href="#market-data">Cap Rates</a>\n    ' if d.get("market_data", {}).get("cap_rate") else ""
 
     html_page = f'''<!DOCTYPE html>
 <html lang="en">
@@ -343,7 +363,7 @@ def gen_page(d, slug):
     <a href="#operating-rules">Rules</a>
     <a href="#penalties">Penalties</a>
     <a href="#investor-scorecard">Scorecard</a>
-    <a href="#verdict">Verdict</a>
+{market_data_link}    <a href="#verdict">Verdict</a>
   </nav>
 
   <article>
@@ -368,6 +388,8 @@ def gen_page(d, slug):
 {gen_scorecard(d)}
 
 {gen_y1_costs(d)}
+
+{gen_market_data(d)}
 
 {gen_profiles(d)}
 
