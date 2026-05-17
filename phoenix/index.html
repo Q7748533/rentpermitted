@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/phoenix">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Phoenix STR compliance: the ROI of doing it right">
 <meta name="twitter:description" content="Phoenix STR: $250/yr, no primary residence, no night cap. SB1350 state preemption. 45M visitors/yr. Updated May 2026. Phoenix STR regulations: permits, fee">
@@ -30,19 +30,23 @@
       "headline": "Phoenix STR compliance: the ROI of doing it right",
       "description": "Phoenix STR: $250/yr, no primary residence, no night cap. SB1350 state preemption. 45M visitors/yr. Updated May 2026. Phoenix STR regulations: permits, fee",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/phoenix"},
       "about": {"@type": "Thing", "name": "Phoenix short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Phoenix STR Licensing", "url": "https://www.phoenix.gov/str"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/phoenix#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Arizona", "item": "https://www.rentpermitted.com/arizona"}, {"@type": "ListItem", "position": 3, "name": "Phoenix", "item": "https://www.rentpermitted.com/phoenix"}
+        {"@type": "ListItem", "position": 2, "name": "Arizona", "item": "https://www.rentpermitted.com/arizona"},
+        {"@type": "ListItem", "position": 3, "name": "Phoenix", "item": "https://www.rentpermitted.com/phoenix"}
       ]
     },
     {
@@ -54,31 +58,48 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Phoenix?", "acceptedAnswer": {"@type": "Answer", "text": "Arizona TPT + Maricopa County + City of Phoenix transient lodging tax = ~12.57%."}},
         {"@type": "Question", "name": "Is Phoenix STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Phoenix is a top-tier STR investment market. Arizona's SB1350 provides regulatory certainty that most other states lack. No primary residence, no night cap, cheap license, massive snowbird/event deman"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/phoenix#howto",
+      "name": "How to get an STR license in Phoenix, AZ",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Apply for Phoenix STR License ($250/year)"},
+        {"@type": "HowToStep", "position": 2, "text": "Register for AZ TPT License (state)"},
+        {"@type": "HowToStep", "position": 3, "text": "Provide emergency contact information"},
+        {"@type": "HowToStep", "position": 4, "text": "Maintain liability insurance"},
+        {"@type": "HowToStep", "position": 5, "text": "Display license number on all listings"},
+        {"@type": "HowToStep", "position": 6, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/phoenix#scorecard",
+      "name": "Phoenix STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Phoenix short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "3/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "2/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "5/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "7/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +107,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/arizona">Arizona</a>
+    <a href="/arizona/">Arizona</a>
     <span class="breadcrumb-sep">›</span>
     <span>Phoenix</span>
   </nav>
@@ -222,14 +243,14 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What license types are available for Phoenix short-term rentals?</summary><p>Phoenix offers Phoenix STR License. $250/year. Arizona SB1350 preemption protects investor access. No primary residence requirement.</p></details>
     <details><summary>How much does a Phoenix STR license cost?</summary><p>$250/year</p></details>
     <details><summary>What taxes apply to short-term rentals in Phoenix?</summary><p>Arizona TPT + Maricopa County + City of Phoenix transient lodging tax = ~12.57%.</p></details>
-    <details><summary>Is Phoenix STR-friendly for investors?</summary><p>Phoenix is a top-tier STR investment market. Arizona&#x27;s SB1350 provides regulatory certainty that most other states lack. No primary residence, no night cap, cheap license, massive snowbird/event deman</p></details>
+    <details><summary>Is Phoenix STR-friendly for investors?</summary><p>Phoenix is a top-tier STR investment market. Arizona's SB1350 provides regulatory certainty that most other states lack. No primary residence, no night cap, cheap license, massive snowbird/event deman</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/scottsdale" class="city-card"><strong>Scottsdale</strong><span>AZ : same SB1350 protection, higher ADR, smaller market</span></a>
-      <a href="/las-vegas" class="city-card"><strong>Las Vegas</strong><span>NV : desert tourism market but with stricter owner-occupied rules</span></a>
-      <a href="/dallas" class="city-card"><strong>Dallas</strong><span>TX : similarly permissive regulatory environment with lower tourism demand</span></a>
+      <a href="/scottsdale/" class="city-card"><strong>Scottsdale</strong><span>AZ : same SB1350 protection, higher ADR, smaller market</span></a>
+      <a href="/las-vegas/" class="city-card"><strong>Las Vegas</strong><span>NV : desert tourism market but with stricter owner-occupied rules</span></a>
+      <a href="/dallas/" class="city-card"><strong>Dallas</strong><span>TX : similarly permissive regulatory environment with lower tourism demand</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -245,12 +266,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

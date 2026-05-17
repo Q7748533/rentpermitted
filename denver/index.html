@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/denver">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Denver, CO | Short-Term Rental Rules">
 <meta name="twitter:description" content="Denver STR: primary residence only. $100/2yr license. 10.75% tax. $999/day fines for violations. 3,350 listings, $206 ADR. Updated May 2026.">
@@ -30,19 +30,23 @@
       "headline": "Denver, CO | Short-Term Rental Rules",
       "description": "Denver STR: primary residence only. $100/2yr license. 10.75% tax. $999/day fines for violations. 3,350 listings, $206 ADR. Updated May 2026.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/denver"},
       "about": {"@type": "Thing", "name": "Denver short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Denver Excise & Licenses | STR", "url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Excise-and-Licenses/Business-Licensing/Short-Term-Rentals"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/denver#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Colorado", "item": "https://www.rentpermitted.com/colorado"}, {"@type": "ListItem", "position": 3, "name": "Denver", "item": "https://www.rentpermitted.com/denver"}
+        {"@type": "ListItem", "position": 2, "name": "Colorado", "item": "https://www.rentpermitted.com/colorado"},
+        {"@type": "ListItem", "position": 3, "name": "Denver", "item": "https://www.rentpermitted.com/denver"}
       ]
     },
     {
@@ -54,31 +58,50 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Denver?", "acceptedAnswer": {"@type": "Answer", "text": "10.75% Denver Lodger's Tax + 4% Colorado state sales tax on lodging = 14.75% total. Platforms collect when they are the merchant of record; hosts who rent directly must self-remit. Source: Denver Tax Guide Topic 97."}},
         {"@type": "Question", "name": "Is Denver STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Denver is not an investment market | it's a homeowner income supplement program. If you live in Denver and have extra space (spare room, basement, ADU), the regulatory environment is actually favorabl"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/denver#howto",
+      "name": "How to get an STR license in Denver, CO",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Confirm property is your primary residence (must provide proof: voter registration, driver's license, tax documents)"},
+        {"@type": "HowToStep", "position": 2, "text": "If renting an ADU: confirm it's on same lot as your primary residence"},
+        {"@type": "HowToStep", "position": 3, "text": "Apply online via Denver Excise & Licenses portal"},
+        {"@type": "HowToStep", "position": 4, "text": "Submit proof of primary residence + property ownership"},
+        {"@type": "HowToStep", "position": 5, "text": "Pay $100 license fee (valid 2 years)"},
+        {"@type": "HowToStep", "position": 6, "text": "Obtain Lodger's Tax account (city collects 10.75%)"},
+        {"@type": "HowToStep", "position": 7, "text": "Display license number on all listings"},
+        {"@type": "HowToStep", "position": 8, "text": "Renew every 2 years"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/denver#scorecard",
+      "name": "Denver STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Denver short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "9/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "1/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "9/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "2/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +109,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/colorado">Colorado</a>
+    <a href="/colorado/">Colorado</a>
     <span class="breadcrumb-sep">›</span>
     <span>Denver</span>
   </nav>
@@ -227,15 +250,15 @@ gtag('config', 'G-MSME4WL2XB');
 <h2 id="faq">Frequently Asked Questions</h2>
     <details><summary>What license types are available for Denver short-term rentals?</summary><p>Denver offers Short-Term Rental Business License. $100/2 years. Only one license per person. Property must be primary residence. ADU on same lot eligible.</p></details>
     <details><summary>How much does a Denver STR license cost?</summary><p>$100 every 2 years</p></details>
-    <details><summary>What taxes apply to short-term rentals in Denver?</summary><p>10.75% Denver Lodger&#x27;s Tax + 4% Colorado state sales tax on lodging = 14.75% total. Platforms collect when they are the merchant of record; hosts who rent directly must self-remit. Source: Denver Tax Guide Topic 97.</p></details>
-    <details><summary>Is Denver STR-friendly for investors?</summary><p>Denver is not an investment market : it&#x27;s a homeowner income supplement program. If you live in Denver and have extra space (spare room, basement, ADU), the regulatory environment is actually favorabl</p></details>
+    <details><summary>What taxes apply to short-term rentals in Denver?</summary><p>10.75% Denver Lodger's Tax + 4% Colorado state sales tax on lodging = 14.75% total. Platforms collect when they are the merchant of record; hosts who rent directly must self-remit. Source: Denver Tax Guide Topic 97.</p></details>
+    <details><summary>Is Denver STR-friendly for investors?</summary><p>Denver is not an investment market : it's a homeowner income supplement program. If you live in Denver and have extra space (spare room, basement, ADU), the regulatory environment is actually favorabl</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/san-francisco" class="city-card"><strong>San Francisco</strong><span>CA : similarly strict primary residence + night cap model</span></a>
-      <a href="/new-york-city" class="city-card"><strong>New York City</strong><span>NY : effectively bans whole-unit STRs : primary residence required for stays under 30 days</span></a>
-      <a href="/seattle" class="city-card"><strong>Seattle</strong><span>WA : primary residence requirement + owner-occupant emphasis mirror Denver</span></a>
+      <a href="/san-francisco/" class="city-card"><strong>San Francisco</strong><span>CA : similarly strict primary residence + night cap model</span></a>
+      <a href="/new-york-city/" class="city-card"><strong>New York City</strong><span>NY : effectively bans whole-unit STRs : primary residence required for stays under 30 days</span></a>
+      <a href="/seattle/" class="city-card"><strong>Seattle</strong><span>WA : primary residence requirement + owner-occupant emphasis mirror Denver</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -253,12 +276,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

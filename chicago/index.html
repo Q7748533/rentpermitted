@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/chicago">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Chicago, IL | Short-Term Rental Rules">
 <meta name="twitter:description" content="Chicago STR: primary residence required. $250/year registration. ~11.5% total tax. No night cap. 5K+ registered units. Updated May 2026.">
@@ -30,19 +30,23 @@
       "headline": "Chicago, IL | Short-Term Rental Rules",
       "description": "Chicago STR: primary residence required. $250/year registration. ~11.5% total tax. No night cap. 5K+ registered units. Updated May 2026.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/chicago"},
       "about": {"@type": "Thing", "name": "Chicago short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Chicago BACP | Shared Housing", "url": "https://www.chicago.gov/city/en/depts/bacp/supp_info/sharedhousing.html"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/chicago#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Illinois", "item": "https://www.rentpermitted.com/illinois"}, {"@type": "ListItem", "position": 3, "name": "Chicago", "item": "https://www.rentpermitted.com/chicago"}
+        {"@type": "ListItem", "position": 2, "name": "Illinois", "item": "https://www.rentpermitted.com/illinois"},
+        {"@type": "ListItem", "position": 3, "name": "Chicago", "item": "https://www.rentpermitted.com/chicago"}
       ]
     },
     {
@@ -54,31 +58,48 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Chicago?", "acceptedAnswer": {"@type": "Answer", "text": "4.5% Chicago Hotel Accommodations Tax + 6% Shared Housing Surcharge + 1% Cook County = ~11.5%. Platforms collect."}},
         {"@type": "Question", "name": "Is Chicago STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Chicago is a reasonable market for owner-occupants who want to STR their primary residence. The $250 fee is cheap, there's no night cap, and 50M+ annual visitors ensure demand. But it's not an investo"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/chicago#howto",
+      "name": "How to get an STR license in Chicago, IL",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Confirm primary residence status"},
+        {"@type": "HowToStep", "position": 2, "text": "Verify building density cap compliance (if multi-unit)"},
+        {"@type": "HowToStep", "position": 3, "text": "Register for Shared Housing license ($250/year)"},
+        {"@type": "HowToStep", "position": 4, "text": "Register for hotel tax accounts"},
+        {"@type": "HowToStep", "position": 5, "text": "Display license number on all listings"},
+        {"@type": "HowToStep", "position": 6, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/chicago#scorecard",
+      "name": "Chicago STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Chicago short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "3/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "3/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +107,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/illinois">Illinois</a>
+    <a href="/illinois/">Illinois</a>
     <span class="breadcrumb-sep">›</span>
     <span>Chicago</span>
   </nav>
@@ -219,14 +240,14 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What license types are available for Chicago short-term rentals?</summary><p>Chicago offers Shared Housing Registration. $250/year. Primary residence required. Buildings with 5+ units limited to 6 STR units max.</p></details>
     <details><summary>How much does a Chicago STR license cost?</summary><p>$250/year</p></details>
     <details><summary>What taxes apply to short-term rentals in Chicago?</summary><p>4.5% Chicago Hotel Accommodations Tax + 6% Shared Housing Surcharge + 1% Cook County = ~11.5%. Platforms collect.</p></details>
-    <details><summary>Is Chicago STR-friendly for investors?</summary><p>Chicago is a reasonable market for owner-occupants who want to STR their primary residence. The $250 fee is cheap, there&#x27;s no night cap, and 50M+ annual visitors ensure demand. But it&#x27;s not an investo</p></details>
+    <details><summary>Is Chicago STR-friendly for investors?</summary><p>Chicago is a reasonable market for owner-occupants who want to STR their primary residence. The $250 fee is cheap, there's no night cap, and 50M+ annual visitors ensure demand. But it's not an investo</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/denver" class="city-card"><strong>Denver</strong><span>CO : primary residence model, no night cap</span></a>
-      <a href="/seattle" class="city-card"><strong>Seattle</strong><span>WA : similar density caps on multi-unit buildings</span></a>
-      <a href="/portland" class="city-card"><strong>Portland</strong><span>OR : owner-occupant requirement mirrors Chicago&#x27;s model</span></a>
+      <a href="/denver/" class="city-card"><strong>Denver</strong><span>CO : primary residence model, no night cap</span></a>
+      <a href="/seattle/" class="city-card"><strong>Seattle</strong><span>WA : similar density caps on multi-unit buildings</span></a>
+      <a href="/portland/" class="city-card"><strong>Portland</strong><span>OR : owner-occupant requirement mirrors Chicago&#x27;s model</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -242,12 +263,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/las-vegas">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Why your Las Vegas STR might be de-listed in 2026">
 <meta name="twitter:description" content="Las Vegas STR: $945–$1,695 first year ($750–$1,500 annual renewal + fees). ~13%-13.5% Transient Lodging Tax (Clark County combined).">
@@ -30,19 +30,23 @@
       "headline": "Why your Las Vegas STR might be de-listed in 2026",
       "description": "Las Vegas STR: $945–$1,695 first year ($750–$1,500 annual renewal + fees). ~13%-13.5% Transient Lodging Tax (Clark County combined).",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/las-vegas"},
       "about": {"@type": "Thing", "name": "Las Vegas short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Clark County STR", "url": "https://www.clarkcountynv.gov/business-license/short-term-rental.php"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/las-vegas#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Nevada", "item": "https://www.rentpermitted.com/nevada"}, {"@type": "ListItem", "position": 3, "name": "Las Vegas", "item": "https://www.rentpermitted.com/las-vegas"}
+        {"@type": "ListItem", "position": 2, "name": "Nevada", "item": "https://www.rentpermitted.com/nevada"},
+        {"@type": "ListItem", "position": 3, "name": "Las Vegas", "item": "https://www.rentpermitted.com/las-vegas"}
       ]
     },
     {
@@ -54,31 +58,48 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Las Vegas?", "acceptedAnswer": {"@type": "Answer", "text": "Clark County combined Transient Lodging Tax. Rate varies by zone (Stadium District, Primary Gaming Corridor). Platforms may collect. Source: clarkcountynv.gov Transient Lodging Tax Guidance."}},
         {"@type": "Question", "name": "Is Las Vegas STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Las Vegas is not an STR market | it's a room-share market for homeowners. The daily on-site requirement makes investment impossible, and 150,000 hotel rooms absorb the tourism demand that would otherw"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/las-vegas#howto",
+      "name": "How to get an STR license in Las Vegas, NV",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Confirm owner-occupancy (must reside on-site during rentals)"},
+        {"@type": "HowToStep", "position": 2, "text": "Apply for Conditional Use Verification"},
+        {"@type": "HowToStep", "position": 3, "text": "Obtain Business License ($500/year)"},
+        {"@type": "HowToStep", "position": 4, "text": "Register for Transient Occupancy Tax"},
+        {"@type": "HowToStep", "position": 5, "text": "Display license on listings"},
+        {"@type": "HowToStep", "position": 6, "text": "Must be present during each rental day"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/las-vegas#scorecard",
+      "name": "Las Vegas STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Las Vegas short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "8/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "4/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "1/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +107,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/nevada">Nevada</a>
+    <a href="/nevada/">Nevada</a>
     <span class="breadcrumb-sep">›</span>
     <span>Las Vegas</span>
   </nav>
@@ -102,7 +123,7 @@ gtag('config', 'G-MSME4WL2XB');
       <div><span class="fact-label">License Fee</span><span class="fact-value">$945–$1,695 first year ($750–$1,500 annual renewal + fees)</span></div>
       <div><span class="fact-label">Tax Rate</span><span class="fact-value">~13%-13.5% Transient Lodging Tax (Clark County combined)</span></div>
       <div><span class="fact-label">Nights Cap / Spacing</span><span class="fact-value">No night limit. Owner-occupied only : must be on-site during each rental day.</span></div>
-      <div><span class="fact-label">Last Verified</span><span class="fact-value">May 2026 : fees per Clark County STR FAQ. Tax rates per clarkcountynv.gov. Rules per Clark County ordinance.</span></div>
+      <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">May 2026 : fees per Clark County STR FAQ. Tax rates per clarkcountynv.gov. Rules per Clark County ordinance.</time></span></div>
     </div>
   </section>
 
@@ -217,14 +238,14 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What license types are available for Las Vegas short-term rentals?</summary><p>Las Vegas offers STR Business License / STR Business License. $945 first year ($45 app + $150 inspection + $750 annual license). Owner-occupied only. Must reside on-site during each rental. Clark County ordinance.</p></details>
     <details><summary>How much does a Las Vegas STR license cost?</summary><p>$945–$1,695 first year ($750–$1,500 annual renewal + fees)</p></details>
     <details><summary>What taxes apply to short-term rentals in Las Vegas?</summary><p>Clark County combined Transient Lodging Tax. Rate varies by zone (Stadium District, Primary Gaming Corridor). Platforms may collect. Source: clarkcountynv.gov Transient Lodging Tax Guidance.</p></details>
-    <details><summary>Is Las Vegas STR-friendly for investors?</summary><p>Las Vegas is not an STR market : it&#x27;s a room-share market for homeowners. The daily on-site requirement makes investment impossible, and 150,000 hotel rooms absorb the tourism demand that would otherw</p></details>
+    <details><summary>Is Las Vegas STR-friendly for investors?</summary><p>Las Vegas is not an STR market : it's a room-share market for homeowners. The daily on-site requirement makes investment impossible, and 150,000 hotel rooms absorb the tourism demand that would otherw</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/orlando" class="city-card"><strong>Orlando</strong><span>FL : tourism-driven market where hotels dominate and STRs are zoning-restricted</span></a>
-      <a href="/honolulu" class="city-card"><strong>Honolulu</strong><span>HI : resort-zone hotel protection limits STR access</span></a>
-      <a href="/miami-beach" class="city-card"><strong>Miami Beach</strong><span>FL : similar tension between hotel industry and STR regulation</span></a>
+      <a href="/orlando/" class="city-card"><strong>Orlando</strong><span>FL : tourism-driven market where hotels dominate and STRs are zoning-restricted</span></a>
+      <a href="/honolulu/" class="city-card"><strong>Honolulu</strong><span>HI : resort-zone hotel protection limits STR access</span></a>
+      <a href="/miami-beach/" class="city-card"><strong>Miami Beach</strong><span>FL : similar tension between hotel industry and STR regulation</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -240,12 +261,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

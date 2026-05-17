@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/honolulu">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Why your Honolulu STR might be de-listed in 2026">
 <meta name="twitter:description" content="Honolulu STR: $1,000 initial registration / $500 annual renewal (per multiple consistent L5 sources | verify at honolulu.gov/dpp/permitting/str/). ~18.5% c">
@@ -30,19 +30,23 @@
       "headline": "Why your Honolulu STR might be de-listed in 2026",
       "description": "Honolulu STR: $1,000 initial registration / $500 annual renewal (per multiple consistent L5 sources | verify at honolulu.gov/dpp/permitting/str/). ~18.5% c",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/honolulu"},
       "about": {"@type": "Thing", "name": "Honolulu short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Honolulu DPP | STR", "url": "https://www.honolulu.gov/dpp/permitting/short-term-rentals.html"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/honolulu#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Hawaii", "item": "https://www.rentpermitted.com/hawaii"}, {"@type": "ListItem", "position": 3, "name": "Honolulu", "item": "https://www.rentpermitted.com/honolulu"}
+        {"@type": "ListItem", "position": 2, "name": "Hawaii", "item": "https://www.rentpermitted.com/hawaii"},
+        {"@type": "ListItem", "position": 3, "name": "Honolulu", "item": "https://www.rentpermitted.com/honolulu"}
       ]
     },
     {
@@ -54,31 +58,49 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Honolulu?", "acceptedAnswer": {"@type": "Answer", "text": "11% Hawaii TAT (increased from 10.25% Jan 1 2026, per hawaii.gov Act 96) + 3% O'ahu Transient Accommodations Tax (OTAT, confirmed per honolulu.gov/bfs OTAT voucher PDF) + 4.5% GET = ~18.5%. Host must remit."}},
         {"@type": "Question", "name": "Is Honolulu STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Honolulu is the most expensive STR market in this batch | highest taxes, highest fines, and highest barriers to entry. But it also has the strongest tourism demand and the highest ADRs. The play is cl"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/honolulu#howto",
+      "name": "How to get an STR license in Honolulu, HI",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Verify property is in resort-zoned area (NUC path) or owner-occupied (B&B path)"},
+        {"@type": "HowToStep", "position": 2, "text": "Apply for NUC ($1,000 initial) | subject to cap availability"},
+        {"@type": "HowToStep", "position": 3, "text": "Register for TAT and GET tax accounts (self-remit)"},
+        {"@type": "HowToStep", "position": 4, "text": "Obtain business license"},
+        {"@type": "HowToStep", "position": 5, "text": "Display permit on listings"},
+        {"@type": "HowToStep", "position": 6, "text": "Remit ~18.5% taxes directly (platforms don't collect)"},
+        {"@type": "HowToStep", "position": 7, "text": "Renew NUC annually ($500)"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/honolulu#scorecard",
+      "name": "Honolulu STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Honolulu short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "9/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "9/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "10/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "10/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "3/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +108,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/hawaii">Hawaii</a>
+    <a href="/hawaii/">Hawaii</a>
     <span class="breadcrumb-sep">›</span>
     <span>Honolulu</span>
   </nav>
@@ -102,7 +124,7 @@ gtag('config', 'G-MSME4WL2XB');
       <div><span class="fact-label">License Fee</span><span class="fact-value">$1,000 initial registration / $500 annual renewal (per multiple consistent L5 sources : verify at honolulu.gov/dpp/permitting/str/)</span></div>
       <div><span class="fact-label">Tax Rate</span><span class="fact-value">~18.5% combined (11% state TAT + 3% O&#x27;ahu county surcharge + 4.5% GET)</span></div>
       <div><span class="fact-label">Nights Cap / Spacing</span><span class="fact-value">No night limit for permitted properties. NUCs limited to resort-zoned areas and tightly capped.</span></div>
-      <div><span class="fact-label">Last Verified</span><span class="fact-value">May 2026 : state TAT 11% per hawaii.gov. OTAT 3% per honolulu.gov/bfs OTAT voucher. NUC registration fee per L5 sources (consistently $1,000/$500).</span></div>
+      <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">May 2026 : state TAT 11% per hawaii.gov. OTAT 3% per honolulu.gov/bfs OTAT voucher. NUC registration fee per L5 sources (consistently $1,000/$500).</time></span></div>
     </div>
   </section>
 
@@ -218,17 +240,17 @@ gtag('config', 'G-MSME4WL2XB');
     <p>Honolulu is the most expensive STR market in this batch : highest taxes, highest fines, and highest barriers to entry. But it also has the strongest tourism demand and the highest ADRs. The play is clear: if you already own a NUC-granted property in a resort zone, it&#x27;s a cash machine. If you don&#x27;t, there is essentially no path to entry. This is a closed market where existing permit-holders have an extraordinary moat.</p>
 
 <h2 id="faq">Frequently Asked Questions</h2>
-    <details><summary>What license types are available for Honolulu short-term rentals?</summary><p>Honolulu offers NUC / B&amp;B Permit. $1,000 initial / $500 annual renewal. Only for properties in resort-zoned areas. Tightly capped. Host must remit taxes.</p></details>
+    <details><summary>What license types are available for Honolulu short-term rentals?</summary><p>Honolulu offers NUC / B&B Permit. $1,000 initial / $500 annual renewal. Only for properties in resort-zoned areas. Tightly capped. Host must remit taxes.</p></details>
     <details><summary>How much does a Honolulu STR license cost?</summary><p>$1,000 initial registration / $500 annual renewal (per multiple consistent L5 sources : verify at honolulu.gov/dpp/permitting/str/)</p></details>
-    <details><summary>What taxes apply to short-term rentals in Honolulu?</summary><p>11% Hawaii TAT (increased from 10.25% Jan 1 2026, per hawaii.gov Act 96) + 3% O&#x27;ahu Transient Accommodations Tax (OTAT, confirmed per honolulu.gov/bfs OTAT voucher PDF) + 4.5% GET = ~18.5%. Host must remit.</p></details>
+    <details><summary>What taxes apply to short-term rentals in Honolulu?</summary><p>11% Hawaii TAT (increased from 10.25% Jan 1 2026, per hawaii.gov Act 96) + 3% O'ahu Transient Accommodations Tax (OTAT, confirmed per honolulu.gov/bfs OTAT voucher PDF) + 4.5% GET = ~18.5%. Host must remit.</p></details>
     <details><summary>Is Honolulu STR-friendly for investors?</summary><p>Honolulu is the most expensive STR market in this batch : highest taxes, highest fines, and highest barriers to entry. But it also has the strongest tourism demand and the highest ADRs. The play is cl</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/miami-beach" class="city-card"><strong>Miami Beach</strong><span>FL : resort-zone-dependent STR access with high premiums</span></a>
-      <a href="/las-vegas" class="city-card"><strong>Las Vegas</strong><span>NV : hotel-industry-influenced regulations that limit STR supply</span></a>
-      <a href="/charleston" class="city-card"><strong>Charleston</strong><span>SC : high-cost compliance with premium tourism demand</span></a>
+      <a href="/miami-beach/" class="city-card"><strong>Miami Beach</strong><span>FL : resort-zone-dependent STR access with high premiums</span></a>
+      <a href="/las-vegas/" class="city-card"><strong>Las Vegas</strong><span>NV : hotel-industry-influenced regulations that limit STR supply</span></a>
+      <a href="/charleston/" class="city-card"><strong>Charleston</strong><span>SC : high-cost compliance with premium tourism demand</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -244,12 +266,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

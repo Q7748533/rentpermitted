@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/seattle">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Seattle STR compliance: the ROI of doing it right">
 <meta name="twitter:description" content="Seattle STR: $75/yr, no primary residence requirement, up to 2 units. 15.6% lodging tax. Strong tech-tourism demand. Updated May 2026.">
@@ -30,19 +30,23 @@
       "headline": "Seattle STR compliance: the ROI of doing it right",
       "description": "Seattle STR: $75/yr, no primary residence requirement, up to 2 units. 15.6% lodging tax. Strong tech-tourism demand. Updated May 2026.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/seattle"},
       "about": {"@type": "Thing", "name": "Seattle short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Seattle STR Operator License", "url": "https://www.seattle.gov/business-regulations/rentals/short-term-rentals"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/seattle#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Washington", "item": "https://www.rentpermitted.com/washington"}, {"@type": "ListItem", "position": 3, "name": "Seattle", "item": "https://www.rentpermitted.com/seattle"}
+        {"@type": "ListItem", "position": 2, "name": "Washington", "item": "https://www.rentpermitted.com/washington"},
+        {"@type": "ListItem", "position": 3, "name": "Seattle", "item": "https://www.rentpermitted.com/seattle"}
       ]
     },
     {
@@ -54,31 +58,48 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Seattle?", "acceptedAnswer": {"@type": "Answer", "text": "15.6% combined lodging tax | state + King County + City of Seattle. Platforms collect."}},
         {"@type": "Question", "name": "Is Seattle STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Seattle is a rare West Coast bright spot for small STR investors. No primary residence requirement, no night cap, cheap license. The 2-unit operator limit is the constraint | this is a small-investor "}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/seattle#howto",
+      "name": "How to get an STR license in Seattle, WA",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Apply for Seattle STR Operator License ($75/year)"},
+        {"@type": "HowToStep", "position": 2, "text": "Register for combined lodging tax account"},
+        {"@type": "HowToStep", "position": 3, "text": "Provide proof of liability insurance"},
+        {"@type": "HowToStep", "position": 4, "text": "Display license number on all listings"},
+        {"@type": "HowToStep", "position": 5, "text": "If operating more than 2 units: additional operator license required"},
+        {"@type": "HowToStep", "position": 6, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/seattle#scorecard",
+      "name": "Seattle STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Seattle short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "4/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "2/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "4/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "6/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +107,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/washington">Washington</a>
+    <a href="/washington/">Washington</a>
     <span class="breadcrumb-sep">›</span>
     <span>Seattle</span>
   </nav>
@@ -220,12 +241,12 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What taxes apply to short-term rentals in Seattle?</summary><p>15.6% combined lodging tax : state + King County + City of Seattle. Platforms collect.</p></details>
     <details><summary>Is Seattle STR-friendly for investors?</summary><p>Seattle is a rare West Coast bright spot for small STR investors. No primary residence requirement, no night cap, cheap license. The 2-unit operator limit is the constraint : this is a small-investor </p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/portland" class="city-card"><strong>Portland</strong><span>OR : similar PNW market but owner-occupied only</span></a>
-      <a href="/denver" class="city-card"><strong>Denver</strong><span>CO : same permissive fee structure but stricter on primary residence</span></a>
-      <a href="/phoenix" class="city-card"><strong>Phoenix</strong><span>AZ : similarly investor-friendly with state preemption protection</span></a>
+      <a href="/portland/" class="city-card"><strong>Portland</strong><span>OR : similar PNW market but owner-occupied only</span></a>
+      <a href="/denver/" class="city-card"><strong>Denver</strong><span>CO : same permissive fee structure but stricter on primary residence</span></a>
+      <a href="/phoenix/" class="city-card"><strong>Phoenix</strong><span>AZ : similarly investor-friendly with state preemption protection</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -241,12 +262,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

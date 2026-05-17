@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/new-orleans">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Why your New Orleans STR might be de-listed in 2026">
 <meta name="twitter:description" content="New Orleans STR: NSTR lottery, CSTR $1K/yr. French Quarter banned. $5-$12/night bedroom fee. 18M visitors. Updated May 2026.">
@@ -30,19 +30,23 @@
       "headline": "Why your New Orleans STR might be de-listed in 2026",
       "description": "New Orleans STR: NSTR lottery, CSTR $1K/yr. French Quarter banned. $5-$12/night bedroom fee. 18M visitors. Updated May 2026.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/new-orleans"},
       "about": {"@type": "Thing", "name": "New Orleans short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "New Orleans STR Administration", "url": "https://nola.gov/short-term-rentals/"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/new-orleans#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Louisiana", "item": "https://www.rentpermitted.com/louisiana"}, {"@type": "ListItem", "position": 3, "name": "New Orleans", "item": "https://www.rentpermitted.com/new-orleans"}
+        {"@type": "ListItem", "position": 2, "name": "Louisiana", "item": "https://www.rentpermitted.com/louisiana"},
+        {"@type": "ListItem", "position": 3, "name": "New Orleans", "item": "https://www.rentpermitted.com/new-orleans"}
       ]
     },
     {
@@ -54,31 +58,49 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in New Orleans?", "acceptedAnswer": {"@type": "Answer", "text": "5% Louisiana state sales tax + 6.75% New Orleans occupancy tax + $5–$12/night flat occupancy fee per bedroom."}},
         {"@type": "Question", "name": "Is New Orleans STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "New Orleans is a demand-rich, regulation-hostile market. The event-driven tourism (Mardi Gras, Jazz Fest) creates extraordinary peak pricing, but the lottery + cap + French Quarter ban system makes re"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/new-orleans#howto",
+      "name": "How to get an STR license in New Orleans, LA",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Determine NSTR (residential/primary residence) vs CSTR (commercial) path"},
+        {"@type": "HowToStep", "position": 2, "text": "NSTR: enter lottery system for available residential slots"},
+        {"@type": "HowToStep", "position": 3, "text": "CSTR: apply for commercial permit ($1,000/year)"},
+        {"@type": "HowToStep", "position": 4, "text": "Register for occupancy tax and sales tax"},
+        {"@type": "HowToStep", "position": 5, "text": "Pay $5-$12/night occupancy fee per bedroom"},
+        {"@type": "HowToStep", "position": 6, "text": "Display permit number on all listings"},
+        {"@type": "HowToStep", "position": 7, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/new-orleans#scorecard",
+      "name": "New Orleans STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for New Orleans short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "9/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "9/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "4/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +108,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/louisiana">Louisiana</a>
+    <a href="/louisiana/">Louisiana</a>
     <span class="breadcrumb-sep">›</span>
     <span>New Orleans</span>
   </nav>
@@ -225,12 +247,12 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What taxes apply to short-term rentals in New Orleans?</summary><p>5% Louisiana state sales tax + 6.75% New Orleans occupancy tax + $5–$12/night flat occupancy fee per bedroom.</p></details>
     <details><summary>Is New Orleans STR-friendly for investors?</summary><p>New Orleans is a demand-rich, regulation-hostile market. The event-driven tourism (Mardi Gras, Jazz Fest) creates extraordinary peak pricing, but the lottery + cap + French Quarter ban system makes re</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/charleston" class="city-card"><strong>Charleston</strong><span>SC : historic tourism city with complex zoning and STR caps</span></a>
-      <a href="/honolulu" class="city-card"><strong>Honolulu</strong><span>HI : permit caps and resort-zone restrictions create similar scarcity</span></a>
-      <a href="/savannah" class="city-card"><strong>Savannah</strong><span>GA : historic district STR regulations mirror New Orleans model</span></a>
+      <a href="/charleston/" class="city-card"><strong>Charleston</strong><span>SC : historic tourism city with complex zoning and STR caps</span></a>
+      <a href="/honolulu/" class="city-card"><strong>Honolulu</strong><span>HI : permit caps and resort-zone restrictions create similar scarcity</span></a>
+      <a href="/savannah/" class="city-card"><strong>Savannah</strong><span>GA : historic district STR regulations mirror New Orleans model</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -246,12 +268,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

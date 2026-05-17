@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/boston">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Boston, MA | Short-Term Rental Rules">
 <meta name="twitter:description" content="Boston STR: $25-$200/yr (3 tiers). 12.5% tax. Primary residence ≥9mo/yr. Owner-Adjacent allows small investors. Updated May 2026.">
@@ -30,19 +30,23 @@
       "headline": "Boston, MA | Short-Term Rental Rules",
       "description": "Boston STR: $25-$200/yr (3 tiers). 12.5% tax. Primary residence ≥9mo/yr. Owner-Adjacent allows small investors. Updated May 2026.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/boston"},
       "about": {"@type": "Thing", "name": "Boston short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Boston STR Registration", "url": "https://www.boston.gov/departments/inspectional-services/short-term-rentals"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/boston#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Massachusetts", "item": "https://www.rentpermitted.com/massachusetts"}, {"@type": "ListItem", "position": 3, "name": "Boston", "item": "https://www.rentpermitted.com/boston"}
+        {"@type": "ListItem", "position": 2, "name": "Massachusetts", "item": "https://www.rentpermitted.com/massachusetts"},
+        {"@type": "ListItem", "position": 3, "name": "Boston", "item": "https://www.rentpermitted.com/boston"}
       ]
     },
     {
@@ -54,31 +58,47 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Boston?", "acceptedAnswer": {"@type": "Answer", "text": "6.5% Massachusetts Room Occupancy Excise + 6% Boston Convention Center Financing Fee = 12.5%. Platforms collect."}},
         {"@type": "Question", "name": "Is Boston STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Boston is a low-barrier STR market with year-round demand from 50+ colleges and strong business/medical tourism. The $25/year registration is the cheapest in the country. Investor unit limits exist bu"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/boston#howto",
+      "name": "How to get an STR license in Boston, MA",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Determine unit type: owner-occupied vs investor"},
+        {"@type": "HowToStep", "position": 2, "text": "Register STR with City of Boston ($25/year)"},
+        {"@type": "HowToStep", "position": 3, "text": "Register for room occupancy excise tax"},
+        {"@type": "HowToStep", "position": 4, "text": "Display registration number on listings"},
+        {"@type": "HowToStep", "position": 5, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/boston#scorecard",
+      "name": "Boston STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Boston short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "4/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "1/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "3/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "5/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +106,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/massachusetts">Massachusetts</a>
+    <a href="/massachusetts/">Massachusetts</a>
     <span class="breadcrumb-sep">›</span>
     <span>Boston</span>
   </nav>
@@ -221,12 +241,12 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What taxes apply to short-term rentals in Boston?</summary><p>6.5% Massachusetts Room Occupancy Excise + 6% Boston Convention Center Financing Fee = 12.5%. Platforms collect.</p></details>
     <details><summary>Is Boston STR-friendly for investors?</summary><p>Boston is a low-barrier STR market with year-round demand from 50+ colleges and strong business/medical tourism. The $25/year registration is the cheapest in the country. Investor unit limits exist bu</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/chicago" class="city-card"><strong>Chicago</strong><span>IL : similar university-driven demand with moderate regulation</span></a>
-      <a href="/washington-dc" class="city-card"><strong>Washington DC</strong><span>DC : similar East Coast transient demand pattern</span></a>
-      <a href="/atlanta" class="city-card"><strong>Atlanta</strong><span>GA : business-travel market with accessible regulation</span></a>
+      <a href="/chicago/" class="city-card"><strong>Chicago</strong><span>IL : similar university-driven demand with moderate regulation</span></a>
+      <a href="/washington-dc/" class="city-card"><strong>Washington DC</strong><span>DC : similar East Coast transient demand pattern</span></a>
+      <a href="/atlanta/" class="city-card"><strong>Atlanta</strong><span>GA : business-travel market with accessible regulation</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -242,12 +262,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

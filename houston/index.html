@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/houston">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Houston STR compliance: the ROI of doing it right">
 <meta name="twitter:description" content="Houston STR: $90/yr (cheapest major city). No caps, no primary residence. 13% HOT platform-collected. Updated May 2026. Houston STR regulations: permits, f">
@@ -30,19 +30,23 @@
       "headline": "Houston STR compliance: the ROI of doing it right",
       "description": "Houston STR: $90/yr (cheapest major city). No caps, no primary residence. 13% HOT platform-collected. Updated May 2026. Houston STR regulations: permits, f",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/houston"},
       "about": {"@type": "Thing", "name": "Houston short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Houston STR Registration", "url": "https://www.houstontx.gov/ara/"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/houston#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Texas", "item": "https://www.rentpermitted.com/texas"}, {"@type": "ListItem", "position": 3, "name": "Houston", "item": "https://www.rentpermitted.com/houston"}
+        {"@type": "ListItem", "position": 2, "name": "Texas", "item": "https://www.rentpermitted.com/texas"},
+        {"@type": "ListItem", "position": 3, "name": "Houston", "item": "https://www.rentpermitted.com/houston"}
       ]
     },
     {
@@ -54,31 +58,46 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Houston?", "acceptedAnswer": {"@type": "Answer", "text": "7% City of Houston + 6% Texas state HOT = 13%. Platforms collect and remit in Houston."}},
         {"@type": "Question", "name": "Is Houston STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Houston is the easiest major US city to run an STR. $90/year registration with zero regulatory barriers. No primary residence, no caps, no night limits, platform-collected taxes. The ADR is lower than"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/houston#howto",
+      "name": "How to get an STR license in Houston, TX",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Register STR with City of Houston ($90/year)"},
+        {"@type": "HowToStep", "position": 2, "text": "Hotels tax: platforms collect and remit automatically"},
+        {"@type": "HowToStep", "position": 3, "text": "Display registration number on listings"},
+        {"@type": "HowToStep", "position": 4, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/houston#scorecard",
+      "name": "Houston STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Houston short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "1/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "1/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "2/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "5/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "9/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +105,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/texas">Texas</a>
+    <a href="/texas/">Texas</a>
     <span class="breadcrumb-sep">›</span>
     <span>Houston</span>
   </nav>
@@ -219,12 +238,12 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What taxes apply to short-term rentals in Houston?</summary><p>7% City of Houston + 6% Texas state HOT = 13%. Platforms collect and remit in Houston.</p></details>
     <details><summary>Is Houston STR-friendly for investors?</summary><p>Houston is the easiest major US city to run an STR. $90/year registration with zero regulatory barriers. No primary residence, no caps, no night limits, platform-collected taxes. The ADR is lower than</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/dallas" class="city-card"><strong>Dallas</strong><span>TX : same Texas permissive model but Houston is cheaper and platform-collected HOT</span></a>
-      <a href="/phoenix" class="city-card"><strong>Phoenix</strong><span>AZ : similarly investor-friendly but with state preemption layer</span></a>
-      <a href="/atlanta" class="city-card"><strong>Atlanta</strong><span>GA : business-travel driven, accessible regulation</span></a>
+      <a href="/dallas/" class="city-card"><strong>Dallas</strong><span>TX : same Texas permissive model but Houston is cheaper and platform-collected HOT</span></a>
+      <a href="/phoenix/" class="city-card"><strong>Phoenix</strong><span>AZ : similarly investor-friendly but with state preemption layer</span></a>
+      <a href="/atlanta/" class="city-card"><strong>Atlanta</strong><span>GA : business-travel driven, accessible regulation</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -240,12 +259,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

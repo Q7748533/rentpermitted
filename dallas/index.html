@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/dallas">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dallas, TX | Short-Term Rental Rules">
 <meta name="twitter:description" content="Dallas STR: $285/yr registration. No caps, no primary residence. 13% HOT (host remits). 27M visitors/yr. Updated May 2026.">
@@ -30,19 +30,23 @@
       "headline": "Dallas, TX | Short-Term Rental Rules",
       "description": "Dallas STR: $285/yr registration. No caps, no primary residence. 13% HOT (host remits). 27M visitors/yr. Updated May 2026.",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/dallas"},
       "about": {"@type": "Thing", "name": "Dallas short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Dallas STR Registration", "url": "https://dallascityhall.com/departments/sustainable-development/Pages/short-term-rental.aspx"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/dallas#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Texas", "item": "https://www.rentpermitted.com/texas"}, {"@type": "ListItem", "position": 3, "name": "Dallas", "item": "https://www.rentpermitted.com/dallas"}
+        {"@type": "ListItem", "position": 2, "name": "Texas", "item": "https://www.rentpermitted.com/texas"},
+        {"@type": "ListItem", "position": 3, "name": "Dallas", "item": "https://www.rentpermitted.com/dallas"}
       ]
     },
     {
@@ -54,31 +58,47 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Dallas?", "acceptedAnswer": {"@type": "Answer", "text": "7% City of Dallas + 6% Texas state Hotel Occupancy Tax = 13%. HOST must remit (platforms do NOT collect in Dallas)."}},
         {"@type": "Question", "name": "Is Dallas STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Dallas is a regulatory paradise for STR investors. No primary residence, no caps, no night limits | just register and remit taxes. The market ADR is lower than leisure destinations, but the regulatory"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/dallas#howto",
+      "name": "How to get an STR license in Dallas, TX",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Register STR with City of Dallas ($285/year)"},
+        {"@type": "HowToStep", "position": 2, "text": "Register for Hotel Occupancy Tax account with city"},
+        {"@type": "HowToStep", "position": 3, "text": "Collect and remit 13% HOT directly (platforms don't collect)"},
+        {"@type": "HowToStep", "position": 4, "text": "Display registration number on all listings"},
+        {"@type": "HowToStep", "position": 5, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/dallas#scorecard",
+      "name": "Dallas STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Dallas short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "2/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "3/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "3/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "5/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "8/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +106,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/texas">Texas</a>
+    <a href="/texas/">Texas</a>
     <span class="breadcrumb-sep">›</span>
     <span>Dallas</span>
   </nav>
@@ -102,7 +122,7 @@ gtag('config', 'G-MSME4WL2XB');
       <div><span class="fact-label">License Fee</span><span class="fact-value">$248/year</span></div>
       <div><span class="fact-label">Tax Rate</span><span class="fact-value">13% Hotel Occupancy Tax (7% city + 6% state)</span></div>
       <div><span class="fact-label">Nights Cap / Spacing</span><span class="fact-value">No night limit. No density cap. No primary residence required.</span></div>
-      <div><span class="fact-label">Last Verified</span><span class="fact-value">May 2026 : fee per Dallas Municipal Code Sec. 42B-5</span></div>
+      <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">May 2026 : fee per Dallas Municipal Code Sec. 42B-5</time></span></div>
     </div>
   </section>
 
@@ -218,12 +238,12 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What taxes apply to short-term rentals in Dallas?</summary><p>7% City of Dallas + 6% Texas state Hotel Occupancy Tax = 13%. HOST must remit (platforms do NOT collect in Dallas).</p></details>
     <details><summary>Is Dallas STR-friendly for investors?</summary><p>Dallas is a regulatory paradise for STR investors. No primary residence, no caps, no night limits : just register and remit taxes. The market ADR is lower than leisure destinations, but the regulatory</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/houston" class="city-card"><strong>Houston</strong><span>TX : same permissive Texas model, cheaper registration</span></a>
-      <a href="/phoenix" class="city-card"><strong>Phoenix</strong><span>AZ : similarly investor-friendly with state preemption</span></a>
-      <a href="/atlanta" class="city-card"><strong>Atlanta</strong><span>GA : business-travel driven market with accessible regulation</span></a>
+      <a href="/houston/" class="city-card"><strong>Houston</strong><span>TX : same permissive Texas model, cheaper registration</span></a>
+      <a href="/phoenix/" class="city-card"><strong>Phoenix</strong><span>AZ : similarly investor-friendly with state preemption</span></a>
+      <a href="/atlanta/" class="city-card"><strong>Atlanta</strong><span>GA : business-travel driven market with accessible regulation</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -239,12 +259,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

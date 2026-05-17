@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/asheville">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Asheville, NC | Short-Term Rental Rules">
 <meta name="twitter:description" content="Asheville STR: homestay-only. $200/yr, owner must be present, 2BR max. ~16.75% tax. Updated May 2026. Asheville STR regulations: permits, fees, taxes, rule">
@@ -30,19 +30,23 @@
       "headline": "Asheville, NC | Short-Term Rental Rules",
       "description": "Asheville STR: homestay-only. $200/yr, owner must be present, 2BR max. ~16.75% tax. Updated May 2026. Asheville STR regulations: permits, fees, taxes, rule",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/asheville"},
       "about": {"@type": "Thing", "name": "Asheville short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Asheville Homestay Program", "url": "https://www.ashevillenc.gov/department/development-services/homestays/"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/asheville#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "North Carolina", "item": "https://www.rentpermitted.com/north-carolina"}, {"@type": "ListItem", "position": 3, "name": "Asheville", "item": "https://www.rentpermitted.com/asheville"}
+        {"@type": "ListItem", "position": 2, "name": "North Carolina", "item": "https://www.rentpermitted.com/north-carolina"},
+        {"@type": "ListItem", "position": 3, "name": "Asheville", "item": "https://www.rentpermitted.com/asheville"}
       ]
     },
     {
@@ -54,31 +58,48 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Asheville?", "acceptedAnswer": {"@type": "Answer", "text": "4.75% NC state sales + 6% Buncombe County occupancy + 6% City of Asheville occupancy = ~16.75% (per L6 sources). Verify at ashevillenc.gov Fees and Charges Manual."}},
         {"@type": "Question", "name": "Is Asheville STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Asheville is a homeowner's side-income market, not an investment destination. Strong tourism demand exists but the homestay-only model caps revenue at ~$25K/year (2 bedrooms max). The ~16.75% tax rate"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/asheville#howto",
+      "name": "How to get an STR license in Asheville, NC",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Verify primary residence and homestay eligibility"},
+        {"@type": "HowToStep", "position": 2, "text": "Apply for Homestay Permit ($200/year)"},
+        {"@type": "HowToStep", "position": 3, "text": "Register for occupancy tax collection"},
+        {"@type": "HowToStep", "position": 4, "text": "Limit rentals to 2 bedrooms maximum"},
+        {"@type": "HowToStep", "position": 5, "text": "Be present during all guest stays"},
+        {"@type": "HowToStep", "position": 6, "text": "Renew annually"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/asheville#scorecard",
+      "name": "Asheville STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Asheville short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "8/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "5/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "1/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +107,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/north-carolina">North Carolina</a>
+    <a href="/north-carolina/">North Carolina</a>
     <span class="breadcrumb-sep">›</span>
     <span>Asheville</span>
   </nav>
@@ -102,7 +123,7 @@ gtag('config', 'G-MSME4WL2XB');
       <div><span class="fact-label">License Fee</span><span class="fact-value">$200 (per City of Asheville Fees &amp; Charges Manual, Development Services : Miscellaneous Permits)</span></div>
       <div><span class="fact-label">Tax Rate</span><span class="fact-value">~16.75% combined (4.75% state + 6% county occupancy + 6% city occupancy)</span></div>
       <div><span class="fact-label">Nights Cap / Spacing</span><span class="fact-value">Homestay only (owner must be present). Max 2 bedrooms. Whole-home STR heavily restricted.</span></div>
-      <div><span class="fact-label">Last Verified</span><span class="fact-value">May 2026 : $200 confirmed in City of Asheville Fees &amp; Charges Manual, Development Services section, under Miscellaneous Permits/Applications/Services.</span></div>
+      <div><span class="fact-label">Last Verified</span><span class="fact-value"><time datetime="2026-05-15">May 2026 : $200 confirmed in City of Asheville Fees &amp; Charges Manual, Development Services section, under Miscellaneous Permits/Applications/Services.</time></span></div>
     </div>
   </section>
 
@@ -212,17 +233,17 @@ gtag('config', 'G-MSME4WL2XB');
     <p>Asheville is a homeowner&#x27;s side-income market, not an investment destination. Strong tourism demand exists but the homestay-only model caps revenue at ~$25K/year (2 bedrooms max). The ~16.75% tax rate is punishing. For Asheville homeowners with spare rooms: decent side income. For investors: no path.</p>
 
 <h2 id="faq">Frequently Asked Questions</h2>
-    <details><summary>What license types are available for Asheville short-term rentals?</summary><p>Asheville offers Homestay Permit. $200. Listed under Miscellaneous Permits in City of Asheville Fees &amp; Charges Manual (Development Services section). Owner must live on-site.</p></details>
-    <details><summary>How much does a Asheville STR license cost?</summary><p>$200 (per City of Asheville Fees &amp; Charges Manual, Development Services : Miscellaneous Permits)</p></details>
+    <details><summary>What license types are available for Asheville short-term rentals?</summary><p>Asheville offers Homestay Permit. $200. Listed under Miscellaneous Permits in City of Asheville Fees & Charges Manual (Development Services section). Owner must live on-site.</p></details>
+    <details><summary>How much does a Asheville STR license cost?</summary><p>$200 (per City of Asheville Fees & Charges Manual, Development Services : Miscellaneous Permits)</p></details>
     <details><summary>What taxes apply to short-term rentals in Asheville?</summary><p>4.75% NC state sales + 6% Buncombe County occupancy + 6% City of Asheville occupancy = ~16.75% (per L6 sources). Verify at ashevillenc.gov Fees and Charges Manual.</p></details>
-    <details><summary>Is Asheville STR-friendly for investors?</summary><p>Asheville is a homeowner&#x27;s side-income market, not an investment destination. Strong tourism demand exists but the homestay-only model caps revenue at ~$25K/year (2 bedrooms max). The ~16.75% tax rate</p></details>
+    <details><summary>Is Asheville STR-friendly for investors?</summary><p>Asheville is a homeowner's side-income market, not an investment destination. Strong tourism demand exists but the homestay-only model caps revenue at ~$25K/year (2 bedrooms max). The ~16.75% tax rate</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/savannah" class="city-card"><strong>Savannah</strong><span>GA : similar historic tourism city with STR certification system</span></a>
-      <a href="/charleston" class="city-card"><strong>Charleston</strong><span>SC : historic district STR restrictions mirror Asheville&#x27;s approach</span></a>
-      <a href="/portland" class="city-card"><strong>Portland</strong><span>OR : same owner-occupied-only model</span></a>
+      <a href="/savannah/" class="city-card"><strong>Savannah</strong><span>GA : similar historic tourism city with STR certification system</span></a>
+      <a href="/charleston/" class="city-card"><strong>Charleston</strong><span>SC : historic district STR restrictions mirror Asheville&#x27;s approach</span></a>
+      <a href="/portland/" class="city-card"><strong>Portland</strong><span>OR : same owner-occupied-only model</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -238,12 +259,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

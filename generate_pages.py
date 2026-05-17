@@ -34,6 +34,22 @@ def status_color(label):
 def gen_schema(d, slug, title):
     c = d["city"]; s = d["state_abbr"]
     lt = " / ".join(t["type"].split("(")[0].strip() for t in d["license_types"][:2])
+    
+    # dateModified: parse last_verified (e.g. "May 2026" → "2026-05-17")
+    from datetime import datetime
+    lv = d.get("last_verified", "May 2026")
+    try:
+        dt = datetime.strptime(lv, "%B %Y")
+        date_mod = dt.strftime("%Y-%m-17")  # default to mid-month
+    except:
+        date_mod = "2026-05-17"
+    
+    # citation URL from official_sources
+    src_url = d["official_sources"][0]["url"] if d.get("official_sources") else ""
+    src_name = d["official_sources"][0]["name"] if d.get("official_sources") else ""
+    src_url_escaped = src_url.replace('"', '\\"')
+    src_name_escaped = src_name.replace('"', '\\"')
+    
     q1 = f"What license types are available for {c} short-term rentals?"
     a1 = f"{c} offers {lt}. {d['license_types'][0]['fee']}. {d['license_types'][0]['notes']}"
     q2 = f"How much does a {c} STR license cost?"
@@ -42,7 +58,27 @@ def gen_schema(d, slug, title):
     a3 = d["tax_rates_breakdown"]
     q4 = f"Is {c} STR-friendly for investors?"
     a4 = d["verdict"][:200]
-    return f'''<script type="application/ld+json">
+    
+    # HowTo steps
+    howto_steps = ""
+    if d.get("application_steps"):
+        for i, step in enumerate(d["application_steps"]):
+            step_clean = step.replace('"', '\\"').replace('\n', ' ')
+            howto_steps += f'''        {{"@type": "HowToStep", "position": {i+1}, "text": "{step_clean[:200]}"}},\n'''
+        howto_steps = howto_steps.rstrip(',\n')
+    
+    # Investor Scorecard as Dataset
+    scorecard_rows = ""
+    if d.get("investor_scorecard"):
+        for item in d["investor_scorecard"]:
+            dim = item.get("dimension", "").replace('"', '\\"')
+            score = item.get("score", "")
+            note = item.get("note", "").replace('"', '\\"')[:150]
+            scorecard_rows += f'''        {{"@type": "DataRow", "row": ["{dim}", "{score}", "{note}"]}},\n'''
+        scorecard_rows = scorecard_rows.rstrip(',\n')
+    
+    # Build the full @graph
+    schema = f'''<script type="application/ld+json">
 {{
   "@context": "https://schema.org",
   "@graph": [
@@ -52,19 +88,27 @@ def gen_schema(d, slug, title):
       "headline": "{title}",
       "description": "{d.get('archetype_description','')[:200].replace(chr(34),'')}",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
-      "author": {"@id": "https://www.rentpermitted.com/#organization"},
-      "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
+      "dateModified": "{date_mod}",
+      "author": {{"@id": "https://www.rentpermitted.com/#organization"}},
+      "publisher": {{"@id": "https://www.rentpermitted.com/#organization"}},
       "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{slug}"}},
       "about": {{"@type": "Thing", "name": "{c} short-term rental regulations"}},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true'''
+    
+    if src_url:
+        schema += f''',
+      "citation": [
+        {{"@type": "CreativeWork", "name": "{src_name_escaped}", "url": "{src_url_escaped}"}}
+      ]'''
+    
+    schema += f'''
     }},
     {{
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/{slug}#breadcrumb",
       "itemListElement": [
         {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"}},
-        {{"@type": "ListItem", "position": 2, "name": "{d['state']}", "item": "https://www.rentpermitted.com/{d['state'].lower().replace(' ', '-')}/"}},
+        {{"@type": "ListItem", "position": 2, "name": "{d['state']}", "item": "https://www.rentpermitted.com/{d['state'].lower().replace(' ', '-')}"}},
         {{"@type": "ListItem", "position": 3, "name": "{c}", "item": "https://www.rentpermitted.com/{slug}"}}
       ]
     }},
@@ -77,10 +121,37 @@ def gen_schema(d, slug, title):
         {{"@type": "Question", "name": "{q3}", "acceptedAnswer": {{"@type": "Answer", "text": "{a3}"}}}},
         {{"@type": "Question", "name": "{q4}", "acceptedAnswer": {{"@type": "Answer", "text": "{a4}"}}}}
       ]
-    }}
+    }}'''
+    
+    if howto_steps:
+        schema += f''',
+    {{
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/{slug}#howto",
+      "name": "How to get an STR license in {c}, {s}",
+      "step": [
+{howto_steps}
+      ]
+    }}'''
+    
+    if scorecard_rows:
+        schema += f''',
+    {{
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/{slug}#scorecard",
+      "name": "{c} STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for {c} short-term rental market",
+      "hasPart": [
+{scorecard_rows}
+      ]
+    }}'''
+    
+    schema += '''
   ]
-}}
+}
 </script>'''
+    
+    return schema
 
 def gen_license_table(d):
     rows = ""

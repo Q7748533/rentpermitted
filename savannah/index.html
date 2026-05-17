@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.rentpermitted.com/savannah">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
-    <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
-    <meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
+<meta name="twitter:image" content="https://www.rentpermitted.com/images/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Savannah, GA | Short-Term Rental Rules">
 <meta name="twitter:description" content="Savannah STR: $400 initial, $250/yr. Historic District certification. 15% tax. 3-strike revocation. Updated May 2026. Savannah STR regulations: permits, fe">
@@ -30,19 +30,23 @@
       "headline": "Savannah, GA | Short-Term Rental Rules",
       "description": "Savannah STR: $400 initial, $250/yr. Historic District certification. 15% tax. 3-strike revocation. Updated May 2026. Savannah STR regulations: permits, fe",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
       "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.rentpermitted.com/savannah"},
       "about": {"@type": "Thing", "name": "Savannah short-term rental regulations"},
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "citation": [
+        {"@type": "CreativeWork", "name": "Savannah STR Program", "url": "https://www.savannahga.gov/1637/Short-Term-Vacation-Rentals"}
+      ]
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://www.rentpermitted.com/savannah#breadcrumb",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"},
-        {"@type": "ListItem", "position": 2, "name": "Georgia", "item": "https://www.rentpermitted.com/georgia"}, {"@type": "ListItem", "position": 3, "name": "Savannah", "item": "https://www.rentpermitted.com/savannah"}
+        {"@type": "ListItem", "position": 2, "name": "Georgia", "item": "https://www.rentpermitted.com/georgia"},
+        {"@type": "ListItem", "position": 3, "name": "Savannah", "item": "https://www.rentpermitted.com/savannah"}
       ]
     },
     {
@@ -54,31 +58,48 @@
         {"@type": "Question", "name": "What taxes apply to short-term rentals in Savannah?", "acceptedAnswer": {"@type": "Answer", "text": "8% Savannah Hotel/Motel Tax + 7% Georgia state sales tax = 15%. Platforms collect."}},
         {"@type": "Question", "name": "Is Savannah STR-friendly for investors?", "acceptedAnswer": {"@type": "Answer", "text": "Savannah is a viable STR market for properties in the right zones. The historic district certification is structured and navigable, and premium tourism demand supports solid ADRs. The 3-strike revocat"}}
       ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.rentpermitted.com/savannah#howto",
+      "name": "How to get an STR license in Savannah, GA",
+      "step": [
+        {"@type": "HowToStep", "position": 1, "text": "Verify property zoning allows STR (Historic District / Victorian District)"},
+        {"@type": "HowToStep", "position": 2, "text": "Apply for STR Certificate ($400 initial)"},
+        {"@type": "HowToStep", "position": 3, "text": "Register for Hotel/Motel Tax"},
+        {"@type": "HowToStep", "position": 4, "text": "Display certificate number on listings"},
+        {"@type": "HowToStep", "position": 5, "text": "Renew annually ($250)"},
+        {"@type": "HowToStep", "position": 6, "text": "Maintain zero violations (3 in 12 months = revocation)"}
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://www.rentpermitted.com/savannah#scorecard",
+      "name": "Savannah STR Investor Scorecard",
+      "description": "5-dimension investor suitability scorecard for Savannah short-term rental market",
+      "hasPart": [
+        {"@type": "DataRow", "row": ["Regulatory Burden", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Fee Burden", "4/10", ""]},
+        {"@type": "DataRow", "row": ["Enforcement Risk", "6/10", ""]},
+        {"@type": "DataRow", "row": ["Market Potential", "7/10", ""]},
+        {"@type": "DataRow", "row": ["Investor Viability", "5/10", ""]}
+      ]
     }
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MSME4WL2XB"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-MSME4WL2XB');
-</script>
-
 </head>
 <body>
 
 <header class="site-header">
   <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-<nav id="main-nav">
+  <nav id="main-nav">
     <a href="/#cities">Browse Cities</a>
     <a href="/#states">By State</a>
-    <a href="/about">About</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
 
@@ -86,7 +107,7 @@ gtag('config', 'G-MSME4WL2XB');
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/georgia">Georgia</a>
+    <a href="/georgia/">Georgia</a>
     <span class="breadcrumb-sep">›</span>
     <span>Savannah</span>
   </nav>
@@ -218,12 +239,12 @@ gtag('config', 'G-MSME4WL2XB');
     <details><summary>What taxes apply to short-term rentals in Savannah?</summary><p>8% Savannah Hotel/Motel Tax + 7% Georgia state sales tax = 15%. Platforms collect.</p></details>
     <details><summary>Is Savannah STR-friendly for investors?</summary><p>Savannah is a viable STR market for properties in the right zones. The historic district certification is structured and navigable, and premium tourism demand supports solid ADRs. The 3-strike revocat</p></details>
 
-    <h2 id="similar-cities">Similar cities</h2>
+<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
-      <a href="/charleston" class="city-card"><strong>Charleston</strong><span>SC : same historic-tourism-driven STR market with certification requirements</span></a>
-      <a href="/new-orleans" class="city-card"><strong>New Orleans</strong><span>LA : historic district STR complexity mirrors Savannah</span></a>
-      <a href="/asheville" class="city-card"><strong>Asheville</strong><span>NC : tourism-driven mountain/historic market with owner restrictions</span></a>
+      <a href="/charleston/" class="city-card"><strong>Charleston</strong><span>SC : same historic-tourism-driven STR market with certification requirements</span></a>
+      <a href="/new-orleans/" class="city-card"><strong>New Orleans</strong><span>LA : historic district STR complexity mirrors Savannah</span></a>
+      <a href="/asheville/" class="city-card"><strong>Asheville</strong><span>NC : tourism-driven mountain/historic market with owner restrictions</span></a>
     </div>
 
 <h2 id="official-resources">Official Resources</h2>
@@ -239,12 +260,8 @@ gtag('config', 'G-MSME4WL2XB');
 
 <footer>
   <p>RentPermitted : Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
-  <p><a href="/affiliate-disclosure">Affiliate Disclosure</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
+  <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded",function(){var b=document.querySelector(".hamburger");if(!b)return;b.addEventListener("click",function(){var e=this.getAttribute("aria-expanded")==="true";this.setAttribute("aria-expanded",!e);document.getElementById("main-nav").classList.toggle("active",!e)})});
-</script>
 
 </body>
 </html>

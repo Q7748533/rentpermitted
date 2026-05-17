@@ -383,10 +383,10 @@ def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc, fa
       "headline": "{title}",
       "description": "{desc[:200].replace(chr(34), '')}",
       "datePublished": "2026-05-15",
-      "dateModified": "2026-05-15",
+      "dateModified": "2026-05-17",
       "author": {{"@id": "https://www.rentpermitted.com/#organization"}},
       "publisher": {{"@id": "https://www.rentpermitted.com/#organization"}},
-      "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{state_slug}/"}},
+      "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{state_slug}"}},
       "about": {{"@type": "Thing", "name": "{state_name} short-term rental regulations"}},
       "isAccessibleForFree": true
     }},
