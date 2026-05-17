@@ -298,7 +298,7 @@ def similar_states(state_name, info, all_states):
         abbr = sinfo["abbr"]
         cards += (
             f'        <div class="city-card">'
-            f'<a href="/{slug}/"><strong>{sname} ({abbr})</strong></a>'
+            f'<a href="/{slug}"><strong>{sname} ({abbr})</strong></a>'
             f'<p>{len(scities)} city page(s)</p>'
             f'</div>\n'
         )
@@ -379,7 +379,7 @@ def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc, fa
   "@graph": [
     {{
       "@type": "Article",
-      "@id": "https://www.rentpermitted.com/{state_slug}/#article",
+      "@id": "https://www.rentpermitted.com/{state_slug}#article",
       "headline": "{title}",
       "description": "{desc[:200].replace(chr(34), '')}",
       "datePublished": "2026-05-15",
@@ -392,15 +392,15 @@ def gen_state_schema(state_name, state_abbr, state_slug, cities, title, desc, fa
     }},
     {{
       "@type": "BreadcrumbList",
-      "@id": "https://www.rentpermitted.com/{state_slug}/#breadcrumb",
+      "@id": "https://www.rentpermitted.com/{state_slug}#breadcrumb",
       "itemListElement": [
         {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"}},
-        {{"@type": "ListItem", "position": 2, "name": "{state_name}", "item": "https://www.rentpermitted.com/{state_slug}/"}}
+        {{"@type": "ListItem", "position": 2, "name": "{state_name}", "item": "https://www.rentpermitted.com/{state_slug}"}}
       ]
     }},
     {{
       "@type": "FAQPage",
-      "@id": "https://www.rentpermitted.com/{state_slug}/#faq",
+      "@id": "https://www.rentpermitted.com/{state_slug}#faq",
       "mainEntity": [
         {{"@type": "Question", "name": "How many cities in {state_name} are covered?", "acceptedAnswer": {{"@type": "Answer", "text": "We cover {n} cities in {state_name}: {city_names}."}}}},
         {{"@type": "Question", "name": "Does {state_name} have state-wide STR laws?", "acceptedAnswer": {{"@type": "Answer", "text": "{q2_safe}"}}}},
@@ -503,11 +503,11 @@ def gen_state_page(state_name, info, all_states):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content="{desc}">
-  <link rel="canonical" href="https://www.rentpermitted.com/{slug}/">
+  <link rel="canonical" href="https://www.rentpermitted.com/{slug}">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.rentpermitted.com/{slug}/">
+  <meta property="og:url" content="https://www.rentpermitted.com/{slug}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">

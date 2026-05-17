@@ -48,29 +48,29 @@ def gen_schema(d, slug, title):
   "@graph": [
     {{
       "@type": "Article",
-      "@id": "https://www.rentpermitted.com/{slug}/#article",
+      "@id": "https://www.rentpermitted.com/{slug}#article",
       "headline": "{title}",
       "description": "{d.get('archetype_description','')[:200].replace(chr(34),'')}",
       "datePublished": "2026-05-15",
       "dateModified": "2026-05-15",
       "author": {"@id": "https://www.rentpermitted.com/#organization"},
       "publisher": {"@id": "https://www.rentpermitted.com/#organization"},
-      "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{slug}/"}},
+      "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{slug}"}},
       "about": {{"@type": "Thing", "name": "{c} short-term rental regulations"}},
       "isAccessibleForFree": true
     }},
     {{
       "@type": "BreadcrumbList",
-      "@id": "https://www.rentpermitted.com/{slug}/#breadcrumb",
+      "@id": "https://www.rentpermitted.com/{slug}#breadcrumb",
       "itemListElement": [
         {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"}},
         {{"@type": "ListItem", "position": 2, "name": "{d['state']}", "item": "https://www.rentpermitted.com/{d['state'].lower().replace(' ', '-')}/"}},
-        {{"@type": "ListItem", "position": 3, "name": "{c}", "item": "https://www.rentpermitted.com/{slug}/"}}
+        {{"@type": "ListItem", "position": 3, "name": "{c}", "item": "https://www.rentpermitted.com/{slug}"}}
       ]
     }},
     {{
       "@type": "FAQPage",
-      "@id": "https://www.rentpermitted.com/{slug}/#faq",
+      "@id": "https://www.rentpermitted.com/{slug}#faq",
       "mainEntity": [
         {{"@type": "Question", "name": "{q1}", "acceptedAnswer": {{"@type": "Answer", "text": "{a1}"}}}},
         {{"@type": "Question", "name": "{q2}", "acceptedAnswer": {{"@type": "Answer", "text": "{a2}"}}}},
@@ -209,10 +209,10 @@ def gen_page(d, slug):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content="{html.escape(desc)}">
-<link rel="canonical" href="https://www.rentpermitted.com/{slug}/">
+<link rel="canonical" href="https://www.rentpermitted.com/{slug}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:url" content="https://www.rentpermitted.com/{slug}/">
+<meta property="og:url" content="https://www.rentpermitted.com/{slug}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
 <meta name="twitter:card" content="summary_large_image">
