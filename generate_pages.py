@@ -6,6 +6,13 @@ BASE = "/home/ubuntu/rentpermitted"
 with open("/tmp/cities_batch1.json") as f:
     data = json.load(f)
 
+def state_slug(state_name):
+    """Convert state full name to URL slug."""
+    return state_name.lower().replace(" ", "-")
+
+# Build state_abbr → state_slug lookup for similar cities
+STATE_SLUG_MAP = {d["state_abbr"]: state_slug(d["state"]) for d in data.values()}
+
 def archetype(d):
     """Return (title, description, h1) based on archetype."""
     c = d["city"]; s = d["state_abbr"]
@@ -84,14 +91,14 @@ def gen_schema(d, slug, title):
   "@graph": [
     {{
       "@type": "Article",
-      "@id": "https://www.rentpermitted.com/{slug}#article",
+      "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#article",
       "headline": "{title}",
       "description": "{d.get('archetype_description','')[:200].replace(chr(34),'')}",
       "datePublished": "2026-05-15",
       "dateModified": "{date_mod}",
       "author": {{"@id": "https://www.rentpermitted.com/#organization"}},
       "publisher": {{"@id": "https://www.rentpermitted.com/#organization"}},
-      "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{slug}"}},
+      "mainEntityOfPage": {{"@type": "WebPage", "@id": "https://www.rentpermitted.com/{state_slug(d['state'])}/{slug}"}},
       "about": {{"@type": "Thing", "name": "{c} short-term rental regulations"}},
       "isAccessibleForFree": true'''
     
@@ -105,16 +112,16 @@ def gen_schema(d, slug, title):
     }},
     {{
       "@type": "BreadcrumbList",
-      "@id": "https://www.rentpermitted.com/{slug}#breadcrumb",
+      "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#breadcrumb",
       "itemListElement": [
         {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rentpermitted.com/"}},
         {{"@type": "ListItem", "position": 2, "name": "{d['state']}", "item": "https://www.rentpermitted.com/{d['state'].lower().replace(' ', '-')}"}},
-        {{"@type": "ListItem", "position": 3, "name": "{c}", "item": "https://www.rentpermitted.com/{slug}"}}
+        {{"@type": "ListItem", "position": 3, "name": "{c}", "item": "https://www.rentpermitted.com/{state_slug(d['state'])}/{slug}"}}
       ]
     }},
     {{
       "@type": "FAQPage",
-      "@id": "https://www.rentpermitted.com/{slug}#faq",
+      "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#faq",
       "mainEntity": [
         {{"@type": "Question", "name": "{q1}", "acceptedAnswer": {{"@type": "Answer", "text": "{a1}"}}}},
         {{"@type": "Question", "name": "{q2}", "acceptedAnswer": {{"@type": "Answer", "text": "{a2}"}}}},
@@ -127,7 +134,7 @@ def gen_schema(d, slug, title):
         schema += f''',
     {{
       "@type": "HowTo",
-      "@id": "https://www.rentpermitted.com/{slug}#howto",
+      "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#howto",
       "name": "How to get an STR license in {c}, {s}",
       "step": [
 {howto_steps}
@@ -138,7 +145,7 @@ def gen_schema(d, slug, title):
         schema += f''',
     {{
       "@type": "Dataset",
-      "@id": "https://www.rentpermitted.com/{slug}#scorecard",
+      "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#scorecard",
       "name": "{c} STR Investor Scorecard",
       "description": "5-dimension investor suitability scorecard for {c} short-term rental market",
       "hasPart": [
@@ -300,10 +307,10 @@ def gen_page(d, slug):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
 <meta name="description" content="{html.escape(desc)}">
-<link rel="canonical" href="https://www.rentpermitted.com/{slug}">
+<link rel="canonical" href="https://www.rentpermitted.com/{state_slug(d['state'])}/{slug}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:url" content="https://www.rentpermitted.com/{slug}">
+<meta property="og:url" content="https://www.rentpermitted.com/{state_slug(d['state'])}/{slug}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="RentPermitted">
 <meta property="og:image" content="https://www.rentpermitted.com/images/og-default.png">
@@ -421,12 +428,12 @@ def gen_page(d, slug):
 generated = []
 for slug, d in data.items():
     page = gen_page(d, slug)
-    os.makedirs(f"{BASE}/{slug}", exist_ok=True)
-    path = f"{BASE}/{slug}/index.html"
+    os.makedirs(f"{BASE}/{state_slug(d['state'])}/{slug}", exist_ok=True)
+    path = f"{BASE}/{state_slug(d['state'])}/{slug}/index.html"
     with open(path, "w") as f:
         f.write(page)
     size_kb = len(page) / 1024
-    generated.append(f"{slug} ({size_kb:.1f}KB)")
-    print(f"  ✓ {slug}/index.html ({size_kb:.1f}KB)")
+    generated.append(f"{state_slug(d['state'])}/{slug} ({size_kb:.1f}KB)")
+    print(f"  ✓ {state_slug(d['state'])}/{slug}/index.html ({size_kb:.1f}KB)")
 
 print(f"\nGenerated {len(generated)} pages: {', '.join(generated)}")

@@ -1,4 +1,264 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false
+  "redirects": [
+    {
+      "source": "/austin",
+      "destination": "/texas/austin",
+      "permanent": true
+    },
+    {
+      "source": "/austin/",
+      "destination": "/texas/austin",
+      "permanent": true
+    },
+    {
+      "source": "/nashville",
+      "destination": "/tennessee/nashville",
+      "permanent": true
+    },
+    {
+      "source": "/nashville/",
+      "destination": "/tennessee/nashville",
+      "permanent": true
+    },
+    {
+      "source": "/orlando",
+      "destination": "/florida/orlando",
+      "permanent": true
+    },
+    {
+      "source": "/orlando/",
+      "destination": "/florida/orlando",
+      "permanent": true
+    },
+    {
+      "source": "/denver",
+      "destination": "/colorado/denver",
+      "permanent": true
+    },
+    {
+      "source": "/denver/",
+      "destination": "/colorado/denver",
+      "permanent": true
+    },
+    {
+      "source": "/scottsdale",
+      "destination": "/arizona/scottsdale",
+      "permanent": true
+    },
+    {
+      "source": "/scottsdale/",
+      "destination": "/arizona/scottsdale",
+      "permanent": true
+    },
+    {
+      "source": "/miami-beach",
+      "destination": "/florida/miami-beach",
+      "permanent": true
+    },
+    {
+      "source": "/miami-beach/",
+      "destination": "/florida/miami-beach",
+      "permanent": true
+    },
+    {
+      "source": "/chicago",
+      "destination": "/illinois/chicago",
+      "permanent": true
+    },
+    {
+      "source": "/chicago/",
+      "destination": "/illinois/chicago",
+      "permanent": true
+    },
+    {
+      "source": "/seattle",
+      "destination": "/washington/seattle",
+      "permanent": true
+    },
+    {
+      "source": "/seattle/",
+      "destination": "/washington/seattle",
+      "permanent": true
+    },
+    {
+      "source": "/portland",
+      "destination": "/oregon/portland",
+      "permanent": true
+    },
+    {
+      "source": "/portland/",
+      "destination": "/oregon/portland",
+      "permanent": true
+    },
+    {
+      "source": "/new-orleans",
+      "destination": "/louisiana/new-orleans",
+      "permanent": true
+    },
+    {
+      "source": "/new-orleans/",
+      "destination": "/louisiana/new-orleans",
+      "permanent": true
+    },
+    {
+      "source": "/san-diego",
+      "destination": "/california/san-diego",
+      "permanent": true
+    },
+    {
+      "source": "/san-diego/",
+      "destination": "/california/san-diego",
+      "permanent": true
+    },
+    {
+      "source": "/phoenix",
+      "destination": "/arizona/phoenix",
+      "permanent": true
+    },
+    {
+      "source": "/phoenix/",
+      "destination": "/arizona/phoenix",
+      "permanent": true
+    },
+    {
+      "source": "/dallas",
+      "destination": "/texas/dallas",
+      "permanent": true
+    },
+    {
+      "source": "/dallas/",
+      "destination": "/texas/dallas",
+      "permanent": true
+    },
+    {
+      "source": "/houston",
+      "destination": "/texas/houston",
+      "permanent": true
+    },
+    {
+      "source": "/houston/",
+      "destination": "/texas/houston",
+      "permanent": true
+    },
+    {
+      "source": "/atlanta",
+      "destination": "/georgia/atlanta",
+      "permanent": true
+    },
+    {
+      "source": "/atlanta/",
+      "destination": "/georgia/atlanta",
+      "permanent": true
+    },
+    {
+      "source": "/asheville",
+      "destination": "/north-carolina/asheville",
+      "permanent": true
+    },
+    {
+      "source": "/asheville/",
+      "destination": "/north-carolina/asheville",
+      "permanent": true
+    },
+    {
+      "source": "/savannah",
+      "destination": "/georgia/savannah",
+      "permanent": true
+    },
+    {
+      "source": "/savannah/",
+      "destination": "/georgia/savannah",
+      "permanent": true
+    },
+    {
+      "source": "/charleston",
+      "destination": "/south-carolina/charleston",
+      "permanent": true
+    },
+    {
+      "source": "/charleston/",
+      "destination": "/south-carolina/charleston",
+      "permanent": true
+    },
+    {
+      "source": "/las-vegas",
+      "destination": "/nevada/las-vegas",
+      "permanent": true
+    },
+    {
+      "source": "/las-vegas/",
+      "destination": "/nevada/las-vegas",
+      "permanent": true
+    },
+    {
+      "source": "/honolulu",
+      "destination": "/hawaii/honolulu",
+      "permanent": true
+    },
+    {
+      "source": "/honolulu/",
+      "destination": "/hawaii/honolulu",
+      "permanent": true
+    },
+    {
+      "source": "/boston",
+      "destination": "/massachusetts/boston",
+      "permanent": true
+    },
+    {
+      "source": "/boston/",
+      "destination": "/massachusetts/boston",
+      "permanent": true
+    },
+    {
+      "source": "/washington-dc",
+      "destination": "/district-of-columbia/washington-dc",
+      "permanent": true
+    },
+    {
+      "source": "/washington-dc/",
+      "destination": "/district-of-columbia/washington-dc",
+      "permanent": true
+    },
+    {
+      "source": "/new-york-city",
+      "destination": "/new-york/new-york-city",
+      "permanent": true
+    },
+    {
+      "source": "/new-york-city/",
+      "destination": "/new-york/new-york-city",
+      "permanent": true
+    },
+    {
+      "source": "/los-angeles",
+      "destination": "/california/los-angeles",
+      "permanent": true
+    },
+    {
+      "source": "/los-angeles/",
+      "destination": "/california/los-angeles",
+      "permanent": true
+    },
+    {
+      "source": "/san-francisco",
+      "destination": "/california/san-francisco",
+      "permanent": true
+    },
+    {
+      "source": "/san-francisco/",
+      "destination": "/california/san-francisco",
+      "permanent": true
+    },
+    {
+      "source": "/charlotte",
+      "destination": "/north-carolina/charlotte",
+      "permanent": true
+    },
+    {
+      "source": "/charlotte/",
+      "destination": "/north-carolina/charlotte",
+      "permanent": true
+    }
+  ]
 }
