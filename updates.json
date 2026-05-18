@@ -1,8 +1,59 @@
 [
-  {"date": "May 15, 2026", "label": "Austin, TX", "text": "STR enforcement details added. Platform data-sharing agreement now in effect. License required for all STRs.", "slug": "austin"},
-  {"date": "May 15, 2026", "label": "Los Angeles, CA", "text": "Home-sharing registration fee confirmed at $183. Platform fee collection verified via planning.lacity.gov.", "slug": "los-angeles"},
-  {"date": "May 15, 2026", "label": "Honolulu, HI", "text": "OTA tax rate confirmed at 3%. Voucher program details added from honolulu.gov source.", "slug": "honolulu"},
-  {"date": "May 15, 2026", "label": "Asheville, NC", "text": "Homestay permit fee confirmed at $200. Source: City fee schedule, miscellaneous permits section.", "slug": "asheville"},
-  {"date": "May 15, 2026", "label": "Orlando, FL", "text": "Correction: whole-home STRs not permitted in most zones. Previous data flagged as inaccurate — verified via city ordinance.", "slug": "orlando"},
-  {"date": "May 15, 2026", "label": "Atlanta, GA", "text": "Primary residence requirement confirmed. Short-term rental ordinance under active council review.", "slug": "atlanta"}
+  {
+    "date": "May 18, 2026",
+    "label": "San Diego, CA",
+    "text": "Regulation page updated. Content changed — review needed. https://www.sandiego.gov/treasurer/short-term-residential-occupancy",
+    "slug": "san-diego",
+    "url": "https://www.sandiego.gov/treasurer/short-term-residential-occupancy"
+  },
+  {
+    "date": "May 18, 2026",
+    "label": "Boston, MA",
+    "text": "Regulation page updated. Content changed — review needed. https://www.boston.gov/departments/inspectional-services/short-term-rentals",
+    "slug": "boston",
+    "url": "https://www.boston.gov/departments/inspectional-services/short-term-rentals"
+  },
+  {
+    "date": "May 18, 2026",
+    "label": "Washington DC",
+    "text": "Regulation page updated. Content changed — review needed. https://dcra.dc.gov/short-term-rentals",
+    "slug": "washington-dc",
+    "url": "https://dcra.dc.gov/short-term-rentals"
+  },
+  {
+    "date": "May 15, 2026",
+    "label": "Austin, TX",
+    "text": "STR enforcement details added. Platform data-sharing agreement now in effect. License required for all STRs.",
+    "slug": "austin"
+  },
+  {
+    "date": "May 15, 2026",
+    "label": "Los Angeles, CA",
+    "text": "Home-sharing registration fee confirmed at $183. Platform fee collection verified via planning.lacity.gov.",
+    "slug": "los-angeles"
+  },
+  {
+    "date": "May 15, 2026",
+    "label": "Honolulu, HI",
+    "text": "OTA tax rate confirmed at 3%. Voucher program details added from honolulu.gov source.",
+    "slug": "honolulu"
+  },
+  {
+    "date": "May 15, 2026",
+    "label": "Asheville, NC",
+    "text": "Homestay permit fee confirmed at $200. Source: City fee schedule, miscellaneous permits section.",
+    "slug": "asheville"
+  },
+  {
+    "date": "May 15, 2026",
+    "label": "Orlando, FL",
+    "text": "Correction: whole-home STRs not permitted in most zones. Previous data flagged as inaccurate — verified via city ordinance.",
+    "slug": "orlando"
+  },
+  {
+    "date": "May 15, 2026",
+    "label": "Atlanta, GA",
+    "text": "Primary residence requirement confirmed. Short-term rental ordinance under active council review.",
+    "slug": "atlanta"
+  }
 ]
