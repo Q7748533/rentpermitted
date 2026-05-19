@@ -75,14 +75,14 @@ def gen_schema(d, slug, title):
         howto_steps = howto_steps.rstrip(',\n')
     
     # Investor Scorecard as Dataset
-    scorecard_rows = ""
+    scorecard_vars = ""
     if d.get("investor_scorecard"):
         for item in d["investor_scorecard"]:
             dim = item.get("dimension", "").replace('"', '\\"')
             score = item.get("score", "")
             note = item.get("note", "").replace('"', '\\"')[:150]
-            scorecard_rows += f'''        {{"@type": "DataRow", "row": ["{dim}", "{score}", "{note}"]}},\n'''
-        scorecard_rows = scorecard_rows.rstrip(',\n')
+            scorecard_vars += f'''        {{"@type": "PropertyValue", "name": "{dim}", "value": "{score}", "description": "{note}"}},\n'''
+        scorecard_vars = scorecard_vars.rstrip(',\n')
     
     # Build the full @graph
     schema = f'''<script type="application/ld+json">
@@ -141,15 +141,17 @@ def gen_schema(d, slug, title):
       ]
     }}'''
     
-    if scorecard_rows:
+    if scorecard_vars:
         schema += f''',
     {{
       "@type": "Dataset",
       "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#scorecard",
       "name": "{c} STR Investor Scorecard",
       "description": "5-dimension investor suitability scorecard for {c} short-term rental market",
-      "hasPart": [
-{scorecard_rows}
+      "creator": {{"@id": "https://www.rentpermitted.com/#organization"}},
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "variableMeasured": [
+{scorecard_vars}
       ]
     }}'''
     
