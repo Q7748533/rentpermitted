@@ -844,3 +844,66 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-top: 0.5rem;
   font-style: italic;
 }
+
+/* ═══ GEO Quotable Units — AI-extractable content blocks ═══ */
+
+/* Regulation Digest — blockquote that AI Overview can quote directly */
+.digest {
+  margin: 2rem 0;
+}
+.digest blockquote {
+  background: var(--slate-50);
+  border-left: 4px solid var(--green);
+  margin: 0;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+}
+.digest blockquote p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--slate-700);
+}
+
+/* Key Numbers — data-rich quotable paragraph */
+.key-stats {
+  margin: 2rem 0;
+  padding: 1.2rem 1.5rem;
+  background: var(--green-light);
+  border-radius: 6px;
+}
+.key-stats h2 { color: var(--green-dark); }
+.key-stats .meta {
+  font-size: 0.8rem;
+  color: var(--slate-400);
+  margin-top: 0.8rem;
+}
+
+/* Enforcement Reality — cold warning, fragment style */
+.enforcement-note {
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background: var(--red-light);
+  border-radius: 6px;
+  border: 1px solid var(--red);
+}
+.enforcement-note h2 { color: var(--red); }
+.enforcement-note .cold {
+  font-weight: 600;
+  color: var(--red);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Bottom Line — final judgment, bold single sentence */
+.bottom-line {
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background: var(--slate-100);
+  border-radius: 6px;
+}
+.bottom-line p {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--slate-800);
+}

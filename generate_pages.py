@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """RentPermitted City Page Generator — reads city data JSON, writes HTML pages."""
-import json, os, html
+import json, os, html, re
 
 BASE = "/home/ubuntu/rentpermitted"
 with open("/tmp/cities_batch1.json") as f:
@@ -208,7 +208,7 @@ def gen_numbers(d):
     <p>Data compiled from government reports, AirDNA, AirROI, and StaySTRA market data.</p>
     <ul>
 {items}    </ul>
-    <p>Sources: AirROI, StaySTRA, AirDNA market data ({d["last_verified"]}).</p>'''
+    <p>Sources: AirROI, StaySTRA, AirDNA market data ({html.escape(d["last_verified"])}).</p>'''
 
 def gen_scorecard(d):
     rows = ""
@@ -266,14 +266,15 @@ def gen_profiles(d):
 def gen_visible_faq(d):
     c = d["city"]
     lt = " / ".join(t["type"].split("(")[0].strip() for t in d["license_types"][:2])
+    lt_esc = html.escape(lt)
     q1 = f"What license types are available for {c} short-term rentals?"
-    a1 = f"{c} offers {lt}. {d['license_types'][0]['fee']}. {d['license_types'][0]['notes']}"
+    a1 = f"{c} offers {lt_esc}. {html.escape(d['license_types'][0]['fee'])}. {html.escape(d['license_types'][0]['notes'])}"
     q2 = f"How much does a {c} STR license cost?"
-    a2 = d["fee_amount"]
+    a2 = html.escape(d["fee_amount"])
     q3 = f"What taxes apply to short-term rentals in {c}?"
-    a3 = d["tax_rates_breakdown"]
+    a3 = html.escape(d["tax_rates_breakdown"])
     q4 = f"Is {c} STR-friendly for investors?"
-    a4 = d["verdict"][:200]
+    a4 = html.escape(d["verdict"][:200])
     return f'''<h2 id="faq">Frequently Asked Questions</h2>
     <details><summary>{q1}</summary><p>{a1}</p></details>
     <details><summary>{q2}</summary><p>{a2}</p></details>
@@ -288,6 +289,182 @@ def gen_similar(d):
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
 {cards}    </div>'''
+
+# ── GEO Quotable Units: AI extractable blocks ──
+
+def gen_digest(d):
+    """Regulation digest — 3-5 sentence summary AI can quote directly.
+    Answers the core question: 'Can I STR in [city] and what does it take?'"""
+    c = d["city"]; s = d["state_abbr"]
+    status = d["status_label"].lower()
+    fee = d["fee_amount"]
+    tax = d["tax_rate"]
+    cap = d["cap_rule"]
+    permit = d["permit_required"].lower()
+
+    # Determine regulatory stance — comprehensive matching
+    if "banned" in status or "heavily restricted" in status:
+        stance = f"Short-term rentals under 30 days are effectively banned in {c}. Enforcement is active and penalties are severe."
+    elif "primary residence" in status or "owner-occupied" in status:
+        stance = f"{c} requires the host to live on-site. Non-owner-occupied STRs are prohibited or face major barriers."
+    elif "homestay" in status and "only" in status:
+        stance = f"{c} only allows homestay-style rentals where the host is present during the guest's stay."
+    elif "resort-zone" in status or "resort zone" in status:
+        stance = f"{c} limits short-term rentals to designated resort zones. Operating outside these areas is prohibited."
+    elif "lottery" in status or "caps" in status or "cap" in status.split("-"):
+        stance = f"{c} operates a limited permit system. Not everyone who applies gets approved — caps are hard and enforced."
+    elif "zoning" in status:
+        stance = f"{c} ties STR permits to zoning districts. The wrong address means an automatic denial."
+    elif "licensed" in status or "enforced" in status:
+        stance = f"{c} requires all short-term rental operators to hold a license. Enforcement is active and non-compliance carries real penalties."
+    elif "certification" in status:
+        stance = f"{c} requires certification for all STR operators. Operating without one triggers enforcement action."
+    elif "registration" in status or "permitted" in status:
+        stance = f"{c} allows short-term rentals with registration. The process is straightforward compared to more restrictive cities."
+    elif "state-protected" in status:
+        stance = f"{c} benefits from Arizona's state law that prevents cities from banning short-term rentals. Local rules still apply but the baseline is favorable."
+    else:
+        stance = f"{c} regulates short-term rentals through a permit and tax system. Compliance is required before listing any property."
+
+    # Fee sentence — truncate long strings for digest readability
+    fee_esc = html.escape(fee)
+    if fee.lower() in ("$0", "free", "none", "n/a", "no fee"):
+        fee_s = "Registration carries no direct license fee."
+    elif "free" in fee.lower().split("+")[-1].strip() and "$" not in fee.lower().split("+")[0]:
+        fee_s = "Registration carries no direct license fee."
+    elif len(fee) > 60:
+        amounts = re.findall(r'\$[\d,]+(?:\.\d+)?(?:\/\w+)?', fee)
+        if amounts:
+            fee_s = f"The license fee starts at {amounts[0]}."
+        else:
+            fee_s = f"License fees apply. See details below."
+    elif "per unit" in fee.lower() or "per bedroom" in fee.lower():
+        fee_s = f"Licensing costs {fee_esc}."
+    else:
+        fee_s = f"The license costs {fee_esc}."
+
+    # Tax sentence
+    tax_s = f"A combined occupancy tax of {html.escape(tax)} applies to all bookings under 30 nights." if tax and tax != "N/A" else ""
+
+    # Cap sentence
+    cap_lower = cap.lower() if cap else ""
+    if not cap or cap_lower in ("none", "n/a"):
+        cap_s = "No night limit applies."
+    elif "no night limit" in cap_lower or "no annual night" in cap_lower or "no cap" in cap_lower:
+        cap_s = "No night limit applies — but zoning and density restrictions may still apply."
+    elif "unlimited" in cap_lower:
+        cap_s = "No night limit applies."
+    elif len(cap) > 50:
+        # Long cap description — summarize
+        cap_s = "Night limits and zoning restrictions apply. See details below."
+    else:
+        cap_s = f"Nights are capped at {cap}."
+
+    sentences = [stance, fee_s]
+    if tax_s:
+        sentences.append(tax_s)
+    sentences.append(cap_s)
+
+    return f'''<section class="digest">
+    <h2>Regulation Digest</h2>
+    <blockquote>
+      <p>{" ".join(sentences)}</p>
+    </blockquote>
+  </section>'''
+
+
+def gen_key_stats(d):
+    """Key numbers in quotable paragraph — what AI cites for comparisons."""
+    c = d["city"]; s = d["state_abbr"]
+    fee = d["fee_amount"]
+    tax = d["tax_rate"]
+    cap = d["cap_rule"]
+
+    stats = []
+    stats.append(f"{c}, {s} charges {html.escape(fee)} for an STR license.")
+    if tax and tax != "N/A":
+        stats.append(f"The total occupancy tax rate is {html.escape(tax)}.")
+    cap_lower = cap.lower() if cap else ""
+    if cap and cap_lower not in ("none", "n/a") and "no night limit" not in cap_lower and "no cap" not in cap_lower and "unlimited" not in cap_lower:
+        if len(cap) < 50:
+            stats.append(f"Nights are capped at {cap}.")
+        else:
+            stats.append("Night limits and zoning restrictions apply.")
+
+    # Add market data if available
+    md = d.get("market_data", {})
+    if md.get("adr") and md.get("annual_revenue"):
+        stats.append(f"Market data shows an average daily rate of {md['adr']} with annual revenue around {md['annual_revenue']}.")
+
+    return f'''<section class="key-stats">
+    <h2>Key Numbers</h2>
+    <p>{" ".join(stats)}</p>
+    <p class="meta">Data verified {html.escape(d["last_verified"])}. Always confirm with official sources before acting.</p>
+  </section>'''
+
+
+def gen_enforcement(d):
+    """Enforcement reality — cold, fragment-style. No sugar-coating."""
+    c = d["city"]
+    penalties = d.get("penalties", [])
+    if not penalties:
+        return ""
+
+    # Extract enforcement signals
+    penalty_texts = [p.lower() for p in penalties]
+    has_fines = any("fine" in p or "penalty" in p or "$" in p for p in penalty_texts)
+    has_criminal = any("misdemeanor" in p or "criminal" in p or "jail" in p for p in penalty_texts)
+    has_platform = any("platform" in p or "delist" in p or "airbnb" in p.lower() for p in penalty_texts)
+    has_enforcement = any("enforcement" in p or "violation" in p or "subject to" in p for p in penalty_texts)
+
+    parts = []
+    if has_fines:
+        parts.append("Fines are real.")
+    if has_criminal:
+        parts.append("Criminal penalties are possible for repeat violations.")
+    if has_platform:
+        parts.append("Platforms cooperate with enforcement — listings get de-listed.")
+    if has_enforcement and not parts:
+        parts.append("Enforcement is active — violations trigger penalties.")
+
+    if not parts:
+        return ""
+
+    return f'''<section class="enforcement-note">
+    <h2>Enforcement Reality</h2>
+    <p class="cold">{" ".join(parts)}</p>
+  </section>'''
+
+
+def gen_bottom_line(d):
+    """Single-sentence bottom line — what AI cites as final judgment."""
+    c = d["city"]
+    verdict = d.get("verdict", "")
+    archetype = d.get("archetype", "guide")
+
+    # Extract a clean one-liner from verdict
+    if verdict:
+        # Take first sentence
+        first = verdict.split(".")[0].strip()
+        if len(first) > 30:
+            return f'''<section class="bottom-line">
+    <p><strong>Bottom line:</strong> {html.escape(first)}.</p>
+  </section>'''
+
+    # Fallback
+    if archetype == "warning":
+        return f'''<section class="bottom-line">
+    <p><strong>Bottom line:</strong> {c} is a high-risk STR market. Compliance is not optional.</p>
+  </section>'''
+    elif archetype == "opportunity":
+        return f'''<section class="bottom-line">
+    <p><strong>Bottom line:</strong> {c} offers strong returns for compliant operators who do the paperwork.</p>
+  </section>'''
+    else:
+        return f'''<section class="bottom-line">
+    <p><strong>Bottom line:</strong> STR operation in {c} requires a license. Follow the steps or risk enforcement.</p>
+  </section>'''
+
 
 def gen_sources(d):
     items = "".join(f'        <li><a href="{html.escape(s["url"])}" rel="nofollow noopener" target="_blank">{html.escape(s["name"])}</a></li>\n' for s in d["official_sources"])
@@ -350,7 +527,7 @@ def gen_page(d, slug):
   </nav>
   <div class="status-badge" style="background:{sc};color:white">{html.escape(d["status_label"])}</div>
   <h1>{h1}</h1>
-  <p class="subtitle">Everything you need to operate an Airbnb, Vrbo, or vacation rental in {c}. Permit requirements, tax obligations, and zoning rules — updated {sv}.</p>
+  <p class="subtitle">Everything you need to operate an Airbnb, Vrbo, or vacation rental in {c}. Permit requirements, tax obligations, and zoning rules — updated {html.escape(sv)}.</p>
 
   <section class="quick-facts">
     <h2>At a Glance</h2>
@@ -379,6 +556,10 @@ def gen_page(d, slug):
     <h2 id="overview">Overview</h2>
     <p>{html.escape(d["overview"])}</p>
 
+{gen_digest(d)}
+
+{gen_key_stats(d)}
+
 {gen_license_table(d)}
 
 {gen_steps(d)}
@@ -389,6 +570,8 @@ def gen_page(d, slug):
 {gen_rules(d)}
 
 {gen_penalties(d)}
+
+{gen_enforcement(d)}
 
 {gen_changes(d)}
 
@@ -404,6 +587,8 @@ def gen_page(d, slug):
 
     <h2 id="verdict">Is {c} STR-Friendly?</h2>
     <p>{html.escape(d["verdict"])}</p>
+
+{gen_bottom_line(d)}
 
 {gen_visible_faq(d)}
 
