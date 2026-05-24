@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RentPermitted City Page Generator — reads city data JSON, writes HTML pages."""
+"""RentPermitted City Page Generator: reads city data JSON, writes HTML pages."""
 import json, os, html, re
 
 BASE = "/home/ubuntu/rentpermitted"
@@ -12,6 +12,209 @@ def state_slug(state_name):
 
 # Build state_abbr → state_slug lookup for similar cities
 STATE_SLUG_MAP = {d["state_abbr"]: state_slug(d["state"]) for d in data.values()}
+# Slug → city_data lookup for dynamic reason computation
+SLUG_TO_KEY = {d["city"].lower().replace(" ", "-"): k for k, d in data.items()}
+# Track which contrast dimensions have been used for each target
+_SIM_USED = {}  # {target_slug: set(dimension_id)}
+
+def _get_numeric(val_str):
+    """Extract the first dollar amount or number from a string."""
+    if not isinstance(val_str, str):
+        return None
+    nums = re.findall(r'\$([\d,]+(?:\.\d+)?)', val_str)
+    if nums:
+        return float(nums[0].replace(",", ""))
+    nums = re.findall(r'(\d+(?:\.\d+)?)', val_str)
+    return float(nums[0]) if nums else None
+
+def _extract_tax_pct(tax_str):
+    """Extract combined tax percentage from tax string."""
+    if not tax_str:
+        return None
+    # Try combined rate first: "14.75% combined"
+    m = re.search(r'([\d.]+)%\s*(?:combined|total)', tax_str)
+    if m:
+        return float(m.group(1))
+    # Try first percentage
+    m = re.search(r'([\d.]+)%', tax_str)
+    return float(m.group(1)) if m else None
+
+def _status_severity(label):
+    """Map status label to numeric severity (higher = stricter)."""
+    s = label.lower()
+    if "banned" in s: return 10
+    if "heavily restricted" in s: return 9
+    if "primary residence" in s: return 8
+    if "owner-occupied" in s: return 7
+    if "homestay" in s: return 6
+    if "lottery" in s or "caps" in s: return 5
+    if "resort-zone" in s: return 4
+    if "zoning" in s: return 3
+    if "licensed" in s or "enforced" in s: return 2
+    if "certification" in s: return 1
+    return 0
+
+def compute_similar_reason(src_data, target_slug):
+    """Generate a contrast-based anchor reason for a Similar Cities link.
+    
+    Picks the dimension with the greatest contrast between source and target,
+    avoiding dimensions already used by other sources linking to the same target.
+    Returns (reason_string, dimension_id).
+    """
+    if target_slug not in SLUG_TO_KEY:
+        return f"comparable regulatory profile", "generic"
+    tgt_key = SLUG_TO_KEY[target_slug]
+    tgt_data = data[tgt_key]
+    
+    src_city = src_data["city"]
+    tgt_city = tgt_data["city"]
+    tgt_state = tgt_data["state_abbr"]
+    
+    # Avoid comparing a city to itself
+    if src_data["city"] == tgt_data["city"]:
+        return f"comparable regulatory profile", "generic"
+    
+    # Dimension extractors: (id, score_fn, fmt_fn)
+    # score_fn returns (contrast_score, reason_if_selected) where higher score = better contrast
+    # fmt_fn formats the reason string
+    
+    dimensions = []
+    src_sev = _status_severity(src_data.get("status_label", ""))
+    tgt_sev = _status_severity(tgt_data.get("status_label", ""))
+    
+    # 1. Regulatory stance contrast
+    sev_diff = abs(src_sev - tgt_sev)
+    if sev_diff >= 3:
+        if src_sev > tgt_sev:
+            reason = f"more permissive than {src_city}&#x27;s {src_data['status_label'].lower()} model"
+        else:
+            reason = f"stricter than {src_city}&#x27;s {src_data['status_label'].lower()} approach"
+        dimensions.append(("reg_stance", sev_diff * 10, reason))
+    elif sev_diff >= 1:
+        if src_sev > tgt_sev:
+            reason = f"similar but {src_city} is slightly stricter"
+        else:
+            reason = f"similar regulatory model: {src_city} is the more relaxed of the two"
+        dimensions.append(("reg_stance", sev_diff * 8, reason))
+    
+    # 2. Fee contrast
+    src_fee = _get_numeric(src_data.get("fee_amount", ""))
+    tgt_fee = _get_numeric(tgt_data.get("fee_amount", ""))
+    if src_fee and tgt_fee and src_fee > 0 and tgt_fee > 0:
+        ratio = max(src_fee, tgt_fee) / min(src_fee, tgt_fee)
+        if ratio >= 2.0:
+            if tgt_fee < src_fee:
+                reason = f"similar setup but ${int(tgt_fee)} permits vs {src_city}&#x27;s ${int(src_fee)}"
+            else:
+                reason = f"same STR class but ${int(tgt_fee)} licenses vs {src_city}&#x27;s ${int(src_fee)}"
+            dimensions.append(("fee", int(ratio * 10), reason))
+        elif ratio >= 1.3:
+            reason = f"fee structure comparable: ${int(tgt_fee)} vs ${int(src_fee)} in {src_city}"
+            dimensions.append(("fee", int(ratio * 6), reason))
+    
+    # 3. Tax contrast
+    src_tax = _extract_tax_pct(src_data.get("tax_rate", ""))
+    tgt_tax = _extract_tax_pct(tgt_data.get("tax_rate", ""))
+    if src_tax and tgt_tax:
+        tax_diff = abs(src_tax - tgt_tax)
+        if tax_diff >= 3:
+            if tgt_tax < src_tax:
+                reason = f"lower tax burden: {tgt_tax}% combined vs {src_city}&#x27;s {src_tax}%"
+            else:
+                reason = f"higher STR tax at {tgt_tax}% combined: {src_city} charges {src_tax}%"
+            dimensions.append(("tax", int(tax_diff * 10), reason))
+        elif tax_diff >= 1:
+            if tgt_tax > src_tax:
+                reason = f"{tgt_tax}% combined STR tax vs {src_tax}% in {src_city}"
+            else:
+                reason = f"tax rates close: {tgt_tax}% vs {src_tax}% in {src_city}"
+            dimensions.append(("tax", int(tax_diff * 8), reason))
+    
+    # 4. Market / tourism contrast (ADR)
+    src_adr = None; tgt_adr = None
+    src_mkt = src_data.get("market_data", {})
+    tgt_mkt = tgt_data.get("market_data", {})
+    if isinstance(src_mkt, dict):
+        adr_str = src_mkt.get("ADR", src_mkt.get("adr", ""))
+        src_adr = _get_numeric(str(adr_str)) if adr_str else None
+    if isinstance(tgt_mkt, dict):
+        adr_str = tgt_mkt.get("ADR", tgt_mkt.get("adr", ""))
+        tgt_adr = _get_numeric(str(adr_str)) if adr_str else None
+    
+    if src_adr and tgt_adr and src_adr > 50 and tgt_adr > 50:
+        ratio = max(src_adr, tgt_adr) / min(src_adr, tgt_adr)
+        if ratio >= 1.3:
+            if tgt_adr > src_adr:
+                reason = f"stronger ADR (${int(tgt_adr)} vs ${int(src_adr)}) with similar regulatory profile"
+            else:
+                reason = f"${int(tgt_adr)} ADR market: {src_city} averages ${int(src_adr)}"
+            dimensions.append(("adr", int(ratio * 10), reason))
+        elif ratio >= 1.1:
+            reason = f"ADR in the same range: ${int(tgt_adr)} vs ${int(src_adr)}"
+            dimensions.append(("adr", int(ratio * 6), reason))
+    
+    # 5. Cap/limit contrast
+    src_cap = src_data.get("cap_rule", "").lower()
+    tgt_cap = tgt_data.get("cap_rule", "").lower()
+    src_has_cap = any(w in src_cap for w in ("cap", "limit", "maximum", "lottery", "no more than"))
+    tgt_has_cap = any(w in tgt_cap for w in ("cap", "limit", "maximum", "lottery", "no more than"))
+    if src_has_cap != tgt_has_cap:
+        if tgt_has_cap:
+            reason = f"has permit caps: {src_city} doesn&#x27;t limit the number of permits"
+        else:
+            reason = f"no permit caps unlike {src_city}&#x27;s limited system"
+        dimensions.append(("cap", 15, reason))
+    
+    # 6. License type contrast
+    src_lt = " ".join(t.get("type","").lower() for t in src_data.get("license_types",[])[:2])
+    tgt_lt = " ".join(t.get("type","").lower() for t in tgt_data.get("license_types",[])[:2])
+    src_tiered = "tier" in src_lt or "class" in src_lt or "owner-occupied" in src_lt or "non-owner" in src_lt
+    tgt_tiered = "tier" in tgt_lt or "class" in tgt_lt or "owner-occupied" in tgt_lt or "non-owner" in tgt_lt
+    if src_tiered and not tgt_tiered:
+        reason = f"simpler single-license system vs {src_city}&#x27;s tiered model"
+        dimensions.append(("license", 12, reason))
+    elif tgt_tiered and not src_tiered:
+        reason = f"tiered license structure: {src_city} uses a single-license approach"
+        dimensions.append(("license", 12, reason))
+    
+    # 7. State-level context
+    src_state = src_data.get("state_abbr", "")
+    tgt_state = tgt_data.get("state_abbr", "")
+    same_state = (src_state == tgt_state)
+    src_preempt = "preempt" in src_data.get("status", "").lower() or "state-protected" in src_data.get("status_label", "").lower()
+    tgt_preempt = "preempt" in tgt_data.get("status", "").lower() or "state-protected" in tgt_data.get("status_label", "").lower()
+    if same_state and src_preempt:
+        reason = f"same {src_state} state preemption protection"
+        dimensions.append(("state", 10, reason))
+    elif same_state and not src_preempt:
+        reason = f"another {src_state} market with local-level STR rules"
+        dimensions.append(("state", 5, reason))
+    elif src_preempt != tgt_preempt:
+        if tgt_preempt:
+            reason = f"state-level protection keeps regulation predictable"
+        else:
+            reason = f"local regulation is the key differentiator from {src_city}"
+        dimensions.append(("state", 8, reason))
+    
+    # Sort by score descending, pick highest unused dimension
+    dimensions.sort(key=lambda x: x[1], reverse=True)
+    
+    if target_slug not in _SIM_USED:
+        _SIM_USED[target_slug] = set()
+    used = _SIM_USED[target_slug]
+    
+    for dim_id, score, reason in dimensions:
+        if dim_id not in used:
+            used.add(dim_id)
+            return reason, dim_id
+    
+    # All dimensions exhausted: use best one anyway with a contextual twist
+    if dimensions:
+        dim_id, _, reason = dimensions[0]
+        return reason, dim_id
+    
+    # Fallback: generic but data-backed
+    return f"comparable {src_data.get('status_label','regulatory').lower()} profile in {tgt_state}", "fallback"
 
 def archetype(d):
     """Return (title, description, h1) based on archetype."""
@@ -24,9 +227,9 @@ def archetype(d):
     elif a == "opportunity":
         title = f"{c} STR compliance: the ROI of doing it right"
         desc = d.get("archetype_description", f"{c} STR: {d['fee_amount']}. {d.get('market_data',{}).get('annual_revenue','Strong')} avg revenue. Verified {d['last_verified']}.")
-        h1 = f"{c}, {s} STR Compliance — The ROI of Doing It Right"
+        h1 = f"{c}, {s} STR Compliance: The ROI of Doing It Right"
     else:  # guide
-        title = f"{c}, {s} — Short-Term Rental Rules"
+        title = f"{c}, {s}: Short-Term Rental Rules"
         desc = d.get("archetype_description", f"Complete guide to {c} STR permits, taxes, and rules. Updated {d['last_verified']}.")
         h1 = f"{c}, {s} Short-Term Rental Regulations"
     return title, desc, h1
@@ -175,7 +378,7 @@ def gen_license_table(d):
 
 def gen_steps(d):
     items = "".join(f'        <li>{html.escape(s)}</li>\n' for s in d["application_steps"])
-    return f'''<h2 id="license-application">License Application — Step by Step</h2>
+    return f'''<h2 id="license-application">License Application: Step by Step</h2>
     <ol>
 {items}    </ol>'''
 
@@ -215,7 +418,7 @@ def gen_scorecard(d):
     for sc in d["investor_scorecard"]:
         rows += f'      <tr><td><strong>{html.escape(sc["dimension"])}</strong></td><td>{html.escape(sc["score"])}</td><td>{html.escape(sc["notes"])}</td></tr>\n'
     return f'''<h2 id="investor-scorecard">📈 {d["city"]} STR Investor Scorecard</h2>
-    <p>Independent assessment — not government data. Scored on five dimensions that matter to hosts and investors.</p>
+    <p>Independent assessment: not government data. Scored on five dimensions that matter to hosts and investors.</p>
     <div class="table-responsive"><table>
       <thead><tr><th>Dimension</th><th>Score (1–10)</th><th>Notes</th></tr></thead>
       <tbody>
@@ -234,12 +437,12 @@ def gen_y1_costs(d):
     </table></div>'''
 
 def gen_market_data(d):
-    """Generate STR investment market data section — cap rates, revenue, cashflow."""
+    """Generate STR investment market data section: cap rates, revenue, cashflow."""
     md = d.get("market_data", {})
     if not md.get("cap_rate"):
         return ""
-    return f'''<h2 id="market-data">💰 STR Investment Returns — Real Cap Rate Data</h2>
-    <p>Real property analysis data — not projections. Compiled from {md.get("num_properties","30+")} analyzed STR properties in {d["city"]} and verified market reports.</p>
+    return f'''<h2 id="market-data">💰 STR Investment Returns: Real Cap Rate Data</h2>
+    <p>Real property analysis data: not projections. Compiled from {md.get("num_properties","30+")} analyzed STR properties in {d["city"]} and verified market reports.</p>
     <div class="table-responsive"><table>
       <thead><tr><th>Metric</th><th>Value</th><th>What It Means</th></tr></thead>
       <tbody>
@@ -284,7 +487,9 @@ def gen_visible_faq(d):
 def gen_similar(d):
     cards = ""
     for sc in d["similar_cities"]:
-        cards += f'      <a href="/{sc["city"].lower().replace(" ","-")}/" class="city-card"><strong>{html.escape(sc["city"])}</strong><span>{html.escape(sc["state"])} — {html.escape(sc["reason"])}</span></a>\n'
+        target_slug = sc["city"].lower().replace(" ", "-")
+        reason, _ = compute_similar_reason(d, target_slug)
+        cards += f'      <a href="/{target_slug}/" class="city-card"><strong>{html.escape(sc["city"])}</strong><span>{html.escape(sc["state"])}: {reason}</span></a>\n'
     return f'''<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
@@ -293,7 +498,7 @@ def gen_similar(d):
 # ── GEO Quotable Units: AI extractable blocks ──
 
 def gen_digest(d):
-    """Regulation digest — 3-5 sentence summary AI can quote directly.
+    """Regulation digest: 3-5 sentence summary AI can quote directly.
     Answers the core question: 'Can I STR in [city] and what does it take?'"""
     c = d["city"]; s = d["state_abbr"]
     status = d["status_label"].lower()
@@ -302,7 +507,7 @@ def gen_digest(d):
     cap = d["cap_rule"]
     permit = d["permit_required"].lower()
 
-    # Determine regulatory stance — comprehensive matching
+    # Determine regulatory stance: comprehensive matching
     if "banned" in status or "heavily restricted" in status:
         stance = f"Short-term rentals under 30 days are effectively banned in {c}. Enforcement is active and penalties are severe."
     elif "primary residence" in status or "owner-occupied" in status:
@@ -312,7 +517,7 @@ def gen_digest(d):
     elif "resort-zone" in status or "resort zone" in status:
         stance = f"{c} limits short-term rentals to designated resort zones. Operating outside these areas is prohibited."
     elif "lottery" in status or "caps" in status or "cap" in status.split("-"):
-        stance = f"{c} operates a limited permit system. Not everyone who applies gets approved — caps are hard and enforced."
+        stance = f"{c} operates a limited permit system. Not everyone who applies gets approved: caps are hard and enforced."
     elif "zoning" in status:
         stance = f"{c} ties STR permits to zoning districts. The wrong address means an automatic denial."
     elif "licensed" in status or "enforced" in status:
@@ -326,7 +531,7 @@ def gen_digest(d):
     else:
         stance = f"{c} regulates short-term rentals through a permit and tax system. Compliance is required before listing any property."
 
-    # Fee sentence — truncate long strings for digest readability
+    # Fee sentence: truncate long strings for digest readability
     fee_esc = html.escape(fee)
     if fee.lower() in ("$0", "free", "none", "n/a", "no fee"):
         fee_s = "Registration carries no direct license fee."
@@ -351,11 +556,11 @@ def gen_digest(d):
     if not cap or cap_lower in ("none", "n/a"):
         cap_s = "No night limit applies."
     elif "no night limit" in cap_lower or "no annual night" in cap_lower or "no cap" in cap_lower:
-        cap_s = "No night limit applies — but zoning and density restrictions may still apply."
+        cap_s = "No night limit applies: but zoning and density restrictions may still apply."
     elif "unlimited" in cap_lower:
         cap_s = "No night limit applies."
     elif len(cap) > 50:
-        # Long cap description — summarize
+        # Long cap description: summarize
         cap_s = "Night limits and zoning restrictions apply. See details below."
     else:
         cap_s = f"Nights are capped at {cap}."
@@ -374,7 +579,7 @@ def gen_digest(d):
 
 
 def gen_key_stats(d):
-    """Key numbers in quotable paragraph — what AI cites for comparisons."""
+    """Key numbers in quotable paragraph: what AI cites for comparisons."""
     c = d["city"]; s = d["state_abbr"]
     fee = d["fee_amount"]
     tax = d["tax_rate"]
@@ -404,7 +609,7 @@ def gen_key_stats(d):
 
 
 def gen_enforcement(d):
-    """Enforcement reality — cold, fragment-style. No sugar-coating."""
+    """Enforcement reality: cold, fragment-style. No sugar-coating."""
     c = d["city"]
     penalties = d.get("penalties", [])
     if not penalties:
@@ -423,9 +628,9 @@ def gen_enforcement(d):
     if has_criminal:
         parts.append("Criminal penalties are possible for repeat violations.")
     if has_platform:
-        parts.append("Platforms cooperate with enforcement — listings get de-listed.")
+        parts.append("Platforms cooperate with enforcement: listings get de-listed.")
     if has_enforcement and not parts:
-        parts.append("Enforcement is active — violations trigger penalties.")
+        parts.append("Enforcement is active: violations trigger penalties.")
 
     if not parts:
         return ""
@@ -437,7 +642,7 @@ def gen_enforcement(d):
 
 
 def gen_bottom_line(d):
-    """Single-sentence bottom line — what AI cites as final judgment."""
+    """Single-sentence bottom line: what AI cites as final judgment."""
     c = d["city"]
     verdict = d.get("verdict", "")
     archetype = d.get("archetype", "guide")
@@ -527,7 +732,7 @@ def gen_page(d, slug):
   </nav>
   <div class="status-badge" style="background:{sc};color:white">{html.escape(d["status_label"])}</div>
   <h1>{h1}</h1>
-  <p class="subtitle">Everything you need to operate an Airbnb, Vrbo, or vacation rental in {c}. Permit requirements, tax obligations, and zoning rules — updated {html.escape(sv)}.</p>
+  <p class="subtitle">Everything you need to operate an Airbnb, Vrbo, or vacation rental in {c}. Permit requirements, tax obligations, and zoning rules: updated {html.escape(sv)}.</p>
 
   <section class="quick-facts">
     <h2>At a Glance</h2>
@@ -603,7 +808,7 @@ def gen_page(d, slug):
 </main>
 
 <footer>
-  <p>RentPermitted — Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
+  <p>RentPermitted: Independent short-term rental regulation resource. Not affiliated with any government agency.</p>
   <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
 
@@ -612,6 +817,7 @@ def gen_page(d, slug):
     return html_page
 
 # Generate all pages
+_SIM_USED.clear()
 generated = []
 for slug, d in data.items():
     page = gen_page(d, slug)

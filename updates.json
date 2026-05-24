@@ -1,5 +1,26 @@
 [
   {
+    "date": "May 24, 2026",
+    "label": "Austin, TX",
+    "text": "Regulation page updated. Content changed — review needed. https://www.austintexas.gov/department/short-term-rentals",
+    "slug": "austin",
+    "url": "https://www.austintexas.gov/department/short-term-rentals"
+  },
+  {
+    "date": "May 24, 2026",
+    "label": "San Diego, CA",
+    "text": "Regulation page updated. Content changed — review needed. https://www.sandiego.gov/treasurer/short-term-residential-occupancy",
+    "slug": "san-diego",
+    "url": "https://www.sandiego.gov/treasurer/short-term-residential-occupancy"
+  },
+  {
+    "date": "May 24, 2026",
+    "label": "Boston, MA",
+    "text": "Regulation page updated. Content changed — review needed. https://www.boston.gov/departments/inspectional-services/short-term-rentals",
+    "slug": "boston",
+    "url": "https://www.boston.gov/departments/inspectional-services/short-term-rentals"
+  },
+  {
     "date": "May 18, 2026",
     "label": "San Diego, CA",
     "text": "Regulation page updated. Content changed — review needed. https://www.sandiego.gov/treasurer/short-term-residential-occupancy",

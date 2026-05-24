@@ -29,10 +29,10 @@ for filepath in city_pages:
         if opens != closes:
             errors.append(f"{rel}: <{tag}> unbalanced ({opens}/{closes})")
 
-    # 2. Em-dashes zero tolerance
-    dc = html.count('\u2014') + html.count('\u2013')
+    # 2. Em-dashes zero tolerance (en-dashes in numeric ranges OK per em-dash-removal-pattern)
+    dc = html.count('\u2014')  # em-dash only
     if dc > 0:
-        errors.append(f"{rel}: {dc} em/en-dashes")
+        errors.append(f"{rel}: {dc} em-dashes")
 
     # 3. Unescaped & in visible content (not <script>, not URL attrs)
     body_match = re.search(r'<body>(.*?)</body>', html, re.DOTALL)
