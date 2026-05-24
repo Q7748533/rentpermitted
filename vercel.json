@@ -3,6 +3,12 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [{"type": "host", "value": "rentpermitted.com"}],
+      "destination": "https://www.rentpermitted.com/$1",
+      "permanent": true
+    },
+    {
       "source": "/austin",
       "destination": "/texas/austin",
       "permanent": true
