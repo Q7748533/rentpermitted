@@ -1,6 +1,30 @@
 [
   {
     "date": "May 25, 2026",
+    "label": "Seattle, WA",
+    "text": "Regulation page updated — similarity 89.6% vs baseline. https://www.seattle.gov/business-regulations/short-term-rentals",
+    "slug": "seattle",
+    "url": "https://www.seattle.gov/business-regulations/short-term-rentals",
+    "similarity": 0.896
+  },
+  {
+    "date": "May 25, 2026",
+    "label": "Phoenix, AZ",
+    "text": "Regulation page updated — similarity 68.0% vs baseline. https://www.phoenix.gov/nsd/short-term-rentals",
+    "slug": "phoenix",
+    "url": "https://www.phoenix.gov/nsd/short-term-rentals",
+    "similarity": 0.68
+  },
+  {
+    "date": "May 25, 2026",
+    "label": "Atlanta, GA",
+    "text": "Regulation page updated — similarity 73.7% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
+    "slug": "atlanta",
+    "url": "https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
+    "similarity": 0.737
+  },
+  {
+    "date": "May 25, 2026",
     "label": "Boston, MA",
     "text": "Regulation page updated. Content changed — review needed. https://www.boston.gov/departments/inspectional-services/short-term-rentals",
     "slug": "boston",
@@ -65,23 +89,5 @@
     "label": "Honolulu, HI",
     "text": "OTA tax rate confirmed at 3%. Voucher program details added from honolulu.gov source.",
     "slug": "honolulu"
-  },
-  {
-    "date": "May 15, 2026",
-    "label": "Asheville, NC",
-    "text": "Homestay permit fee confirmed at $200. Source: City fee schedule, miscellaneous permits section.",
-    "slug": "asheville"
-  },
-  {
-    "date": "May 15, 2026",
-    "label": "Orlando, FL",
-    "text": "Correction: whole-home STRs not permitted in most zones. Previous data flagged as inaccurate — verified via city ordinance.",
-    "slug": "orlando"
-  },
-  {
-    "date": "May 15, 2026",
-    "label": "Atlanta, GA",
-    "text": "Primary residence requirement confirmed. Short-term rental ordinance under active council review.",
-    "slug": "atlanta"
   }
 ]
