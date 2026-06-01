@@ -1,5 +1,45 @@
 [
   {
+    "date": "Jun 01, 2026",
+    "label": "Atlanta, GA",
+    "text": "Regulation page updated — similarity 68.9% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
+    "slug": "atlanta",
+    "url": "https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
+    "similarity": 0.689
+  },
+  {
+    "date": "Jun 01, 2026",
+    "label": "Denver, CO",
+    "text": "Regulation page updated — similarity 89.6% vs baseline. https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
+    "slug": "denver",
+    "url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
+    "similarity": 0.896
+  },
+  {
+    "date": "Jun 01, 2026",
+    "label": "New York City, NY",
+    "text": "Regulation page updated — similarity 64.9% vs baseline. https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
+    "slug": "new-york-city",
+    "url": "https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
+    "similarity": 0.649
+  },
+  {
+    "date": "Jun 01, 2026",
+    "label": "Orlando, FL",
+    "text": "Regulation page updated — similarity 83.7% vs baseline. https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
+    "slug": "orlando",
+    "url": "https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
+    "similarity": 0.837
+  },
+  {
+    "date": "Jun 01, 2026",
+    "label": "Phoenix, AZ",
+    "text": "Regulation page updated — similarity 59.8% vs baseline. https://www.phoenix.gov/nsd/short-term-rentals",
+    "slug": "phoenix",
+    "url": "https://www.phoenix.gov/nsd/short-term-rentals",
+    "similarity": 0.598
+  },
+  {
     "date": "May 25, 2026",
     "label": "Seattle, WA",
     "text": "Regulation page updated — similarity 89.6% vs baseline. https://www.seattle.gov/business-regulations/short-term-rentals",
@@ -57,37 +97,5 @@
     "text": "Regulation page updated. Content changed — review needed. https://www.sandiego.gov/treasurer/short-term-residential-occupancy",
     "slug": "san-diego",
     "url": "https://www.sandiego.gov/treasurer/short-term-residential-occupancy"
-  },
-  {
-    "date": "May 18, 2026",
-    "label": "Boston, MA",
-    "text": "Regulation page updated. Content changed — review needed. https://www.boston.gov/departments/inspectional-services/short-term-rentals",
-    "slug": "boston",
-    "url": "https://www.boston.gov/departments/inspectional-services/short-term-rentals"
-  },
-  {
-    "date": "May 18, 2026",
-    "label": "Washington DC",
-    "text": "Regulation page updated. Content changed — review needed. https://dcra.dc.gov/short-term-rentals",
-    "slug": "washington-dc",
-    "url": "https://dcra.dc.gov/short-term-rentals"
-  },
-  {
-    "date": "May 15, 2026",
-    "label": "Austin, TX",
-    "text": "STR enforcement details added. Platform data-sharing agreement now in effect. License required for all STRs.",
-    "slug": "austin"
-  },
-  {
-    "date": "May 15, 2026",
-    "label": "Los Angeles, CA",
-    "text": "Home-sharing registration fee confirmed at $183. Platform fee collection verified via planning.lacity.gov.",
-    "slug": "los-angeles"
-  },
-  {
-    "date": "May 15, 2026",
-    "label": "Honolulu, HI",
-    "text": "OTA tax rate confirmed at 3%. Voucher program details added from honolulu.gov source.",
-    "slug": "honolulu"
   }
 ]
