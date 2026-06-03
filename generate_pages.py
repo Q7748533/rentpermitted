@@ -488,8 +488,11 @@ def gen_similar(d):
     cards = ""
     for sc in d["similar_cities"]:
         target_slug = sc["city"].lower().replace(" ", "-")
+        # v2: use state-hub path (state_slug/city_slug) instead of flat city path
+        target_state_slug = STATE_SLUG_MAP.get(sc["state"], "")
+        target_path = f"{target_state_slug}/{target_slug}" if target_state_slug else target_slug
         reason, _ = compute_similar_reason(d, target_slug)
-        cards += f'      <a href="/{target_slug}/" class="city-card"><strong>{html.escape(sc["city"])}</strong><span>{html.escape(sc["state"])}: {reason}</span></a>\n'
+        cards += f'      <a href="/{target_path}/" class="city-card"><strong>{html.escape(sc["city"])}</strong><span>{html.escape(sc["state"])}: {reason}</span></a>\n'
     return f'''<h2 id="similar-cities">Similar cities</h2>
     <p>Markets with comparable regulatory profiles:</p>
     <div class="city-grid">
