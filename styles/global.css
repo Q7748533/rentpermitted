@@ -695,6 +695,7 @@ article h2:has(+ p + table) {
   color: var(--slate-600);
   line-height: 1.55;
   border-bottom: 1px solid var(--slate-100);
+  overflow-wrap: break-word;
 }
 .update-item:last-child { border-bottom: none; }
 .update-date {
