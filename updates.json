@@ -1,5 +1,37 @@
 [
   {
+    "date": "Jun 08, 2026",
+    "label": "Atlanta, GA",
+    "text": "Regulation page updated — similarity 68.5% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
+    "slug": "atlanta",
+    "url": "https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
+    "similarity": 0.685
+  },
+  {
+    "date": "Jun 08, 2026",
+    "label": "Charlotte, NC",
+    "text": "Regulation page updated — similarity 74.9% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "slug": "charlotte",
+    "url": "https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "similarity": 0.749
+  },
+  {
+    "date": "Jun 08, 2026",
+    "label": "New York City, NY",
+    "text": "Regulation page updated — similarity 65.3% vs baseline. https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
+    "slug": "new-york-city",
+    "url": "https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
+    "similarity": 0.653
+  },
+  {
+    "date": "Jun 08, 2026",
+    "label": "Phoenix, AZ",
+    "text": "Regulation page updated — similarity 62.6% vs baseline. https://www.phoenix.gov/nsd/short-term-rentals",
+    "slug": "phoenix",
+    "url": "https://www.phoenix.gov/nsd/short-term-rentals",
+    "similarity": 0.626
+  },
+  {
     "date": "Jun 01, 2026",
     "label": "Atlanta, GA",
     "text": "Regulation page updated — similarity 68.9% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
@@ -69,33 +101,5 @@
     "text": "Regulation page updated. Content changed — review needed. https://www.boston.gov/departments/inspectional-services/short-term-rentals",
     "slug": "boston",
     "url": "https://www.boston.gov/departments/inspectional-services/short-term-rentals"
-  },
-  {
-    "date": "May 24, 2026",
-    "label": "Austin, TX",
-    "text": "Regulation page updated. Content changed — review needed. https://www.austintexas.gov/department/short-term-rentals",
-    "slug": "austin",
-    "url": "https://www.austintexas.gov/department/short-term-rentals"
-  },
-  {
-    "date": "May 24, 2026",
-    "label": "San Diego, CA",
-    "text": "Regulation page updated. Content changed — review needed. https://www.sandiego.gov/treasurer/short-term-residential-occupancy",
-    "slug": "san-diego",
-    "url": "https://www.sandiego.gov/treasurer/short-term-residential-occupancy"
-  },
-  {
-    "date": "May 24, 2026",
-    "label": "Boston, MA",
-    "text": "Regulation page updated. Content changed — review needed. https://www.boston.gov/departments/inspectional-services/short-term-rentals",
-    "slug": "boston",
-    "url": "https://www.boston.gov/departments/inspectional-services/short-term-rentals"
-  },
-  {
-    "date": "May 18, 2026",
-    "label": "San Diego, CA",
-    "text": "Regulation page updated. Content changed — review needed. https://www.sandiego.gov/treasurer/short-term-residential-occupancy",
-    "slug": "san-diego",
-    "url": "https://www.sandiego.gov/treasurer/short-term-residential-occupancy"
   }
 ]
