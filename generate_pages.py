@@ -836,7 +836,7 @@ gtag('config', 'G-MSME4WL2XB');
 _SIM_USED.clear()
 generated = []
 for slug, d in data.items():
-    page = gen_page(d, slug)
+    page = gen_page(d, slug).replace("—", ":")
     os.makedirs(f"{BASE}/{state_slug(d['state'])}/{slug}", exist_ok=True)
     path = f"{BASE}/{state_slug(d['state'])}/{slug}/index.html"
     with open(path, "w") as f:
