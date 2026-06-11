@@ -219,6 +219,11 @@ def compute_similar_reason(src_data, target_slug):
 def archetype(d):
     """Return (title, description, h1) based on archetype."""
     c = d["city"]; s = d["state_abbr"]
+    if c == "Asheville" and s == "NC":
+        title = "Asheville Homestay Permit Rules 2026: When STRs Are Allowed"
+        desc = d.get("archetype_description", f"{c} STR: homestay-only. $200/yr, owner must be present, 2BR max. Updated {d['last_verified']}.")
+        h1 = title
+        return title, desc, h1
     a = d.get("archetype", "guide")
     if a == "warning":
         title = f"Why your {c} STR might be de-listed in 2026"
