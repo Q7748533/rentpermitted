@@ -220,8 +220,8 @@ def archetype(d):
     """Return (title, description, h1) based on archetype."""
     c = d["city"]; s = d["state_abbr"]
     if c == "Asheville" and s == "NC":
-        title = "Asheville Homestay Permit Rules 2026: When STRs Are Allowed"
-        desc = d.get("archetype_description", f"{c} STR: homestay-only. $200/yr, owner must be present, 2BR max. Updated {d['last_verified']}.")
+        title = "Asheville Airbnb & STR Laws 2026: Homestay Permit Guide"
+        desc = "Asheville STRs: homestay-only. $200/year permit, on-site owner required, 2BR max, ~16.75% total tax. Complete 2026 rules, fees & application steps for Airbnb/VRBO hosts."
         h1 = title
         return title, desc, h1
     a = d.get("archetype", "guide")
