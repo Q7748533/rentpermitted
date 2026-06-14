@@ -246,7 +246,7 @@ def status_color(label):
         return "var(--orange)"
     return "var(--green)"
 
-def gen_schema(d, slug, title):
+def gen_schema(d, slug, title, desc):
     c = d["city"]; s = d["state_abbr"]
     lt = " / ".join(t["type"].split("(")[0].strip() for t in d["license_types"][:2])
     
@@ -301,7 +301,7 @@ def gen_schema(d, slug, title):
       "@type": "Article",
       "@id": "https://www.rentpermitted.com/{state_slug(d["state"])}/{slug}#article",
       "headline": "{title}",
-      "description": "{d.get('archetype_description','')[:200].replace(chr(34),'')}",
+      "description": "{desc[:200].replace(chr(34),'')}",
       "datePublished": "2026-05-15",
       "dateModified": "{date_mod}",
       "author": {{"@id": "https://www.rentpermitted.com/#organization"}},
@@ -689,7 +689,7 @@ def gen_page(d, slug):
     c = d["city"]; s = d["state_abbr"]; sv = d["last_verified"]
     title, desc, h1 = archetype(d)
     sc = status_color(d["status_label"])
-    schema = gen_schema(d, slug, title)
+    schema = gen_schema(d, slug, title, desc)
     market_data_link = '<a href="#market-data">Cap Rates</a>\n    ' if d.get("market_data", {}).get("cap_rate") else ""
 
     html_page = f'''<!DOCTYPE html>
