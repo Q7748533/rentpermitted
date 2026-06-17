@@ -226,9 +226,9 @@ def archetype(d):
         return title, desc, h1
     a = d.get("archetype", "guide")
     if a == "warning":
-        title = f"Why your {c} STR might be de-listed in 2026"
+        title = f"{c} Short-Term Rental Laws 2026 | Permits, Taxes & Rules"
         desc = d.get("archetype_description", f"{c} STR license costs {d['fee_amount']}. Enforcement tightening. Updated {d['last_verified']}.")
-        h1 = f"Why your {c}, {s} Short-Term Rental Might Be De-Listed in 2026"
+        h1 = f"{c}, {s} Short-Term Rental Laws & Compliance Guide"
     elif a == "opportunity":
         title = f"{c} STR compliance: the ROI of doing it right"
         desc = d.get("archetype_description", f"{c} STR: {d['fee_amount']}. {d.get('market_data',{}).get('annual_revenue','Strong')} avg revenue. Verified {d['last_verified']}.")

@@ -171,7 +171,7 @@ def title_archetype(state_name, cities):
         c = cities[0]
         arch = c.get("archetype", "guide")
         if arch == "warning":
-            return f"Why {c['city']} STRs Face the Toughest Rules in 2026", "warning"
+            return f"{state_name} Short-Term Rental Laws — {c['city']} Guide", "warning"
         elif arch == "opportunity":
             return f"{c['city']} STR Compliance: Predictable Rules, Real Returns", "opportunity"
         else:
@@ -421,7 +421,7 @@ def gen_state_page(state_name, info, all_states):
     # Pitfall 14: dynamic title archetype
     title, archetype = title_archetype(state_name, cities)
     
-    desc = f"Compare STR rules across {n} {state_name} {'city' if n==1 else 'cities'}. License fees, tax rates, and operating rules. Verified May 2026."
+    desc = f"Compare STR rules across {n} {state_name} {'city' if n==1 else 'cities'}. License fees, tax rates, and operating rules. Verified May 2026." if n > 1 else f"Short-term rental rules for {state_name}, including current requirements, licensing, taxes, and operating restrictions. Verified May 2026."
     h1 = f"{state_name} ({abbr}) Short-Term Rental Regulations"
 
     overview = state_overview(state_name, cities)
