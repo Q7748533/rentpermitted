@@ -1,5 +1,21 @@
 [
   {
+    "date": "Jun 29, 2026",
+    "label": "Seattle, WA",
+    "text": "Regulation page updated — similarity 89.8% vs baseline. https://www.seattle.gov/business-regulations/short-term-rentals",
+    "slug": "seattle",
+    "url": "https://www.seattle.gov/business-regulations/short-term-rentals",
+    "similarity": 0.898
+  },
+  {
+    "date": "Jun 22, 2026",
+    "label": "Seattle, WA",
+    "text": "Regulation page updated — similarity 89.6% vs baseline. https://www.seattle.gov/business-regulations/short-term-rentals",
+    "slug": "seattle",
+    "url": "https://www.seattle.gov/business-regulations/short-term-rentals",
+    "similarity": 0.896
+  },
+  {
     "date": "Jun 15, 2026",
     "label": "Atlanta, GA",
     "text": "Regulation page updated — similarity 81.0% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
@@ -86,21 +102,5 @@
     "slug": "orlando",
     "url": "https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
     "similarity": 0.837
-  },
-  {
-    "date": "Jun 01, 2026",
-    "label": "Phoenix, AZ",
-    "text": "Regulation page updated — similarity 59.8% vs baseline. https://www.phoenix.gov/nsd/short-term-rentals",
-    "slug": "phoenix",
-    "url": "https://www.phoenix.gov/nsd/short-term-rentals",
-    "similarity": 0.598
-  },
-  {
-    "date": "May 25, 2026",
-    "label": "Seattle, WA",
-    "text": "Regulation page updated — similarity 89.6% vs baseline. https://www.seattle.gov/business-regulations/short-term-rentals",
-    "slug": "seattle",
-    "url": "https://www.seattle.gov/business-regulations/short-term-rentals",
-    "similarity": 0.896
   }
 ]
