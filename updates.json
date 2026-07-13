@@ -1,5 +1,61 @@
 [
   {
+    "date": "Jul 13, 2026",
+    "label": "Charlotte, NC",
+    "text": "Regulation page updated — similarity 64.9% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "slug": "charlotte",
+    "url": "https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "similarity": 0.649
+  },
+  {
+    "date": "Jul 13, 2026",
+    "label": "Denver, CO",
+    "text": "Regulation page updated — similarity 89.9% vs baseline. https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
+    "slug": "denver",
+    "url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
+    "similarity": 0.899
+  },
+  {
+    "date": "Jul 13, 2026",
+    "label": "Los Angeles, CA",
+    "text": "Regulation page updated — similarity 89.2% vs baseline. https://planning.lacity.gov/plans-policies/transient-occupancy-registration",
+    "slug": "los-angeles",
+    "url": "https://planning.lacity.gov/plans-policies/transient-occupancy-registration",
+    "similarity": 0.892
+  },
+  {
+    "date": "Jul 13, 2026",
+    "label": "Orlando, FL",
+    "text": "Regulation page updated — similarity 89.0% vs baseline. https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
+    "slug": "orlando",
+    "url": "https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
+    "similarity": 0.89
+  },
+  {
+    "date": "Jul 06, 2026",
+    "label": "Charlotte, NC",
+    "text": "Regulation page updated — similarity 70.9% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "slug": "charlotte",
+    "url": "https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "similarity": 0.709
+  },
+  {
+    "date": "Jul 06, 2026",
+    "label": "Charlotte, NC",
+    "text": "Regulation page updated — similarity 0.2% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "slug": "charlotte",
+    "url": "https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "similarity": 0.002
+  },
+  {
+    "date": "Jul 06, 2026",
+    "label": "Orlando, FL",
+    "text": "Regulation page updated — similarity 89.0% vs baseline. https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
+    "slug": "orlando",
+    "url": "https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
+    "similarity": 0.89
+  },
+  {
     "date": "Jun 29, 2026",
     "label": "Seattle, WA",
     "text": "Regulation page updated — similarity 89.8% vs baseline. https://www.seattle.gov/business-regulations/short-term-rentals",
@@ -46,61 +102,5 @@
     "slug": "atlanta",
     "url": "https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
     "similarity": 0.685
-  },
-  {
-    "date": "Jun 08, 2026",
-    "label": "Charlotte, NC",
-    "text": "Regulation page updated — similarity 74.9% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
-    "slug": "charlotte",
-    "url": "https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
-    "similarity": 0.749
-  },
-  {
-    "date": "Jun 08, 2026",
-    "label": "New York City, NY",
-    "text": "Regulation page updated — similarity 65.3% vs baseline. https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
-    "slug": "new-york-city",
-    "url": "https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
-    "similarity": 0.653
-  },
-  {
-    "date": "Jun 08, 2026",
-    "label": "Phoenix, AZ",
-    "text": "Regulation page updated — similarity 62.6% vs baseline. https://www.phoenix.gov/nsd/short-term-rentals",
-    "slug": "phoenix",
-    "url": "https://www.phoenix.gov/nsd/short-term-rentals",
-    "similarity": 0.626
-  },
-  {
-    "date": "Jun 01, 2026",
-    "label": "Atlanta, GA",
-    "text": "Regulation page updated — similarity 68.9% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
-    "slug": "atlanta",
-    "url": "https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
-    "similarity": 0.689
-  },
-  {
-    "date": "Jun 01, 2026",
-    "label": "Denver, CO",
-    "text": "Regulation page updated — similarity 89.6% vs baseline. https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
-    "slug": "denver",
-    "url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
-    "similarity": 0.896
-  },
-  {
-    "date": "Jun 01, 2026",
-    "label": "New York City, NY",
-    "text": "Regulation page updated — similarity 64.9% vs baseline. https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
-    "slug": "new-york-city",
-    "url": "https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
-    "similarity": 0.649
-  },
-  {
-    "date": "Jun 01, 2026",
-    "label": "Orlando, FL",
-    "text": "Regulation page updated — similarity 83.7% vs baseline. https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
-    "slug": "orlando",
-    "url": "https://www.orlando.gov/Building-Development/Permits/Short-Term-Rental",
-    "similarity": 0.837
   }
 ]
