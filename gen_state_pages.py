@@ -312,7 +312,7 @@ def similar_states(state_name, info, all_states):
   </section>'''
 
 
-def city_comparison_table(cities):
+def city_comparison_table(cities, state_slug):
     """Generate a comparison table of all cities in a state."""
     rows = ""
     for c in sorted(cities, key=lambda x: x["city"]):
@@ -322,7 +322,7 @@ def city_comparison_table(cities):
         badge_color = "var(--red)" if archetype == "warning" else ("var(--green)" if archetype == "opportunity" else "var(--orange)")
         row = (
             f'      <tr>'
-            f'<td><a href="/{c["slug"]}/"><strong>{html.escape(c["city"])}</strong></a></td>'
+            f'<td><a href="/{state_slug}/{c["slug"]}/"><strong>{html.escape(c["city"])}</strong></a></td>'
             f'<td><span class="mini-badge" style="background:{badge_color};color:white;padding:2px 8px;border-radius:4px;font-size:0.8rem">{html.escape(status)}</span></td>'
             f'<td class="fee-cell">{html.escape(fee)}</td>'
             f'</tr>\n'
@@ -425,7 +425,7 @@ def gen_state_page(state_name, info, all_states):
     h1 = f"{state_name} ({abbr}) Short-Term Rental Regulations"
 
     overview = state_overview(state_name, cities)
-    table = city_comparison_table(cities)
+    table = city_comparison_table(cities, slug)
     ranking = risk_ranking(cities) if n > 1 else ""
 
     # FAQ Q2: state-wide laws — per-state answers
