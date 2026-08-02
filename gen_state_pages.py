@@ -171,11 +171,11 @@ def title_archetype(state_name, cities):
         c = cities[0]
         arch = c.get("archetype", "guide")
         if arch == "warning":
-            return f"{state_name} Short-Term Rental Laws — {c['city']} Guide", "warning"
+            return f"{state_name} Short-Term Rental Laws | {c['city']} Guide", "warning"
         elif arch == "opportunity":
             return f"{c['city']} STR Compliance: Predictable Rules, Real Returns", "opportunity"
         else:
-            return f"{c['city']} Short-Term Rental Rules — {state_name} Guide", "guide"
+            return f"{c['city']} Short-Term Rental Rules | {state_name} Guide", "guide"
 
     # Multi-city states: threshold-based
     if warning_count >= n * 0.5:
@@ -185,7 +185,7 @@ def title_archetype(state_name, cities):
         title = f"{state_name} STR Compliance: Predictable Rules, Real Returns"
         arch = "opportunity"
     else:
-        title = f"{state_name} Short-Term Rental Laws — {n} Cities Compared"
+        title = f"{state_name} Short-Term Rental Laws | {n} Cities Compared"
         arch = "guide"
 
     return title, arch
@@ -360,7 +360,7 @@ def risk_ranking(cities):
     items = ""
     for i, (score, c) in enumerate(scored):
         level = "🔴 High barrier" if score >= 5 else ("🟡 Moderate" if score >= 3 else "🟢 Accessible")
-        items += f'        <li><strong>{html.escape(c["city"])}</strong> — {level}: {html.escape(c.get("verdict","")[:100])}</li>\n'
+        items += f'        <li><strong>{html.escape(c["city"])}</strong>: {level}: {html.escape(c.get("verdict","")[:100])}</li>\\n'
     return f'''<h2 id="risk-ranking">Regulatory Risk Ranking</h2>
     <p>From most restrictive to most investor-friendly within {cities[0]["state"]}:</p>
     <ol class="risk-list">
@@ -430,8 +430,8 @@ def gen_state_page(state_name, info, all_states):
 
     # FAQ Q2: state-wide laws — per-state answers
     faq_q2 = {
-        "Arizona": "Yes — Arizona's SB1350 (2016) prohibits cities from banning short-term rentals outright. Cities may require licenses, collect taxes, and enforce nuisance rules, but cannot use zoning to restrict STRs. This is one of the strongest state-level STR protections in the country.",
-        "Florida": "Partially — FL Stat. 509.032 preempts cities from banning vacation rentals entirely, but cities retain broad authority over registration, fees, zoning, and enforcement. The state sets a floor, not a ceiling. Local rules ultimately determine viability.",
+        "Arizona": "Yes: Arizona's SB1350 (2016) prohibits cities from banning short-term rentals outright. Cities may require licenses, collect taxes, and enforce nuisance rules, but cannot use zoning to restrict STRs. This is one of the strongest state-level STR protections in the country.",
+        "Florida": "Partially: FL Stat. 509.032 preempts cities from banning vacation rentals entirely, but cities retain broad authority over registration, fees, zoning, and enforcement. The state sets a floor, not a ceiling. Local rules ultimately determine viability.",
     }.get(state_name, f"{state_name} regulates short-term rentals primarily at the city level. There is no comprehensive state-wide STR law. Check each individual city page for specific license requirements, fees, and operating rules.")
 
     # FAQ Q3: best city for investment — derived from risk ranking for multi-city states
@@ -481,12 +481,12 @@ def gen_state_page(state_name, info, all_states):
     else:
         climate = "Mixed"
 
-    preemption = "Yes — SB1350" if state_name == "Arizona" else ("Partial — vacation rental preemption" if state_name == "Florida" else "None — city-level regulation")
+    preemption = "Yes: SB1350" if state_name == "Arizona" else ("Partial: vacation rental preemption" if state_name == "Florida" else "None: city-level regulation")
 
     quick_facts = f'''<section class="quick-facts">
     <h2>At a Glance</h2>
     <div class="facts-grid">
-      <div><span class="fact-label">Cities Covered</span><span class="fact-value">{n} {'city' if n==1 else 'cities'} — {', '.join(c['city'] for c in sorted(cities, key=lambda x: x['city']))}</span></div>
+      <div><span class="fact-label">Cities Covered</span><span class="fact-value">{n} {'city' if n==1 else 'cities'}: {', '.join(c['city'] for c in sorted(cities, key=lambda x: x['city']))}</span></div>
       <div><span class="fact-label">Regulatory Climate</span><span class="fact-value">{climate}</span></div>
       <div><span class="fact-label">License Fee Range</span><span class="fact-value">{fee_range}</span></div>
       <div><span class="fact-label">State Preemption</span><span class="fact-value">{preemption}</span></div>
@@ -553,7 +553,7 @@ def gen_state_page(state_name, info, all_states):
 
   {ranking}
 
-  <h2 id="city-comparison">City Comparison — {n} {'City' if n==1 else 'Cities'}</h2>
+  <h2 id="city-comparison">City Comparison | {n} {'City' if n==1 else 'Cities'}</h2>
   <p>All {state_name} cities covered by RentPermitted, ranked and compared:</p>
   {table}
 
@@ -571,7 +571,7 @@ def gen_state_page(state_name, info, all_states):
 </main>
 
 <footer>
-  <p>RentPermitted — Short-term rental regulations, made clear. Not affiliated with any government agency.</p>
+  <p>RentPermitted: Short-term rental regulations, made clear. Not affiliated with any government agency.</p>
   <p><a href="/affiliate-disclosure/">Affiliate Disclosure</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
 </footer>
 
