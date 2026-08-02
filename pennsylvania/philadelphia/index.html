@@ -92,21 +92,26 @@
 </script>
 </head>
 <body>
-<header>
+<header class="site-header">
+  <a href="/" class="logo">RentPermitted</a>
+  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <nav id="main-nav">
-    <a href="/" class="logo">RentPermitted</a>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
-    <div class="nav-links">
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-    </div>
+    <a href="/#cities">Browse Cities</a>
+    <a href="/#states">By State</a>
+    <a href="/about/">About</a>
   </nav>
 </header>
-<nav class="breadcrumb" aria-label="Breadcrumb">
+<main class="city-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="/">Home</a><span>›</span><a href="/pennsylvania">Pennsylvania</a><span>›</span><span>Philadelphia</span>
 </nav>
-<main class="city-page">
-<section class="quick-facts">
+<div class="status-badge" style="background:var(--red);color:white">3-License Stack, Zone-Restricted</div>
+  <h1>Philadelphia, PA Short-Term Rental Regulations</h1>
+  <p class="subtitle">Philadelphia requires a three-license stack for STR operation. Limited Lodging for primary residences, Visitor Accommodation restricted to specific commercial/mixed-use zones. Updated August 2026.</p>
+
+  <section class="quick-facts">
   <h2>At a Glance</h2>
   <div class="facts-grid">
     <div><span class="fact-label">Permit Required</span><span class="fact-value">Yes: 3-license stack (CAL + Zoning + Operator License)</span></div>
@@ -127,7 +132,7 @@
     <a href="#verdict">Verdict</a>
   </nav>
 
-<h1>Philadelphia, PA Short-Term Rental Regulations</h1>
+
 
 <section>
   <h2 id="overview">Overview</h2>
