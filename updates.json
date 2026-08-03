@@ -1,5 +1,21 @@
 [
   {
+    "date": "Aug 03, 2026",
+    "label": "Charlotte, NC",
+    "text": "Regulation page updated — similarity 68.1% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "slug": "charlotte",
+    "url": "https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
+    "similarity": 0.681
+  },
+  {
+    "date": "Aug 03, 2026",
+    "label": "Denver, CO",
+    "text": "Regulation page updated — similarity 83.4% vs baseline. https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
+    "slug": "denver",
+    "url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Excise-and-Licenses/Short-Term-Rentals",
+    "similarity": 0.834
+  },
+  {
     "date": "Jul 13, 2026",
     "label": "Charlotte, NC",
     "text": "Regulation page updated — similarity 64.9% vs baseline. https://www.charlottenc.gov/Growth-and-Development/Planning-and-Development",
@@ -86,21 +102,5 @@
     "slug": "new-york-city",
     "url": "https://www.nyc.gov/site/specialenforcement/business/short-term-rentals.page",
     "similarity": 0.778
-  },
-  {
-    "date": "Jun 15, 2026",
-    "label": "Phoenix, AZ",
-    "text": "Regulation page updated — similarity 61.0% vs baseline. https://www.phoenix.gov/nsd/short-term-rentals",
-    "slug": "phoenix",
-    "url": "https://www.phoenix.gov/nsd/short-term-rentals",
-    "similarity": 0.61
-  },
-  {
-    "date": "Jun 08, 2026",
-    "label": "Atlanta, GA",
-    "text": "Regulation page updated — similarity 68.5% vs baseline. https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
-    "slug": "atlanta",
-    "url": "https://www.atlantaga.gov/government/departments/city-planning/office-of-buildings/short-term-rentals",
-    "similarity": 0.685
   }
 ]
